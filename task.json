@@ -1,23 +1,22 @@
 [
-		{
-			“id”: “task1”,
-“taskName”: “Task 1”,
-“taskPrioirity”: 1, 
-“taskTags”: [“tag1”, “tag2”],
-“taskDueDate”: “2023-12-05”,
-“taskCreationDate”: “2023-10-06”,
-“taskCompletion”: false,
-“taskNotes”: “Notes…etc”
-},
-{
-	“id”: “task2”,
-“taskName”: “Task 2”,
-“taskPrioirity”: 2, 
-“taskTags”: [“tag3”],
-“taskDueDate”: “2023-11-05”,
-“taskCreationDate”: “2023-08-06”,
-“taskCompletion”: true,
-“taskNotes”: “Notes…etc”
-}
+    {
+        "id": "task1",
+        "taskName": "Task 1",
+        "taskPriority": 1,
+        "taskTags": ["tag1", "tag2"],
+        "taskDueDate": "2023-12-05",
+        "taskCreationDate": "2023-10-06",
+        "taskCompletion": false,
+        "taskNotes": "Notes…etc"
+    },
+    {
+        "id": "task2",
+        "taskName": "Task 2",
+        "taskPriority": 2,
+        "taskTags": ["tag3"],
+        "taskDueDate": "2023-11-05",
+        "taskCreationDate": "2023-08-06",
+        "taskCompletion": true,
+        "taskNotes": "Notes…etc"
+    }
 ]
-

@@ -1,6 +1,6 @@
 [
 	{
-		“id”: “user1”,
+		"“id”: “user1”,
 		“firstName” : “Colin”,
 		“lastName”: “Elmore”,
 		“userName”: “colinelmore”,
@@ -14,7 +14,7 @@
 		“groups”:[“group1”], ?
 	} ,
 	{
-		“Id”: “user2”,
+		“id”: “user2”,
 		“firstName” : “Portia”,
 		“lastName”: “Plante”,
 		“userName”: “portypotty”,
