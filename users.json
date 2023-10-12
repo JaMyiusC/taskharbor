@@ -1,0 +1,31 @@
+[
+	{
+		“id”: “user1”,
+		“firstName” : “Colin”,
+		“lastName”: “Elmore”,
+		“userName”: “colinelmore”,
+		“password”: “hashedPassword”,
+		“email”: “colin@example.gmail”,
+		“phoneNumber”: “864-908-0780”,
+		“birthDate”: “2003-12-04”,
+		“address”: “123 plante street”,
+		“userRole”: “Contributor”,
+		“userHistory”: [ ], ?
+		“groups”:[“group1”], ?
+	} ,
+	{
+		“Id”: “user2”,
+		“firstName” : “Portia”,
+		“lastName”: “Plante”,
+		“userName”: “portypotty”,
+		“password”: “hashedPassword”,
+		“email”: “plante@example.gmail”,
+		“phoneNumber”: “123-456-7890”,
+		“birthDate”: “1980-01-01”,
+		“address”: “123 racoon street”,
+		“userRole”: “Leader”,
+		“userHistory”: [ ], ?
+		“groups”:[“group1”, “group2”], ?
+	}
+]
+

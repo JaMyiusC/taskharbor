@@ -1,0 +1,17 @@
+[
+	{
+		“id”: “column1”,
+		“columnName”: “To-Do”,
+		“columnPosition”: 1,
+		“columnTaskList”: [“task1”, “task3”],
+		“columnsComments”: [ ],
+	}, 
+	{
+		“id”: “column2”,
+		“columnName”: “In Progress”,
+		“columnPosition”: 2,
+		“columnTaskList”: [ ],
+		“columnsComments”: [ ],
+	}
+]
+
