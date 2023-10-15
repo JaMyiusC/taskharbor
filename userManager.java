@@ -1,14 +1,16 @@
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
  * The UserManager class is responsible for managing user information.
  */
-public class UserManager {
-    private static UserManager userManager;
+public class userManager {
+    private static userManager userManager;
     private ArrayList<User> usersList;
 
-    private UserManager() {
+    private userManager() {
         this.usersList = new ArrayList<>();
     }
 
@@ -17,9 +19,9 @@ public class UserManager {
      *
      * @return The UserManager instance.
      */
-    public static UserManager getInstance() {
+    public static userManager getInstance() {
         if (userManager == null) {
-            userManager = new UserManager();
+            userManager = new userManager();
         }
         return userManager;
     }
