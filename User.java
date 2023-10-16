@@ -11,7 +11,7 @@ public class User {
     private String phoneNumber;
     private String birthday;
     private String address;
-    private role userRole;
+    private String userRole;
     private ArrayList<String> userHistory;
 
     public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
