@@ -29,49 +29,35 @@ public class User {
     }
 
     public boolean checkPassword(String password) {
-        return this.password.equals(password);
+        return false;
     }
 
     public boolean updatePassword(String password) {
-        if (password != null && !password.isEmpty()) {
-            this.password = password;
-            return true;
-        }
         return false;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", address='" + address + '\'' +
-                ", userRole='" + userRole + '\'' +
-                '}';
+        return null;
     }
 
     public boolean confirmUser(String userName, String password) {
-        return this.userName.equals(userName) && this.password.equals(password);
+        return true;
     }
 
     public ArrayList<String> viewUserTaskHistory() {
-        return userHistory;
+        return null;
     }
 
     public void addUserTaskHistory(String historyEntry) {
-        userHistory.add(historyEntry);
+        return ;
     }
 
     public ArrayList<String> viewUserColumnHistory() {
-        return userHistory;
+        return null;
     }
 
     public void addUserColumnHistory(String columnHistory) {
-        userHistory.add(columnHistory);
+        return ;
     }
 }
