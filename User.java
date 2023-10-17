@@ -11,7 +11,7 @@ public class User {
     private String phoneNumber;
     private String birthday;
     private String address;
-    private String userRole;
+    private Role userRole;
     private ArrayList<String> userHistory;
 
     public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
@@ -24,40 +24,49 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.birthday = birthday;
         this.address = address;
-        this.userRole = "user"; // Default role
+        this.userRole = Role.Contributor; // Default role
         this.userHistory = new ArrayList<>();
     }
 
     public boolean checkPassword(String password) {
-        return false;
+        return this.password.equals(password);
     }
 
-    public boolean updatePassword(String password) {
-        return false;
+    public boolean updatePassword(String newPassword) {
+        this.password = newPassword;
+        return true;
     }
 
     @Override
     public String toString() {
-        return null;
+        return "User ID: " + id +
+               "\nFirst Name: " + firstName +
+               "\nLast Name: " + lastName +
+               "\nUsername: " + userName +
+               "\nEmail: " + email +
+               "\nPhone Number: " + phoneNumber +
+               "\nBirthday: " + birthday +
+               "\nAddress: " + address +
+               "\nUser Role: " + userRole;
     }
 
     public boolean confirmUser(String userName, String password) {
-        return true;
+        return this.userName.equals(userName) && this.password.equals(password);
     }
 
     public ArrayList<String> viewUserTaskHistory() {
-        return null;
+        return userHistory;
     }
 
     public void addUserTaskHistory(String historyEntry) {
-        return ;
+        userHistory.add(historyEntry);
     }
 
     public ArrayList<String> viewUserColumnHistory() {
-        return null;
+        return userHistory;
     }
 
     public void addUserColumnHistory(String columnHistory) {
-        return ;
+        userHistory.add(columnHistory);
     }
 }
