@@ -1,18 +1,18 @@
-import java.io.*;
+import java.util.ArrayList;
 
-// The DataWriter class is responsible for saving user and project data to a data source.
 public class DataWriter {
-    // Method to save users. Returns true if the operation is successful, false otherwise.
-    public boolean saveUsers() {
-        // Implementation code to save the list of users
-        // This method currently returns false because the implementation is not provided.
-        return false;
+    private ArrayList<User> userList;
+
+    public DataWriter(ArrayList<User> userList) {
+        this.userList = userList;
     }
 
-    // Method to save projects. Returns true if the operation is successful, false otherwise.
-    public boolean saveProjects() {
-        // Implementation code to save the list of projects
-        // This method currently returns false because the implementation is not provided.
-        return false;
+    public boolean saveUsers() {
+        // In a real application, you would save the userList to a database or a file.
+        // Here, we'll just print the users as an example.
+        for (User user : userList) {
+            System.out.println("Saved user: " + user.getUserName());
+        }
+        return true; // Indicate successful save
     }
 }
