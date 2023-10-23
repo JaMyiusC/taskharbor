@@ -14,6 +14,10 @@ public class User {
     private Role userRole;
     private ArrayList<String> userHistory;
 
+    public static void main(String[] args) {
+        User thisUser = new User()
+    }
+
     public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
         this.id = id;
         this.firstName = firstName;
@@ -27,6 +31,8 @@ public class User {
         this.userRole = Role.Contributor; // Default role
         this.userHistory = new ArrayList<>();
     }
+
+    // overload the constructor 
 
     public boolean checkPassword(String password) {
         return this.password.equals(password);
