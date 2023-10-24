@@ -5,11 +5,11 @@ public class test {
         System.out.println("New User:\n" + newUser.toString());
 
         // Test saving user data to JSON
-        newUser.saveToJson("user_data.json");
+        newUser.saveToJson("json/users.json");
         System.out.println("User data saved to JSON.");
 
         // Test loading user data from JSON
-        User loadedUser = User.loadFromJson("user_data.json");
+        User loadedUser = User.loadFromJson("json/users.json");
         if (loadedUser != null) {
             System.out.println("\nLoaded User:\n" + loadedUser.toString());
         } else {

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class uiFacade {
     private UserManager userManager;
@@ -56,7 +57,26 @@ class ProjectManager {
 }
 
 class Task {
+
+    public Object getTaskName() {
+        return null;
+    }
     // Placeholder implementation
+
+    public void setTaskPriority(int taskPriority) {
+    }
+
+    public void setTaskName(String newTaskName) {
+    }
+
+    public void setTaskTags(ArrayList<String> newTaskTags) {
+    }
+
+    public void setTaskNotes(String newTaskNotes) {
+    }
+
+    public void setTaskDueDate(Date newTaskDueDate) {
+    }
 }
 
 class Column {

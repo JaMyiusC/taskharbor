@@ -1,30 +1,9 @@
-[
-    {
-        "id": "user1",
-        "firstName": "Colin",
-        "lastName": "Elmore",
-        "userName": "colinelmore",
-        "password": "hashedPassword",
-        "email": "colin@example.gmail",
-        "phoneNumber": "864-908-0780",
-        "birthDate": "2003-12-04",
-        "address": "123 plante street",
-        "userRole": "Contributor",
-        "userHistory": [],
-        "groups": ["group1"]
-    },
-    {
-        "id": "user2",
-        "firstName": "Portia",
-        "lastName": "Plante",
-        "userName": "portypotty",
-        "password": "hashedPassword",
-        "email": "plante@example.gmail",
-        "phoneNumber": "123-456-7890",
-        "birthDate": "1980-01-01",
-        "address": "123 raccoon street",
-        "userRole": "Leader",
-        "userHistory": [],
-        "groups": ["group1", "group2"]
-    }
-]
+User ID: f15996fd-2702-4d4e-9d22-42259a7b0e72
+First Name: colin
+Last Name: elmore
+Username: cmelmore
+Email: ce@example.com
+Phone Number: 9876543210
+Birthday: 1990-05-15
+Address: 456 Main St, City, Country
+User Role: Contributor
