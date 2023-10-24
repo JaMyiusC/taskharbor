@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.io.IOException;
+import java.io.FileWriter;;
 
 public class DataWriter {
     private ArrayList<User> userList;
@@ -10,12 +12,16 @@ public class DataWriter {
     }
 
     public boolean saveUsers() {
-        // In a real application, you would save the userList to a database or a file.
+            User users = User.getInstance();
+
+
+      /*  // In a real application, you would save the userList to a database or a file.
         // Here, we'll just print the users as an example.
         for (User user : userList) {
             System.out.println("Saved user: " + user.getUserName());
         }
         return true; // Indicate successful save
+        */
     }
 
     public boolean saveProjects() {

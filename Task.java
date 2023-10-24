@@ -1,46 +1,92 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-// The Task class is responsible for managing task information.
 public class Task {
-    // The name of the task.
+    // Attributes
     private String taskName;
-    // The priority of the task.
     private int taskPriority;
-    // An ArrayList to store the tags of the task.
     private ArrayList<String> taskTags;
-    // The due date of the task.
     private Date taskDueDate;
-    // The creation date of the task.
-    private Date taskCreationDate;
-    // The completion status of the task.
-    private boolean taskCompletion;
-    // The notes related to the task.
     private String taskNotes;
+    private boolean taskCompletion;
 
-    // Constructor for the Task class.
-    public Task() {
-        this.taskName = "";
-        this.taskPriority = 0;
-        this.taskTags = new ArrayList<>();
-        this.taskDueDate = new Date();
-        this.taskCreationDate = new Date();
-        this.taskCompletion = false;
-        this.taskNotes = "";
+    // Constructor
+    public Task(String taskName, int taskPriority, ArrayList<String> taskTags, Date taskDueDate, String taskNotes) {
+        this.taskName = taskName;
+        this.taskPriority = taskPriority;
+        this.taskTags = taskTags;
+        this.taskDueDate = taskDueDate;
+        this.taskNotes = taskNotes;
+        this.taskCompletion = false; // Initialize as not completed
     }
 
-    // Overridden toString method to provide a string representation of the Task object.
+    // Getters and Setters
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public int getTaskPriority() {
+        return taskPriority;
+    }
+
+    public void setTaskPriority(int taskPriority) {
+        this.taskPriority = taskPriority;
+    }
+
+    public ArrayList<String> getTaskTags() {
+        return taskTags;
+    }
+
+    public void setTaskTags(ArrayList<String> taskTags) {
+        this.taskTags = taskTags;
+    }
+
+    public Date getTaskDueDate() {
+        return taskDueDate;
+    }
+
+    public void setTaskDueDate(Date taskDueDate) {
+        this.taskDueDate = taskDueDate;
+    }
+
+    public String getTaskNotes() {
+        return taskNotes;
+    }
+
+    public void setTaskNotes(String taskNotes) {
+        this.taskNotes = taskNotes;
+    }
+
+    public boolean getTaskCompletion() {
+        return taskCompletion;
+    }
+
+    public void setTaskCompletion(boolean taskCompletion) {
+        this.taskCompletion = taskCompletion;
+    }
+
+    // Additional Methods
+    public void markComplete() {
+        taskCompletion = true;
+    }
+
+    public void markWorkingOn() {
+        taskCompletion = false;
+    }
+
     @Override
     public String toString() {
-        return "Task{" +
-                "taskName='" + taskName + '\'' +
-                ", taskPriority=" + taskPriority +
-                ", taskTags=" + taskTags +
-                ", taskDueDate=" + taskDueDate +
-                ", taskCreationDate=" + taskCreationDate +
-                ", taskCompletion=" + taskCompletion +
-                ", taskNotes='" + taskNotes + '\'' +
-                '}';
+        return "Task Name: " + taskName +
+               "\nPriority: " + taskPriority +
+               "\nTags: " + taskTags +
+               "\nDue Date: " + taskDueDate +
+               "\nNotes: " + taskNotes +
+               "\nCompletion: " + (taskCompletion ? "Completed" : "Not Completed");
     }
 }
+
 

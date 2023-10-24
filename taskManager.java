@@ -2,57 +2,87 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class taskManager {
-    // Attributes
     private HashMap<Boolean, ArrayList<Task>> taskList;
 
-    // Constructor
     public taskManager() {
         this.taskList = new HashMap<>();
+        taskList.put(false, new ArrayList<>()); // Initialize an empty list for tasks not completed
+        taskList.put(true, new ArrayList<>());  // Initialize an empty list for completed tasks
     }
 
-    // Methods
     public boolean addTask(Task task) {
-        // Implementation to add a task to the manager
-        return false;
+        ArrayList<Task> tasks = taskList.get(false);
+        tasks.add(task);
+        return true;
     }
 
     public boolean removeTask(Task task) {
-        // Implementation to remove a task from the manager
-        return false;
+        ArrayList<Task> tasks = taskList.get(false);
+        boolean removed = tasks.remove(task);
+        if (removed) {
+            taskList.put(false, tasks);
+        }
+        return removed;
     }
 
     public Task getTask(String taskName) {
-        // Implementation to get a specific task by name
+        ArrayList<Task> tasks = taskList.get(false);
+        for (Task task : tasks) {
+            if (task.getTaskName().equals(taskName)) {
+                return task;
+            }
+        }
         return null;
     }
 
     public boolean hasTask(String taskName) {
-        // Implementation to check if a task exists in the manager
-        return false;
+        return getTask(taskName) != null;
     }
 
     public boolean editTaskPriority(String taskName, int taskPriority) {
-        // Implementation to edit the priority of a task
+        Task task = getTask(taskName);
+        if (task != null) {
+            task.setTaskPriority(taskPriority);
+            return true;
+        }
         return false;
     }
 
-    public boolean editTask(String taskName) {
-        // Implementation to edit the properties of a task
+    public boolean editTask(String taskName, String newTaskName, int newTaskPriority, ArrayList<String> newTaskTags, Date newTaskDueDate, String newTaskNotes) {
+        Task task = getTask(taskName);
+        if (task != null) {
+            task.setTaskName(newTaskName);
+            task.setTaskPriority(newTaskPriority);
+            task.setTaskTags(newTaskTags);
+            task.setTaskDueDate(newTaskDueDate);
+            task.setTaskNotes(newTaskNotes);
+            return true;
+        }
         return false;
     }
 
     public boolean saveTaskList() {
-        // Implementation to save the task data
-        return false;
+        // Implement code to save the task data to a data source (e.g., a file or database)
+        return true;
     }
 
     public boolean markTaskComplete(String taskName) {
-        // Implementation to mark a task as complete
+        Task task = getTask(taskName);
+        if (task != null) {
+            taskList.get(false).remove(task);
+            taskList.get(true).add(task);
+            return true;
+        }
         return false;
     }
 
     public boolean markTaskWorkingOn(String taskName) {
-        // Implementation to mark a task as 'working on'
+        Task task = getTask(taskName);
+        if (task != null) {
+            taskList.get(true).remove(task);
+            taskList.get(false).add(task);
+            return true;
+        }
         return false;
     }
 }
