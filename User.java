@@ -40,6 +40,23 @@ public class User {
         System.out.println("User column history: " + thisUser.viewUserColumnHistory());
     }
 
+
+    // Constructor with random UUID generation
+    public User(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
+        this.id = UUID.randomUUID();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
+        this.address = address;
+        this.userRole = Role.Contributor; // Default role
+        this.userHistory = new ArrayList<>();
+    }
+
+    // Constructor with predefined UUID
     public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
         this.id = id;
         this.firstName = firstName;
@@ -54,6 +71,22 @@ public class User {
         this.userHistory = new ArrayList<>();
     }
 
+// commented out for testing remove after the class is working
+/*
+    public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
+        this.address = address;
+        this.userRole = Role.Contributor; // Default role
+        this.userHistory = new ArrayList<>();
+    }
+*/
     // overload the constructor 
 
     public User() {

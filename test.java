@@ -1,32 +1,32 @@
-import java.util.ArrayList;
+import java.util.UUID;
 
 public class test {
     public static void main(String[] args) {
-        // Create some User objects
-        User user1 = new User(null, "user1", null, null, null, null, null, null, null);
-        User user2 = new User(null, "user2", null, null, null, null, null, null, null);
+        // Test User creation with random UUID
+        User randomUser = new User("John", "Doe", "johndoe", "password123", "johndoe@example.com", "1234567890", "01-01-1990", "123 Street, City, Country");
+        System.out.println("Random User:\n" + randomUser.toString());
 
-        // Add the users to an ArrayList
-        ArrayList<User> userList = new ArrayList<>();
-        userList.add(user1);
-        userList.add(user2);
+        // Test User creation with predefined UUID
+        UUID predefinedUUID = UUID.fromString("f546c57a-47e8-4aa1-8ba8-d186d7a15637");
+        User predefinedUser = new User(predefinedUUID, "Jane", "Smith", "janesmith", "pass456", "janesmith@example.com", "9876543210", "02-02-1995", "456 Avenue, Town, Country");
+        System.out.println("\nPredefined User:\n" + predefinedUser.toString());
 
-        // Create some Project objects
-        Project project1 = new Project();
-        Project project2 = new Project();
+        // Test password update
+        System.out.println("\nPassword check: " + predefinedUser.checkPassword("pass456"));
+        predefinedUser.updatePassword("newPass789");
+        System.out.println("Updated password check: " + predefinedUser.checkPassword("newPass789"));
 
-        // Add the projects to an ArrayList
-        ArrayList<Project> projectList = new ArrayList<>();
-        projectList.add(project1);
-        projectList.add(project2);
+        // Test user confirmation
+        System.out.println("\nUser confirmation: " + predefinedUser.confirmUser("janesmith", "newPass789"));
 
-        // Create a DataWriter and save the users and projects
-        DataWriter dataWriter = new DataWriter(userList, projectList);
-        boolean usersSaved = dataWriter.saveUsers();
-        boolean projectsSaved = dataWriter.saveProjects();
+        // Test user task history
+        predefinedUser.addUserTaskHistory("Task 1 completed");
+        predefinedUser.addUserTaskHistory("Task 2 started");
+        System.out.println("\nUser task history:\n" + predefinedUser.viewUserTaskHistory());
 
-        // Print whether the save operations were successful
-        System.out.println("Users saved: " + usersSaved);
-        System.out.println("Projects saved: " + projectsSaved);
+        // Test user column history
+        predefinedUser.addUserColumnHistory("Column 1 updated");
+        predefinedUser.addUserColumnHistory("Column 2 added");
+        System.out.println("\nUser column history:\n" + predefinedUser.viewUserColumnHistory());
     }
 }
