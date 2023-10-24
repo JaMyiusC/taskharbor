@@ -5,7 +5,7 @@ public class test {
         System.out.println("New User:\n" + newUser.toString());
 
         // Test saving user data to JSON
-        newUser.saveToJson("json/users.json");
+        newUser.saveToJsonArray("json/users.json");
         System.out.println("User data saved to JSON.");
 
         // Test loading user data from JSON
