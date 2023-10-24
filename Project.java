@@ -57,4 +57,8 @@ public class Project {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+    public Object isCompleted() {
+        return null;
+    }
 }
