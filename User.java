@@ -15,7 +15,29 @@ public class User {
     private ArrayList<String> userHistory;
 
     public static void main(String[] args) {
-        User thisUser = new User()
+    	// Create a new User object
+        User thisUser = new User(UUID.randomUUID(), "John", "Doe", "johndoe", "password123", "johndoe@example.com", "1234567890", "01-01-1990", "123 Street, City, Country");
+
+        // Print the User object
+        System.out.println(thisUser.toString());
+
+        // Check password
+        System.out.println("Password check: " + thisUser.checkPassword("password123"));
+
+        // Update password
+        thisUser.updatePassword("newPassword123");
+        System.out.println("Updated password check: " + thisUser.checkPassword("newPassword123"));
+
+        // Confirm user
+        System.out.println("User confirmation: " + thisUser.confirmUser("johndoe", "newPassword123"));
+
+        // Add and view user task history
+        thisUser.addUserTaskHistory("Task 1 completed");
+        System.out.println("User task history: " + thisUser.viewUserTaskHistory());
+
+        // Add and view user column history
+        thisUser.addUserColumnHistory("Column 1 updated");
+        System.out.println("User column history: " + thisUser.viewUserColumnHistory());
     }
 
     public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
@@ -34,7 +56,11 @@ public class User {
 
     // overload the constructor 
 
-    public boolean checkPassword(String password) {
+    public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public boolean checkPassword(String password) {
         return this.password.equals(password);
     }
 
@@ -75,4 +101,9 @@ public class User {
     public void addUserColumnHistory(String columnHistory) {
         userHistory.add(columnHistory);
     }
+
+	public String getUserName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

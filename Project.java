@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Project {
-    private TaskManager taskManager;
+    private taskManager taskManager;
     private ColumnManager columnManager;
     private HashMap<String, ArrayList<User>> groups;
     private String projectName;
@@ -11,7 +11,7 @@ public class Project {
     private String comment;
 
     public Project() {
-        this.taskManager = new TaskManager();
+        this.taskManager = new taskManager();
         this.columnManager = new ColumnManager();
         this.groups = new HashMap<>();
         this.projectName = "";
@@ -35,7 +35,7 @@ public class Project {
                     return false; // User already in the group.
                 }
             }
-            groupUsers.add(new User(userName)); // Assuming User has a constructor that takes userName.
+            groupUsers.add(new User(null, userName, userName, userName, userName, userName, userName, userName, userName)); // Assuming User has a constructor that takes userName.
             return true;
         }
         return false; // Group doesn't exist.
@@ -52,4 +52,9 @@ public class Project {
     public ArrayList<User> viewGroup(String groupName) {
         return groups.get(groupName);
     }
+
+	public String getProjectName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
