@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Project {
     private taskManager taskManager;
-    private ColumnManager columnManager;
+    private columnManager columnManager;
     private HashMap<String, ArrayList<User>> groups;
     private String projectName;
     private Date projectDate;
@@ -12,7 +12,7 @@ public class Project {
 
     public Project() {
         this.taskManager = new taskManager();
-        this.columnManager = new ColumnManager();
+        this.columnManager = new columnManager();
         this.groups = new HashMap<>();
         this.projectName = "";
         this.projectDate = new Date();
