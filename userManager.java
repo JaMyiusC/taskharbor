@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class userManager {
-    private static UserManager userManager;
+    private static userManager userManager;
     private ArrayList<User> usersList;
 
     private userManager() {
         this.usersList = new ArrayList<>();
     }
 
-    public static UserManager getInstance() {
+    public static userManager getInstance() {
         return userManager;
     }
 

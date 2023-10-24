@@ -12,16 +12,12 @@ public class DataWriter {
     }
 
     public boolean saveUsers() {
-            User users = User.getInstance();
-
-
-      /*  // In a real application, you would save the userList to a database or a file.
+        // In a real application, you would save the userList to a database or a file.
         // Here, we'll just print the users as an example.
         for (User user : userList) {
             System.out.println("Saved user: " + user.getUserName());
         }
         return true; // Indicate successful save
-        */
     }
 
     public boolean saveProjects() {

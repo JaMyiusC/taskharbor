@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ColumnManager {
+public class columnManager {
     // Attributes
     private HashMap<Boolean, ArrayList<Column>> columnList;
     
     // Constructor
-    public ColumnManager() {
+    public columnManager() {
         this.columnList = new HashMap<>();
     }
     
