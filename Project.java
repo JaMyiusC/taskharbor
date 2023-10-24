@@ -31,7 +31,7 @@ public class Project {
         ArrayList<User> groupUsers = groups.get(group);
         if (groupUsers != null) {
             for (User user : groupUsers) {
-                if (user.getUser().equals(userName)) {
+                if (user.getUserName().equals(userName)) {
                     return false; // User already in the group.
                 }
             }
@@ -44,7 +44,7 @@ public class Project {
     public boolean removeUserInGroup(String group, String userName) {
         ArrayList<User> groupUsers = groups.get(group);
         if (groupUsers != null) {
-            return groupUsers.removeIf(user -> user.getUser().equals(userName));
+            return groupUsers.removeIf(user -> user.getUserName().equals(userName));
         }
         return false; // Group doesn't exist.
     }
