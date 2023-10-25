@@ -1,10 +1,3 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -146,69 +139,5 @@ public class User {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-// Save user data to a JSON file
- // Save user data to a JSON file (append to the existing file)
- public void saveToJsonArray(String filePath) {
-    try (Writer writer = new FileWriter(filePath, true)) {
-        if (new File(filePath).length() == 0) {
-            // If the file is empty, write the opening bracket for the array
-            writer.write("[\n");
-        } else {
-            // If the file is not empty, add a comma before the new user
-            writer.write(",\n");
-        }
-
-        // Write the user details to the file
-        writer.write("    {\n");
-        writer.write("        \"id\": \"" + id + "\",\n");
-        writer.write("        \"firstName\": \"" + firstName + "\",\n");
-        writer.write("        \"lastName\": \"" + lastName + "\",\n");
-        writer.write("        \"userName\": \"" + userName + "\",\n");
-        writer.write("        \"password\": \"" + password + "\",\n");
-        writer.write("        \"email\": \"" + email + "\",\n");
-        writer.write("        \"phoneNumber\": \"" + phoneNumber + "\",\n");
-        writer.write("        \"birthDate\": \"" + birthday + "\",\n");
-        writer.write("        \"address\": \"" + address + "\",\n");
-        writer.write("        \"userRole\": \"" + userRole + "\",\n");
-        writer.write("        \"userHistory\": " + userHistory.toString() + "\n");
-        // Add any other fields you want to include
-        writer.write("    }\n]");
-
-        // Close the array if this is the last user
-        if (new File(filePath).length() > 0) {
-            writer.write("\n]");
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
-
-
-// Load user data from a JSON file
-public static User loadFromJson(String filePath) {
-    try (Reader reader = new FileReader(filePath)) {
-        BufferedReader bufferedReader = new BufferedReader(reader);
-        StringBuilder jsonContent = new StringBuilder();
-        String line;
-
-        while ((line = bufferedReader.readLine()) != null) {
-            jsonContent.append(line);
-        }
-
-        // Parse JSON content and create a User object
-        return parseJson(jsonContent.toString());
-    } catch (IOException e) {
-        e.printStackTrace();
-        return null;
-    }
-}
-
-
-private static User parseJson(String string) {
-    //for testing purposes only
-    return new User(UUID.randomUUID(), "Dummy", "User", "dummyuser", "dummyPassword", "dummy@example.com", "1234567890", "01-01-2000", "Dummy Address");
-}
-
 
 }
