@@ -35,7 +35,7 @@ public class Project {
                     return false; // User already in the group.
                 }
             }
-            groupUsers.add(new User(null, userName, userName, userName, userName, userName, userName, userName, userName)); // Assuming User has a constructor that takes userName.
+            //groupUsers.add(new User(null, userName, userName, userName, userName, userName, userName, userName, userName)); // Assuming User has a constructor that takes userName.
             return true;
         }
         return false; // Group doesn't exist.

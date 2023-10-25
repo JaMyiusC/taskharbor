@@ -1,14 +1,17 @@
 import java.util.ArrayList;
 
-public class userManager {
-    private static userManager userManager;
+public class UserManagement {
+    private static UserManagement userManager;
     private ArrayList<User> usersList;
 
-    private userManager() {
-        this.usersList = new ArrayList<>();
+    private UserManagement() {
+        this.usersList = DataReader.getUsers();
     }
 
-    public static userManager getInstance() {
+    public static UserManagement getInstance() {
+        if(userManager == null){
+            userManager = new UserManagement();
+        }
         return userManager;
     }
 
