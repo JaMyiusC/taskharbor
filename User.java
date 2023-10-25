@@ -7,6 +7,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.io.*;
 
 public class User {
     private UUID id;
@@ -156,7 +157,7 @@ public class User {
             writer.write("[\n");
         } else {
             // If the file is not empty, add a comma before the new user
-            writer.write(",\n");
+            writer.write("\n");
         }
 
         // Write the user details to the file
@@ -173,7 +174,7 @@ public class User {
         writer.write("        \"userRole\": \"" + userRole + "\",\n");
         writer.write("        \"userHistory\": " + userHistory.toString() + "\n");
         // Add any other fields you want to include
-        writer.write("    }\n]");
+        writer.write("    },\n");
 
         // Close the array if this is the last user
         if (new File(filePath).length() > 0) {
