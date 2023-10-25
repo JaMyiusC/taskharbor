@@ -1,29 +1,36 @@
 [
     {
-        "id": "afeb2794-d226-4170-ac35-b59533e434d5",
+        "id": "3781264a-be2c-4c14-8692-be6d14f9749e",
         "firstName": "Alice",
         "lastName": "Johnson",
         "userName": "alicej",
         "password": "password123",
         "email": "alice@example.com",
         "phoneNumber": "9876543210",
-        "birthDate": "1990-05-15",
         "address": "456 Main St, City, Country",
-        "userRole": "Contributor",
-        "userHistory": []
+        "userRole": "Contributor"
     }
-],
+,
     {
-        "id": "d97f1f76-aa9b-484c-91c3-a6fcdedc8764",
+        "id": "b9d8ef42-90e7-4474-932d-e66675f78b3c",
+        "firstName": "Alice",
+        "lastName": "Johnson",
+        "userName": "alicej",
+        "password": "password123",
+        "email": "alice@example.com",
+        "address": "456 Main St, City, Country",
+        "userRole": "Contributor"
+    }
+,
+    {
+        "id": "b0d91da4-a426-47e6-8a1a-95219389a3b7",
         "firstName": "Alice",
         "lastName": "Johnson",
         "userName": "alicej",
         "password": "password123",
         "email": "alice@example.com",
         "phoneNumber": "9876543210",
-        "birthDate": "1990-05-15",
         "address": "456 Main St, City, Country",
-        "userRole": "Contributor",
-        "userHistory": []
+        "userRole": "Contributor"
     }
 ]

@@ -1,16 +1,19 @@
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataReader {
-    public <JSONParser> ArrayList<User> getUsers() {
+
+    public static ArrayList<User> getUsers() {
         ArrayList<User> userList = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader("users.json");  // Corrected the file path
+            FileReader reader = new FileReader("json/users.json");  // Corrected the file path
             JSONParser parser = new JSONParser();
             JSONArray userListJSON = (JSONArray) parser.parse(reader);
 
@@ -23,12 +26,10 @@ public class DataReader {
                 String password = (String) userJSON.get("password");
                 String email = (String) userJSON.get("email");
                 String phoneNumber = (String) userJSON.get("phoneNumber");
-                String birthDate = (String) userJSON.get("birthDate");
                 String address = (String) userJSON.get("address");
                 Role userRole = Role.valueOf((String) userJSON.get("userRole"));  // Assuming Role is an enum
-                ArrayList<String> userHistory = (ArrayList<String>) userJSON.get("userHistory");
 
-                userList.add(new User(id, firstName, lastName, userName, password, email, phoneNumber, birthDate, address, userRole, userHistory));
+                userList.add(new User(id, firstName, lastName, userName, password, email, phoneNumber, address, userRole));
             }
             return userList;
 
@@ -54,7 +55,7 @@ public class DataReader {
                 String projectDateString = (String) projectJSON.get("projectDate");
                 Date projectDate = parseDate(projectDateString);
 
-                projectList.add(new Project(projectName, projectDate));
+                //projectList.add(new Project(projectName, projectDate));
             }
             return projectList;
 

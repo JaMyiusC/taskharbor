@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {
@@ -9,10 +8,8 @@ public class User {
     private String password;
     private String email;
     private String phoneNumber;
-    private String birthday;
     private String address;
     private Role userRole;
-    private ArrayList<String> userHistory;
 
     public static void main(String[] args) {
     	// Create a new User object
@@ -42,7 +39,7 @@ public class User {
 
 
     // Constructor for creating a new user with a random UUID
-    public User(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
+    public User(String firstName, String lastName, String userName, String password, String email, String phoneNumber,String address) {
         this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,14 +47,12 @@ public class User {
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.birthday = birthday;
         this.address = address;
         this.userRole = Role.Contributor; // Default role
-        this.userHistory = new ArrayList<>();
     }
 
     // Constructor for creating a user from JSON data with a predefined UUID
-    public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
+    public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, Role role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,10 +60,8 @@ public class User {
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.birthday = birthday;
         this.address = address;
-        this.userRole = Role.Contributor; // Default role
-        this.userHistory = new ArrayList<>();
+        this.userRole = role;
     }
 
 // commented out for testing remove after the class is working
@@ -87,7 +80,7 @@ public class User {
         this.userHistory = new ArrayList<>();
     }
 */
-    // overload the constructor 
+    // overload the constructor
 
     public User() {
 		// TODO Auto-generated constructor stub
@@ -110,29 +103,12 @@ public class User {
                "\nUsername: " + userName +
                "\nEmail: " + email +
                "\nPhone Number: " + phoneNumber +
-               "\nBirthday: " + birthday +
                "\nAddress: " + address +
                "\nUser Role: " + userRole;
     }
 
     public boolean confirmUser(String userName, String password) {
         return this.userName.equals(userName) && this.password.equals(password);
-    }
-
-    public ArrayList<String> viewUserTaskHistory() {
-        return userHistory;
-    }
-
-    public void addUserTaskHistory(String historyEntry) {
-        userHistory.add(historyEntry);
-    }
-
-    public ArrayList<String> viewUserColumnHistory() {
-        return userHistory;
-    }
-
-    public void addUserColumnHistory(String columnHistory) {
-        userHistory.add(columnHistory);
     }
 
 	public String getUserName() {

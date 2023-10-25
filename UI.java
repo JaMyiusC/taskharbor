@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class UI {
-    private userManager userManager;
+    private UserManager userManager;
     private ProjectManager projectManager;
 
-    public UI(userManager userManager, ProjectManager projectManager) {
+    public UI(UserManager userManager, ProjectManager projectManager) {
         this.userManager = userManager;
         this.projectManager = projectManager;
     }
