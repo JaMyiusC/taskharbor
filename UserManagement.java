@@ -39,8 +39,8 @@ public class UserManagement {
         return false;
     }
 
-    public boolean saveUsers(String fileName) {
-        return false;
+    public void saveUsers(String fileName) {
+        DataWriter.saveUsers();
     }
 
 }
