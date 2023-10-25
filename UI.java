@@ -38,10 +38,10 @@ public class UI {
 
     public void scenario4() {
         UiFacade facade = new UiFacade();
-        facade.addUser("Jenny", "Smith", "....");
+        facade.addUser("Jenny", "Smith", "....", null, null, null, null, null);
         facade.login("jsmith", "12345");
 
-        Sytstem.out.println(facade.getCurrentUser()));
+        System.out.println(facade.getCurrentUser());
 
         facade.logout();
     }

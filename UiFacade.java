@@ -30,7 +30,7 @@ public class UiFacade {
 
     public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthDate, String address, String type) {
         // Placeholder implementation
-        return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address)
+        return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
     }
 
     public boolean longIn (String userName, String password){
@@ -89,6 +89,6 @@ class Task {
     }
 
     public void logout(){
-        UserManagement.getInstance().saveUsers();
+        UserManagement.getInstance().saveUsers(null);
     }
 }
