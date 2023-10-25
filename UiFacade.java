@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class UiFacade {
-    private UserManager userManager;
+    private UserManagement userManager;
     private ProjectManager projectManager;
     // Add fields for managing tasks, columns, etc.
 
     public UiFacade() {
-        this.userManager = new UserManager();
+        this.userManager = new UserManagement();
         this.projectManager = new ProjectManager();
         // Initialize other managers and data structures
     }
@@ -49,6 +49,10 @@ public class UiFacade {
 }
 
 class UserManager {
+
+    public static Object getInstance() {
+        return null;
+    }
     // Placeholder implementation
 }
 

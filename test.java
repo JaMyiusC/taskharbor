@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class test {
 
     public void run() {
-        scenario2();
+        scenario3();
     }
 
     public void scenario1() {
@@ -30,6 +30,10 @@ public class test {
         for(User user : users){
             System.out.println(user);
         }
+    }
+
+    public void scenario3(){
+        DataWriter.saveUsers();
     }
 
     public static void main(String[] args) {

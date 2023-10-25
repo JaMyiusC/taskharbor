@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;;
 
 public class DataWriter {
     public static void saveUsers() {
-		ArrayList<User> users = UserManager.getInstance().getUsers();
+		ArrayList<User> users = UserManagement.getInstance().getUserList();
 		JSONArray jsonUsers = new JSONArray();
 		
 		//creating all the json objects
@@ -36,7 +36,7 @@ public class DataWriter {
 		personDetails.put("email", user.getEmail());
 		personDetails.put("phoneNumber", user.getPhoneNumber());
 		personDetails.put("address", user.getAddress());
-		personDetails.put("userRole", user.getUserRole());
+		personDetails.put("userRole", user.getUserRole().toString());
         return personDetails;
 	}
 }
