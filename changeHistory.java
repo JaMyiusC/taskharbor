@@ -1,14 +1,12 @@
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 public class changeHistory {
     private ArrayList<String> taskHistory;
-    private Date date;
 
-    // Constructor to initialize the taskHistory and date
+    // Constructor to initialize the taskHistory
     public changeHistory() {
         this.taskHistory = new ArrayList<>();
-        this.date = new Date();
     }
 
     // Get an instance of ChangeHistory

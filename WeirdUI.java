@@ -10,7 +10,7 @@ public class WeirdUI {
     }
 
     // Methods for managing users
-    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthdate, String address, String type) {
+    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, String type) {
         // Implementation to add a user
         return false;
     }

@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 public class UiFacade {
     // Add fields for managing tasks, columns, etc.
@@ -171,5 +171,14 @@ class Task {
 
     public void logout(){
         UserManagement.getInstance().saveUsers(null);
+    }
+
+    public void setTaskPriority(int taskPriority) {
+    }
+
+    public void setTaskName(String newTaskName) {
+    }
+
+    public void setTaskTags(ArrayList<String> newTaskTags) {
     }
 }
