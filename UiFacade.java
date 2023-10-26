@@ -166,18 +166,23 @@ class Task {
     // Placeholder implementation
 
     public void setTaskPriority(int taskPriority) {
+        this.taskPriority = taskPriority;
     }
 
     public void setTaskName(String newTaskName) {
+        this.taskName = newTaskName;
     }
 
     public void setTaskTags(ArrayList<String> newTaskTags) {
+        this.taskTags = newTaskTags;
     }
 
     public void setTaskNotes(String newTaskNotes) {
+        this.taskNotes = newTaskNotes;
     }
 
     public void setTaskDueDate(Date newTaskDueDate) {
+        this.taskDueDate = newTaskDueDate;
     }
 
     public void logout(){
