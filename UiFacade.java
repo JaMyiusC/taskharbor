@@ -28,7 +28,7 @@ public class UiFacade {
 
     // User-related methods
 
-    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthDate, String address, String type) {
+    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, String type) {
         // Placeholder implementation
         return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
     }
@@ -36,6 +36,16 @@ public class UiFacade {
     public boolean longIn (String userName, String password){
     user = UserManagement.getInstance().getUser(userName, password);
     return user != null;
+    }
+
+    public Object getCurrentUser() {
+        return null;
+    }
+
+    public void login(String string, String string2) {
+    }
+
+    public void logout() {
     }
 
 
@@ -46,12 +56,94 @@ public class UiFacade {
     // Other project-related methods
 
     // Column-related methods
-
+    public Boolean addColumn(Column column) {
+        // Placeholder implementation
+        return false;
+    }
+    
+    public Boolean removeColumn(Column column) {
+        // Placeholder implementation
+        return false;
+    }
+    
+    public Boolean hasColumn(String columnName) {
+        // Placeholder implementation
+        return false;
+    }
+    
+    public Boolean editColumnName(String columnName, String newColumnName) {
+        // Placeholder implementation
+        return false;
+    }
+    
+    public Boolean getColummn(String columnName) {
+        // Placeholder implementation
+        return null;
+    }
+    
+    public Boolean markTaskComplete(String taskName) {
+        // Placeholder implementation
+        return false;
+    }
+    
+    public ArrayList<Column> seeCompletedColumns() {
+        // Placeholder implementation
+        return null;
+    }
+    
+    public ArrayList<Column> seeWorkingOnColumns() {
+        // Placeholder implementation
+        return null;
+    }
+    
+    public Boolean editColumnComments(String columnLocation, String columnComment) {
+        // Placeholder implementation
+        return false;
+    }
+    
+    public Boolean addColumnComments(String columnComment) {
+        // Placeholder implementation
+        return false;
+    }
+    
+    public Boolean removeColumnComments(String columnComment) {
+        // Placeholder implementation
+        return false;
+    }
     // Other column-related methods
 
     // Other methods
 
     // Getters, setters, and other utility methods
+    public ArrayList<String> getTaskHistory(String taskName) {
+        // Placeholder implementation
+        return null;
+    }
+    
+    public ArrayList<String> getTaskComments(String taskName) {
+        // Placeholder implementation
+        return null;
+    }
+    
+    public User getUser(String userName,String password) {
+        // Placeholder implementation
+        return UserManagement.getInstance().getUser(userName, password);
+    }
+    
+    public Boolean getColumn(String columnName) {
+        // Placeholder implementation
+        return null;
+    }
+    
+    public ArrayList<String> getColumnHistory(String columnName) {
+        // Placeholder implementation
+        return null;
+    }
+    
+    public ArrayList<String> getColumnComments(String columnName) {
+        // Placeholder implementation
+        return null;
+    }
 }
 
 class UserManager {

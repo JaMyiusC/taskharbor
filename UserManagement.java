@@ -15,7 +15,9 @@ public class UserManagement {
         return userManager;
     }
 
-    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthdate, String address, String type) {
+    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber,String address) {
+        User user = new User( firstName, lastName, userName, password, email, phoneNumber,address);
+        usersList.add(user);
         return true;
     }
 
@@ -23,7 +25,8 @@ public class UserManagement {
         return false;
     }
 
-    public User getUser(String userName) {
+    public User getUser(String userName, String password) {
+        //loop through user find the user with the give name and password and return it
         return null;
     }
 

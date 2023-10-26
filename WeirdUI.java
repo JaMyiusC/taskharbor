@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class UI {
+public class WeirdUI {
     private UserManagement userManager;
     private ProjectManager projectManager;
 
-    public UI(UserManagement userManager, ProjectManager projectManager) {
+    public WeirdUI(UserManagement userManager, ProjectManager projectManager) {
         this.userManager = userManager;
         this.projectManager = projectManager;
     }
