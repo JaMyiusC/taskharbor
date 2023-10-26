@@ -5,6 +5,7 @@ public class UiFacade {
     // Add fields for managing tasks, columns, etc.
 
     private User user;
+    private Project project;
     public UiFacade() {
         // Initialize other managers and data structures
     }
@@ -160,32 +161,13 @@ class ProjectManager {
 
 class Task {
 
-    private int taskPriority;
-    private String taskName;
-    private ArrayList taskTags;
-    private String taskNotes;
+    
 
 
     public Object getTaskName() {
         return null;
     }
     // Placeholder implementation
-
-    public void setTaskPriority(int taskPriority) {
-        this.taskPriority = taskPriority;
-    }
-
-    public void setTaskName(String newTaskName) {
-        this.taskName = newTaskName;
-    }
-
-    public void setTaskTags(ArrayList<String> newTaskTags) {
-        this.taskTags = newTaskTags;
-    }
-
-    public void setTaskNotes(String newTaskNotes) {
-        this.taskNotes = newTaskNotes;
-    }
 
     public void logout(){
         UserManagement.getInstance().saveUsers(null);
