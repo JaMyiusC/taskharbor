@@ -22,11 +22,22 @@ public class UserManagement {
     }
 
     public boolean removeUser(String userName, String password) {
+        for (User user: usersList){
+            if (user.getUserName().equals(userName) && user.getPassword().equals(password)){
+                usersList.remove(user);   
+                return true;         
+            }
+        }
         return false;
     }
 
     public User getUser(String userName, String password) {
         //loop through user find the user with the give name and password and return it
+        for (User user: usersList){
+            if (user.getUserName().equals(userName) && user.getPassword().equals(password)){
+                return user;
+            }
+        }
         return null;
     }
 
@@ -35,10 +46,20 @@ public class UserManagement {
     }
 
     public boolean hasUser(String userName) {
+        for (User user : usersList){
+            if(user.getUserName().equals(userName)){
+                return true;
+            }
+        }
         return false;
     }
 
     public boolean editUserPassword(String userName, String password) {
+        for (User user : usersList) {
+            if (user.getUserName().equals(userName) && user.getPassword().equals(password)){
+                user.updatePassword(password);
+            }
+        }
         return false;
     }
 
