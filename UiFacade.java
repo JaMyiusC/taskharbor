@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.*;
 
 public class UiFacade {
@@ -180,5 +179,11 @@ class Task {
     }
 
     public void setTaskTags(ArrayList<String> newTaskTags) {
+    }
+
+    public void setTaskDueDate(Date newTaskDueDate) {
+    }
+
+    public void setTaskNotes(String newTaskNotes) {
     }
 }
