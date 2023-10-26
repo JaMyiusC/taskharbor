@@ -160,6 +160,12 @@ class ProjectManager {
 
 class Task {
 
+    private int taskPriority;
+    private String taskName;
+    private ArrayList taskTags;
+    private String taskNotes;
+
+
     public Object getTaskName() {
         return null;
     }
@@ -179,10 +185,6 @@ class Task {
 
     public void setTaskNotes(String newTaskNotes) {
         this.taskNotes = newTaskNotes;
-    }
-
-    public void setTaskDueDate(Date newTaskDueDate) {
-        this.taskDueDate = newTaskDueDate;
     }
 
     public void logout(){
