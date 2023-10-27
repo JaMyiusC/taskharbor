@@ -16,7 +16,7 @@ public class DataWriter {
 		}
 		
 		//Write JSON file
-        try (FileWriter file = new FileWriter("json/users-test.json")) {
+        try (FileWriter file = new FileWriter("json/users.json")) {
  
             file.write(jsonUsers.toJSONString());
             file.flush();

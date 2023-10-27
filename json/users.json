@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
     {
         "id": "7005b5cf-fe47-4cf4-87b5-89c2db3e00b3",
@@ -43,7 +42,6 @@
         "userHistory": []
     },
 
-=======
 [
     {
         "id": "3781264a-be2c-4c14-8692-be6d14f9749e",
@@ -79,5 +77,5 @@
         "address": "456 Main St, City, Country",
         "userRole": "Contributor"
     }
->>>>>>> 5195db70dc8f64ddef3adc1b2acd55f05eee1447
 ]
+

@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class UiFacade {
-    private UserManagement userManager;
-    private ProjectManager projectManager;
     // Add fields for managing tasks, columns, etc.
 
+    private User user;
     public UiFacade() {
-        this.userManager = new UserManagement();
-        this.projectManager = new ProjectManager();
         // Initialize other managers and data structures
     }
+
+    //add a login method, and a signup method, each is one line and just calls the appropriate method on the usermanager
+    //add a logout which calls the save on the user manager
 
     // Task-related methods
 
@@ -30,8 +30,14 @@ public class UiFacade {
 
     public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthDate, String address, String type) {
         // Placeholder implementation
-        return false;
+        return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
     }
+
+    public boolean longIn (String userName, String password){
+    user = UserManagement.getInstance().getUser(userName, password);
+    return user != null;
+    }
+
 
     // Other user-related methods
 
@@ -81,8 +87,8 @@ class Task {
 
     public void setTaskDueDate(Date newTaskDueDate) {
     }
-}
 
-class Column {
-    // Placeholder implementation
+    public void logout(){
+        UserManagement.getInstance().saveUsers(null);
+    }
 }

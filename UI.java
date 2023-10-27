@@ -1,93 +1,56 @@
 import java.util.ArrayList;
 
 public class UI {
-    private UserManagement userManager;
-    private ProjectManager projectManager;
 
-    public UI(UserManagement userManager, ProjectManager projectManager) {
-        this.userManager = userManager;
-        this.projectManager = projectManager;
+    public void run() {
+        scenario4();
     }
 
-    // Methods for managing users
-    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthdate, String address, String type) {
-        // Implementation to add a user
-        return false;
+    public void scenario1() {
+        // Test creating a new user with a random UUID
+      /* User newUser = new User("Alice", "Johnson", "alicej", "password123", "alice@example.com", "9876543210", "1990-05-15", "456 Main St, City, Country");
+        System.out.println("New User:\n" + newUser.toString());
+
+        // Test saving user data to JSON
+        newUser.saveToJsonArray("json/users.json");
+        System.out.println("User data saved to JSON.");
+
+        // Test loading user data from JSON
+        User loadedUser = User.loadFromJson("json/users.json");
+        if (loadedUser != null) {
+            System.out.println("\nLoaded User:\n" + loadedUser.toString());
+        } else {
+            System.out.println("Failed to load user data from JSON.");
+        }
+        */
     }
 
-    public boolean editUserName(String userName, String newUserName) {
-        // Implementation to edit a user's username
-        return false;
+    public void scenario2() {
+        ArrayList<User> users = DataReader.getUsers();
+        for(User user : users){
+            System.out.println(user);
+        }
     }
 
-    public boolean checkUserPassword(String userName, String password) {
-        // Implementation to check a user's password
-        return false;
+    public void scenario3(){
+        DataWriter.saveUsers();
     }
 
-    public User getUser(String username) {
-        // Implementation to get a user by username
-        return null;
+    public void scenario4() {
+        UiFacade facade = new UiFacade();
+        facade.addUser("Jenny", "Smith", "....", null, null, null, null, null);
+        facade.login("jsmith", "12345");
+
+        System.out.println(facade.getCurrentUser());
+
+        facade.logout();
     }
 
-    public boolean removeUser(String userName) {
-        // Implementation to remove a user
-        return false;
-    }
-
-    public ArrayList<String> viewUserHistory(String userName) {
-        // Implementation to view a user's history
-        return new ArrayList<>();
-    }
-
-    public boolean userLogin(String userName, String userPassword) {
-        // Implementation for user login
-        return false;
-    }
-
-    // Methods for managing projects
-    public ArrayList<Project> viewProjectList() {
-        // Implementation to view a list of projects
-        return new ArrayList<>();
-    }
-
-    public ArrayList<Project> viewWorkingOnProjects() {
-        // Implementation to view projects being worked on
-        return new ArrayList<>();
-    }
-
-    public boolean addProject(String projectName) {
-        // Implementation to add a project
-        return false;
-    }
-
-    public boolean removeProject(String projectName) {
-        // Implementation to remove a project
-        return false;
-    }
-
-    public ArrayList<String> viewProjectHistory(String projectName) {
-        // Implementation to view project history
-        return new ArrayList<>();
-    }
-
-    public ArrayList<String> viewProjectComments(String projectName) {
-        // Implementation to view project comments
-        return new ArrayList<>();
-    }
-
-    public boolean editProjectComments(String projectLocation, String projectComment) {
-        // Implementation to edit project comments
-        return false;
-    }
-
-    public boolean addProjectComments(String projectComment) {
-        // Implementation to add project comments
-        return false;
-    }
-
-    public boolean removeProjectComments(String projectComment) {
-        // Implementation to remove project comments
-        return false;
+    public static void main(String[] args) {
+        UI myTest = new UI();
+        myTest.run();
     }
 }
+
+
+
