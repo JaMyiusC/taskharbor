@@ -24,8 +24,8 @@ public class UserManagement {
     public boolean removeUser(String userName, String password) {
         for (User user: usersList){
             if (user.getUserName().equals(userName) && user.getPassword().equals(password)){
-                usersList.remove(user);   
-                return true;         
+                usersList.remove(user);
+                return true;
             }
         }
         return false;
