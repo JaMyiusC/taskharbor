@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
-public class UI {
+public class WeirdUI {
     private UserManagement userManager;
     private ProjectManager projectManager;
 
-    public UI(UserManagement userManager, ProjectManager projectManager) {
+    public WeirdUI(UserManagement userManager, ProjectManager projectManager) {
         this.userManager = userManager;
         this.projectManager = projectManager;
     }
 
     // Methods for managing users
-    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthdate, String address, String type) {
+    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, String type) {
         // Implementation to add a user
         return false;
     }
