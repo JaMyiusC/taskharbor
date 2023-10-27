@@ -5,34 +5,34 @@ public class Column {
     private int columnPosition;
     private ArrayList<Task> columnTaskList;
 
-    // Constructor to initialize the column name, position, and task list
     public Column(String columnName, int columnPosition) {
         this.columnName = columnName;
         this.columnPosition = columnPosition;
         this.columnTaskList = new ArrayList<>();
     }
 
-    // Add a task to the column's task list
-    public boolean addTaskForColumn(String taskName) {
-        // Placeholder implementation
-        return false;
+    public String getColumnName() {
+        return columnName;
     }
 
-    // Remove a task from the column's task list
-    public boolean removeTaskForColumn(String taskName) {
-        // Placeholder implementation
-        return false;
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
     }
 
-    // Get the list of tasks in the column
     public ArrayList<Task> getColumnTaskList() {
-        // Placeholder implementation
         return columnTaskList;
+    }
+
+    public boolean addColumnTask(Task task) {
+        return columnTaskList.add(task);
+    }
+
+    public boolean removeColumnTask(Task task) {
+        return columnTaskList.remove(task);
     }
 
     @Override
     public String toString() {
-        // Placeholder implementation
-        return columnName;
+        return "Column Name: " + columnName + ", Position: " + columnPosition;
     }
 }

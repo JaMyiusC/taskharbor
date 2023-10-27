@@ -83,7 +83,7 @@ public class User {
 		return null;
 	}
 
-<<<<<<< HEAD
+
 // Save user data to a JSON file
  // Save user data to a JSON file (append to the existing file)
  public void saveToJsonArray(String filePath) {
@@ -118,10 +118,10 @@ public class User {
         }
     } catch (IOException e) {
         e.printStackTrace();
-=======
+    }
+}
     public UUID getId(){
         return id;
->>>>>>> 5195db70dc8f64ddef3adc1b2acd55f05eee1447
     }
 
     public String getFirstName(){

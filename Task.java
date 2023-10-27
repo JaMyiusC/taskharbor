@@ -65,8 +65,8 @@ public class Task {
         return taskCompletion;
     }
 
-    public boolean setTaskCompletion(boolean taskCompletion) {
-        return this.taskCompletion = taskCompletion;
+    public void setTaskCompletion(boolean taskCompletion) {
+        this.taskCompletion = taskCompletion;
     }
 
     // Additional Methods

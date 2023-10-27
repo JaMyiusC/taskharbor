@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 
 public class UiFacade {
     // Add fields for managing tasks, columns, etc.
@@ -215,18 +214,14 @@ class Task {
         return null;
     }
 
-    public void setTaskName(String newTaskName) {
+    public String getTaskPriority() {
+        return null;
     }
 
-    public void setTaskPriority(int newTaskPriority) {
+    public String getTaskPriority() {
+        return null;
     }
 
-    public void setTaskTags(ArrayList<String> newTaskTags) {
-    }
-
-    public void setTaskDueDate(Date newTaskDueDate) {
-    }
-
-    public void setTaskNotes(String newTaskNotes) {
+    public void setTaskCompletion(boolean b) {
     }
 }
