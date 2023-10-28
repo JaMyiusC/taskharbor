@@ -218,10 +218,6 @@ class Task {
         return null;
     }
 
-    public String getTaskPriority() {
-        return null;
-    }
-
     public void setTaskCompletion(boolean b) {
     }
 }
