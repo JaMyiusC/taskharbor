@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;;
@@ -25,6 +26,24 @@ public class DataWriter {
             e.printStackTrace();
         }
 	}
+
+	public static void saveTasks() {
+		ArrayList<Task> tasks = TaskManagement.getInstance().getTaskList();
+		JSONArray jsonTasks = new JSONArray();
+
+		for(int i=0; i<tasks.size();i++) {
+			jsonTasks.add(getTaskJSON(tasks.get(i)));
+		}
+
+		try(FileWriter file = new FileWriter("json/users.json")){
+
+			file.write(jsonTasks.toJSONString());
+			file.flush();
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public static JSONObject getUserJSON(User user) {
 		JSONObject personDetails = new JSONObject();
@@ -40,5 +59,16 @@ public class DataWriter {
         return personDetails;
 	}
 
-    //savetask
+	public static JSONObject getTaskJSON(Task task){
+		JSONObject taskDetails = new JSONObject();
+		taskDetails.put("taskName", task.getTaskName());
+		taskDetails.put("taskPriority", task.getTaskPriority());
+		taskDetails.put("taskTags", task.getTaskTags());
+		taskDetails.put("taskDueDate", task.getTaskDueDate());
+		taskDetails.put("taskNotes", task.getTaskNotes());
+		taskDetails.put("taskCompletion", task.getTaskCompletion());
+		return taskDetails;
+	}
+
+    
 }
