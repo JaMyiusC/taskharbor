@@ -125,12 +125,12 @@ public boolean removeUserFromGroup(String group, String userName) {
         return columnManager.getInstance().getColumn(columnName);
     }
     
-    public ArrayList<Column> seeCompletedColumns() {
+    public ArrayList<Column> seeCompletedColumns() { //do we need?
         // Placeholder implementation
         return null;
     }
     
-    public ArrayList<Column> seeWorkingOnColumns() {
+    public ArrayList<Column> seeWorkingOnColumns() { //do we need?
         // Placeholder implementation
         return null;
     }
