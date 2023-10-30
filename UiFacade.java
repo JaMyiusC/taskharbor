@@ -37,12 +37,44 @@ public class UiFacade {
     // Task-related methods
 
     public boolean addTask(String taskName, ArrayList<String> taskTags, String taskNotes) {
-        // Placeholder implementation
+        if (user != null) {
+            // Create a new task and set its properties
+            Task newTask = new Task();
+            newTask.setTaskName(taskName);
+            newTask.setTaskTags(taskTags);
+            newTask.setTaskNotes(taskNotes);
+            
+            // Add the task to the task manager (assuming you have a task manager)
+            if (TaskManagement.addTask(newTask)) {
+                System.out.println("Task added successfully.");
+                return true;
+            } else {
+                System.out.println("Failed to add the task.");
+            }
+        } else {
+            System.out.println("No user currently logged in. Please log in first.");
+        }
+
         return false;
     }
 
     public boolean removeTask(String taskName) {
-        // Placeholder implementation
+        if (user != null) {
+            // Check if the task with the given name exists and remove it if found
+            if (taskManagement.hasTask(taskName)) {
+                if (taskManagement.removeTask(taskName)) {
+                    System.out.println("Task '" + taskName + "' removed successfully.");
+                    return true;
+                } else {
+                    System.out.println("Failed to remove the task '" + taskName + "'.");
+                }
+            } else {
+                System.out.println("Task '" + taskName + "' not found.");
+            }
+        } else {
+            System.out.println("No user currently logged in. Please log in first.");
+        }
+
         return false;
     }
 
