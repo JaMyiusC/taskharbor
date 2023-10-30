@@ -41,27 +41,8 @@ public class User {
         this.userRole = role;
     }
 
-// commented out for testing remove after the class is working
-/*
-    public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String birthday, String address) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.birthday = birthday;
-        this.address = address;
-        this.userRole = Role.Contributor; // Default role
-        this.userHistory = new ArrayList<>();
-    }
-*/
+    // commented out for testing remove after the class is working
     // overload the constructor
-
-    public User() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public boolean checkPassword(String password) {
         return this.password.equals(password);
@@ -82,8 +63,7 @@ public class User {
     }
 
 	public String getUserName() {
-		// TODO Auto-generated method stub
-		return null;
+		return userName;
 	}
 
 
@@ -152,5 +132,4 @@ public class User {
     public Role getUserRole(){
         return userRole;
     }
-
 }

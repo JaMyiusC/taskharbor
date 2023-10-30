@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class UiFacade {
     // Add fields for managing tasks, columns, etc.
@@ -10,11 +11,28 @@ public class UiFacade {
 
     //add a login method, and a signup method, each is one line and just calls the appropriate method on the usermanager
 
-public boolean userLogin(String userName, String userPassword) {
+    public boolean userLogin(String userName, String userPassword) {
     user = UserManagement.getInstance().getUser(userName, userPassword);
     return user != null;
-}
-    //add a logout which calls the save on the user manager
+    }
+
+    public void login(String userName, String userPassword) {
+        if (userLogin(userName, userPassword)) {
+            System.out.println("Login successful.");
+        } else {
+            System.out.println("Login failed. Please check your credentials.");
+        }
+    }
+    
+    public void logout() {
+        if (user != null) {
+            System.out.println("Logging out user: " + user.getUserName());
+            UserManagement.getInstance().saveUsers(null);
+            user = null; // Reset the current user after logout
+        } else {
+            System.out.println("No user currently logged in.");
+        }
+    }
 
     // Task-related methods
 
@@ -37,92 +55,69 @@ public boolean userLogin(String userName, String userPassword) {
         return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
     }
 
-    public boolean longIn (String userName, String password){
-    user = UserManagement.getInstance().getUser(userName, password);
-    return user != null;
-    }
+  
 
     public Object getCurrentUser() {
         return null;
     }
 
-    public void login(String userName, String userPassword) {
-        if (userLogin(userName, userPassword)) {
-            System.out.println("Login successful.");
-        } else {
-            System.out.println("Login failed. Please check your credentials.");
-        }
-    }
-    
-    public void logout() {
-        if (user != null) {
-            System.out.println("Logging out user: " + user.getUserName());
-            UserManagement.getInstance().saveUsers(null);
-            user = null; // Reset the current user after logout
-        } else {
-            System.out.println("No user currently logged in.");
-        }
+    public boolean editUserName(String userName, String newUserName) {
+    // Placeholder implementation
+    return false;
     }
 
-
-    // Other user-related methods
-public Boolean addUser(String firstName, String lastName, String userName, String password,
-        String email, String phoneNumber, String birthdate, String address, String type) {
-    // Placeholder implementation
-    return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
-}
-
-public boolean editUserName(String userName, String newUserName) {
+    public boolean checkUserPassword(String userName, String password) {
     // Placeholder implementation
     return false;
-}
+    }
 
-public boolean checkUserPassword(String userName, String password) {
+    public boolean removeUser(String userName) {
     // Placeholder implementation
     return false;
-}
+    }
 
-public boolean removeUser(String userName) {
+    public boolean addUserToGroup(String group, String userName) {
     // Placeholder implementation
     return false;
-}
+    }
 
-public boolean addUserToGroup(String group, String userName) {
+    public boolean removeUserFromGroup(String group, String userName) {
     // Placeholder implementation
     return false;
-}
-
-public boolean removeUserFromGroup(String group, String userName) {
-    // Placeholder implementation
-    return false;
-}
+    }
     // Project-related methods
 
     // Other project-related methods
 
     // Column-related methods
-    public boolean addColumn(Column column) {
-        return columnManager.getInstance().addColumn(column);
+    public Boolean addColumn(Column column) {
+        // Placeholder implementation
+        return false;
     }
     
     public Boolean removeColumn(Column column) {
         // Placeholder implementation
-        return columnManager.getInstance().removeColumn(column);
+        return false;
     }
     
     public Boolean hasColumn(String columnName) {
         // Placeholder implementation
-        return columnManager.getInstance().hasColumn(columnName);
+        return false;
     }
     
     public Boolean editColumnName(String columnName, String newColumnName) {
         // Placeholder implementation
-        return columnManager.getInstance().editColumnName(newColumnName, newColumnName);
+        return false;
     }
     
-    public Column getColummn(String columnName) {
+    public Boolean getColummn(String columnName) {
         // Placeholder implementation
-        return columnManager.getInstance().getColumn(columnName);
+        return null;
+    }
+    
+    public Boolean markTaskComplete(String taskName) {
+        // Placeholder implementation
+        return false;
     }
     
     public ArrayList<Column> seeCompletedColumns() {
@@ -135,17 +130,17 @@ public boolean removeUserFromGroup(String group, String userName) {
         return null;
     }
     
-    public Boolean editColumnComments(String columnLocation, String columnComment) { //do we need ?
+    public Boolean editColumnComments(String columnLocation, String columnComment) {
         // Placeholder implementation
         return false;
     }
     
-    public Boolean addColumnComments(String columnComment) { //do we need ?
+    public Boolean addColumnComments(String columnComment) {
         // Placeholder implementation
         return false;
     }
     
-    public Boolean removeColumnComments(String columnComment) { //do we need ?
+    public Boolean removeColumnComments(String columnComment) {
         // Placeholder implementation
         return false;
     }
@@ -159,7 +154,7 @@ public boolean removeUserFromGroup(String group, String userName) {
         return null;
     }
     
-    public ArrayList<String> getTaskComments(String taskName) { //do we need ?
+    public ArrayList<String> getTaskComments(String taskName) {
         // Placeholder implementation
         return null;
     }
@@ -169,12 +164,17 @@ public boolean removeUserFromGroup(String group, String userName) {
         return UserManagement.getInstance().getUser(userName, password);
     }
     
+    public Boolean getColumn(String columnName) {
+        // Placeholder implementation
+        return null;
+    }
+    
     public ArrayList<String> getColumnHistory(String columnName) {
         // Placeholder implementation
         return null;
     }
     
-    public ArrayList<String> getColumnComments(String columnName) { //do we need ?
+    public ArrayList<String> getColumnComments(String columnName) {
         // Placeholder implementation
         return null;
     }
@@ -203,5 +203,37 @@ class Task {
     }
 
     public void setTaskCompletion(boolean b) {
+    
+    }
+
+    public Object getTaskTags() {
+        return null;
+    }
+
+    public Object getTaskDueDate() {
+        return null;
+    }
+
+    public Object getTaskNotes() {
+        return null;
+    }
+
+    public Object getTaskCompletion() {
+        return null;
+    }
+
+    public void setTaskName(String newTaskName) {
+    }
+
+    public void setTaskPriority(int newTaskPriority) {
+    }
+
+    public void setTaskTags(ArrayList<String> newTaskTags) {
+    }
+
+    public void setTaskNotes(String newTaskNotes) {
+    }
+
+    public void setTaskDueDate(Date newTaskDueDate) {
     }
 }
