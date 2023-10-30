@@ -87,11 +87,6 @@ public boolean removeUser(String userName) {
     return false;
 }
 
-public ArrayList<String> viewUserHistory(String userName) {
-    // Placeholder implementation
-    return null;
-}
-
 public boolean addUserToGroup(String group, String userName) {
     // Placeholder implementation
     return false;
@@ -106,34 +101,28 @@ public boolean removeUserFromGroup(String group, String userName) {
     // Other project-related methods
 
     // Column-related methods
-    public Boolean addColumn(Column column) {
-        // Placeholder implementation
-        return false;
+    public boolean addColumn(Column column) {
+        return columnManager.getInstance().addColumn(column);
     }
     
     public Boolean removeColumn(Column column) {
         // Placeholder implementation
-        return false;
+        return columnManager.getInstance().removeColumn(column);
     }
     
     public Boolean hasColumn(String columnName) {
         // Placeholder implementation
-        return false;
+        return columnManager.getInstance().hasColumn(columnName);
     }
     
     public Boolean editColumnName(String columnName, String newColumnName) {
         // Placeholder implementation
-        return false;
+        return columnManager.getInstance().editColumnName(newColumnName, newColumnName);
     }
     
-    public Boolean getColummn(String columnName) {
+    public Column getColummn(String columnName) {
         // Placeholder implementation
-        return null;
-    }
-    
-    public Boolean markTaskComplete(String taskName) {
-        // Placeholder implementation
-        return false;
+        return columnManager.getInstance().getColumn(columnName);
     }
     
     public ArrayList<Column> seeCompletedColumns() {
@@ -146,17 +135,17 @@ public boolean removeUserFromGroup(String group, String userName) {
         return null;
     }
     
-    public Boolean editColumnComments(String columnLocation, String columnComment) {
+    public Boolean editColumnComments(String columnLocation, String columnComment) { //do we need ?
         // Placeholder implementation
         return false;
     }
     
-    public Boolean addColumnComments(String columnComment) {
+    public Boolean addColumnComments(String columnComment) { //do we need ?
         // Placeholder implementation
         return false;
     }
     
-    public Boolean removeColumnComments(String columnComment) {
+    public Boolean removeColumnComments(String columnComment) { //do we need ?
         // Placeholder implementation
         return false;
     }
@@ -170,7 +159,7 @@ public boolean removeUserFromGroup(String group, String userName) {
         return null;
     }
     
-    public ArrayList<String> getTaskComments(String taskName) {
+    public ArrayList<String> getTaskComments(String taskName) { //do we need ?
         // Placeholder implementation
         return null;
     }
@@ -180,17 +169,12 @@ public boolean removeUserFromGroup(String group, String userName) {
         return UserManagement.getInstance().getUser(userName, password);
     }
     
-    public Boolean getColumn(String columnName) {
-        // Placeholder implementation
-        return null;
-    }
-    
     public ArrayList<String> getColumnHistory(String columnName) {
         // Placeholder implementation
         return null;
     }
     
-    public ArrayList<String> getColumnComments(String columnName) {
+    public ArrayList<String> getColumnComments(String columnName) { //do we need ?
         // Placeholder implementation
         return null;
     }
