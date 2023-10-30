@@ -31,6 +31,14 @@ public class Column {
         return columnTaskList.remove(task);
     }
 
+    public int getPosition() {
+        return columnPosition;
+    }
+
+    public String getName() {
+        return columnName;
+    }
+
     @Override
     public String toString() {
         return "Column Name: " + columnName + ", Position: " + columnPosition;

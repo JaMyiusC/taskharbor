@@ -100,4 +100,14 @@ public class columnManager {
          return true;
     }
 
+    public ArrayList<Column> getColumnList() {
+        ArrayList<Column> allColumns = new ArrayList<>();
+
+        allColumns.addAll(columnList.get(false));
+
+        allColumns.addAll(columnList.get(true));
+
+        return allColumns;
+    }
+
 }

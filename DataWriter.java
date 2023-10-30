@@ -63,8 +63,8 @@ public class DataWriter {
 	
 	public static JSONObject getColumnJSON(Column column) {
 		JSONObject columnDetails = new JSONObject();
-		columnDetails.put("id", Column.getPosition());
-		columnDetails.put("name", Column.getName());
+		columnDetails.put("id", column.getPosition());
+		columnDetails.put("name", column.getName());
 		// Add any other properties of the Column class that you want to save here.
 		return columnDetails;
 	}
