@@ -1,9 +1,9 @@
 import java.util.ArrayList;
-import java.util.*;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Project {
-    private taskManager taskManager;
+    private TaskManagement taskManager;
     private columnManager columnManager;
     private HashMap<String, ArrayList<User>> groups;
     private String projectName;
@@ -11,7 +11,7 @@ public class Project {
     private String comment;
 
     public Project() {
-        this.taskManager = new taskManager();
+        this.taskManager = new TaskManagement();
         this.columnManager = new columnManager();
         this.groups = new HashMap<>();
         this.projectName = "";
