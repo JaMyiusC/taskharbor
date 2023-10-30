@@ -54,11 +54,10 @@ public class Project {
     }
 
 	public String getProjectName() {
-		// TODO Auto-generated method stub
-		return null;
+		return projectName;
 	}
 
     public Object isCompleted() {
-        return null;
+        return !comment.isEmpty(); //??????????????????
     }
 }
