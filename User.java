@@ -89,7 +89,7 @@ public class User {
         writer.write("        \"email\": \"" + email + "\",\n");
         writer.write("        \"phoneNumber\": \"" + phoneNumber + "\",\n");
         writer.write("        \"address\": \"" + address + "\",\n");
-        writer.write("        \"userRole\": \"" + userRole + "\",\n");
+        writer.write("        \"userRole\": \"" + userRole + "\",\n"); 
         // Add any other fields you want to include
         writer.write("    },\n");
 
