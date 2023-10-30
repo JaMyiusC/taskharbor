@@ -2,6 +2,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.xml.stream.events.Comment;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;;
 
@@ -43,7 +45,30 @@ public class DataWriter {
 			e.printStackTrace();
 		}
 	}
+	public static void saveColumns() {
+		ArrayList<Column> columns = columnManager.getInstance().getColumnList();
+		JSONArray jsonColumns = new JSONArray();
 	
+		for (Column column : columns) {
+			jsonColumns.add(getColumnJSON(column));
+		}
+	
+		try (FileWriter file = new FileWriter("json/columns.json")) {
+			file.write(jsonColumns.toJSONString());
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static JSONObject getColumnJSON(Column column) {
+		JSONObject columnDetails = new JSONObject();
+		columnDetails.put("id", Column.getPosition());
+		columnDetails.put("name", Column.getName());
+		// Add any other properties of the Column class that you want to save here.
+		return columnDetails;
+	}
+
 	public static JSONObject getUserJSON(User user) {
 		JSONObject personDetails = new JSONObject();
 		personDetails.put("id", user.getId().toString());
