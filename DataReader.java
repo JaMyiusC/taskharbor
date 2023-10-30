@@ -70,12 +70,12 @@ public class DataReader {
 
     // Add a method to parse Date from a string
     private Date parseDate(String dateString) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Specify your date format
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // format
         try {
             Date parseDate = dateFormat.parse(dateString);
             return parseDate;
         } catch (ParseException e) {
-            e.printStackTrace(); // Handle the parsing exception as needed
+            e.printStackTrace(); // Handle the parsing exception
             return null;
         }
     }
