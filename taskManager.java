@@ -63,9 +63,8 @@ public class taskManager {
     }
 
     public boolean saveTaskList() {
-        // Implement code to save the task data to a data source (e.g., a file or database)
-        ???
-        return true;
+        // Implementation to save the column data
+        return DataWriter.saveTaskList();
     }
 
     public boolean markTaskComplete(String taskName) {

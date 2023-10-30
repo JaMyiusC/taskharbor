@@ -105,10 +105,8 @@ public class User {
         writer.write("        \"password\": \"" + password + "\",\n");
         writer.write("        \"email\": \"" + email + "\",\n");
         writer.write("        \"phoneNumber\": \"" + phoneNumber + "\",\n");
-        writer.write("        \"birthDate\": \"" + birthday + "\",\n");
         writer.write("        \"address\": \"" + address + "\",\n");
         writer.write("        \"userRole\": \"" + userRole + "\",\n");
-        writer.write("        \"userHistory\": " + userHistory.toString() + "\n");
         // Add any other fields you want to include
         writer.write("    },\n");
 

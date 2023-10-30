@@ -46,11 +46,6 @@ public class columnManager {
         return false;
     }
 
-    public boolean saveTaskList() {
-        // Implementation to save the column data
-        return DataWriter.saveTaskList();
-    }
-
     public boolean markTaskComplete(String taskName) {
         // Implementation to mark a task as complete in the columns
         return false;
