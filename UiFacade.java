@@ -130,16 +130,22 @@ public class UiFacade {
         return null;
     }
     
+
+    //??
     public Boolean editColumnComments(String columnLocation, String columnComment) {
         // Placeholder implementation
         return false;
     }
     
+
+    //??
     public Boolean addColumnComments(String columnComment) {
         // Placeholder implementation
         return false;
     }
     
+
+    //??
     public Boolean removeColumnComments(String columnComment) {
         // Placeholder implementation
         return false;
@@ -169,11 +175,13 @@ public class UiFacade {
         return null;
     }
     
+    //?
     public ArrayList<String> getColumnHistory(String columnName) {
         // Placeholder implementation
         return null;
     }
     
+    //?
     public ArrayList<String> getColumnComments(String columnName) {
         // Placeholder implementation
         return null;
