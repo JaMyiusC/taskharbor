@@ -17,6 +17,12 @@ public class columnManager {
         }
         return columnManagerInstance;
     }
+
+    public boolean addColumn(String columnName, int columnPosition, ArrayList<Task> columnTaskList) {
+        Column column = new Column(columnName, columnPosition, columnTaskList);
+        columnList.add(column);
+        return true;
+    }
     // Methods
     public boolean addColumn(Column column) {
         ArrayList<Column> incompleteColumns = columnList.get(Boolean.FALSE);

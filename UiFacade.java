@@ -124,32 +124,32 @@ public class UiFacade {
     // Column-related methods
     public Boolean addColumn(Column column) {
         // Placeholder implementation
-        return false;
+        return columnManager.getInstance().addColumn(column);
     }
     
     public Boolean removeColumn(Column column) {
         // Placeholder implementation
-        return false;
+        return columnManager.getInstance().removeColumn(column);
     }
     
     public Boolean hasColumn(String columnName) {
         // Placeholder implementation
-        return false;
+        return columnManager.getInstance().hasColumn(columnName);
     }
     
     public Boolean editColumnName(String columnName, String newColumnName) {
         // Placeholder implementation
-        return false;
+        return columnManager.getInstance().editColumnName(newColumnName, newColumnName);
     }
     
-    public Boolean getColummn(String columnName) {
+    public Column getColummn(String columnName) {
         // Placeholder implementation
-        return null;
+        return columnManager.getInstance().getColumn(columnName);
     }
     
     public Boolean markTaskComplete(String taskName) {
         // Placeholder implementation
-        return false;
+        return TaskManagement.getInstance().markTaskComplete(taskName);
     }
     
     public ArrayList<Column> seeCompletedColumns() { //do we need?
