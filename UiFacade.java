@@ -45,7 +45,7 @@ public class UiFacade {
             newTask.setTaskNotes(taskNotes);
             
             // Add the task to the task manager (assuming you have a task manager)
-            if (TaskManagement.addTask(newTask)) {
+            if (TaskManagement.getInstance().addTask(newTask)) {
                 System.out.println("Task added successfully.");
                 return true;
             } else {
@@ -60,6 +60,7 @@ public class UiFacade {
 
     public boolean removeTask(String taskName) {
         if (user != null) {
+            TaskManagement taskManagement = TaskManagement.getInstance();
             // Check if the task with the given name exists and remove it if found
             if (TaskManagement.hasTask(taskName)) {
                 if (taskManagement.removeTask(taskName)) {
