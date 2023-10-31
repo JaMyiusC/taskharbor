@@ -56,6 +56,8 @@ public class DataReader {
                 Date projectDate = parseDate(projectDateString);
                 ArrayList<Column> columns = getColumns((JSONArray)projectJSON.get("columns"));
 
+                String columnName = (String) projectJSON.get("columnName"); 
+
                 projectList.add(new Project(projectName, projectDate, columns));
             }
             return projectList;
@@ -89,7 +91,7 @@ public class DataReader {
             String columnName = (String) columnJSON.get("columnName");
             ArrayList<Task> columnTaskList = getTasks((JSONArray)columnJSON.get("tasks"));
 
-            columnList.add(new Column(columnName, columnTaskList ));
+            columnList.add(new Column(columnName, columnTaskList));
         }
         return columnList;
     }
@@ -113,5 +115,7 @@ public class DataReader {
         for(Project project : projects){
             System.out.println(project);
         }
+
+
     }
 }

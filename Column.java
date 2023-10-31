@@ -2,14 +2,14 @@ import java.util.ArrayList;
 
 public class Column {
     private static String columnName;
-    private ArrayList<Task> columnTaskList;
+    private static ArrayList<Task> columnTaskList;
 
     public Column(String columnName) {
         Column.columnName = columnName;
     }
     public Column(String columnName, ArrayList<Task> columnTaskList ) {
         this.columnName = columnName;
-        this.columnTaskList = new ArrayList<>();
+        this.columnTaskList = columnTaskList;
     }
 
     public String getColumnName() {
@@ -20,7 +20,7 @@ public class Column {
         Column.columnName = columnName;
     }
 
-    public ArrayList<Task> getColumnTaskList() {
+    public static ArrayList<Task> getColumnTaskList() {
         return columnTaskList;
     }
 
@@ -38,6 +38,12 @@ public class Column {
 
     @Override
     public String toString() {
-        return "Column Name: " + columnName;
+        String toReturn = "";
+        for(int i=0; i<columnTaskList.size();i++)
+        {
+            toReturn += columnTaskList.get(i).toString();
+        }
+
+        return "Column Name: " + columnName + "\n" + toReturn;
     }
 }

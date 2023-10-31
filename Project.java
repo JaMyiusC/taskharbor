@@ -93,7 +93,18 @@ public class Project {
     }
 
     public String toString() {
-        return projectName + " " + projectDate;
+
+        String toReturn = "";
+        for(int i=0; i<columns.size();i++)
+        {
+            toReturn += columns.get(i).toString();
+        }
+
+        return projectName + " " + projectDate + "\n" + toReturn;
+    }
+
+    public ArrayList<Column> getColumns() {
+        return columns;
     }
 }
  

@@ -7,11 +7,12 @@
         [
             {   "columnName": "Electric Missiles",
                 "tasks":[
-                    {"taskName":"Add electricity",
+                    {
+                    "taskName":"Add electricity",
                     "priority":3,
                     "taskDueDates":"2023-04-26",
                     "taskNotes": "We really need to fix this"
-                }
+                    }
                 ]
             }
         ]

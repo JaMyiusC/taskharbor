@@ -51,22 +51,10 @@ public class Task {
         this.taskNotes = taskNotes;
     }
 
-    public boolean getTaskCompletion() {
-        return taskCompletion;
-    }
-
-    public void setTaskCompletion(boolean taskCompletion) {
-        this.taskCompletion = taskCompletion;
-    }
+ 
 
     // Additional Methods
-    public void markComplete() {
-        taskCompletion = true;
-    }
-
-    public void markWorkingOn() {
-        taskCompletion = false;
-    }
+   
 
     @Override
     public String toString() {
