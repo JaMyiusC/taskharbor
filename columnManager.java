@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class columnManager {
@@ -16,6 +17,12 @@ public class columnManager {
             columnManagerInstance = new columnManager();
         }
         return columnManagerInstance;
+    }
+
+    public boolean addColumn(String columnName, int columnPosition, ArrayList<Task> columnTaskList) {
+        Column column = new Column(columnName, columnPosition, columnTaskList);
+        ((Collection<Column>) columnList).add(column);
+        return true;
     }
     // Methods
     public boolean addColumn(Column column) {
