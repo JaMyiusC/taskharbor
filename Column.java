@@ -2,18 +2,13 @@ import java.util.ArrayList;
 
 public class Column {
     private static String columnName;
-    private static int columnPosition;
     private ArrayList<Task> columnTaskList;
 
-<<<<<<< HEAD
-    public Column(String columnName, int columnPosition) {
+    public Column(String columnName) {
         Column.columnName = columnName;
-        Column.columnPosition = columnPosition;
-=======
-    public Column(String columnName, int columnPosition, ArrayList<Task> columnTaskList ) {
+    }
+    public Column(String columnName, ArrayList<Task> columnTaskList ) {
         this.columnName = columnName;
-        this.columnPosition = columnPosition;
->>>>>>> 6197dbd093d129af4b832acf8547716a2fa149dc
         this.columnTaskList = new ArrayList<>();
     }
 
@@ -37,16 +32,12 @@ public class Column {
         return columnTaskList.remove(task);
     }
 
-    public static int getPosition() {
-        return columnPosition;
-    }
-
     public static String getName() {
         return columnName;
     }
 
     @Override
     public String toString() {
-        return "Column Name: " + columnName + ", Position: " + columnPosition;
+        return "Column Name: " + columnName;
     }
 }

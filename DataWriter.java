@@ -1,10 +1,8 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 
->>>>>>> 6197dbd093d129af4b832acf8547716a2fa149dc
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;;
 
@@ -70,7 +68,7 @@ public class DataWriter {
 			jsonProjects.add(getProjectJSON(project));
 		}
 	
-		try (FileWriter file = new FileWriter("json/projects.json")) {
+		try (FileWriter file = new FileWriter("json/projects-test.json")) {
 			file.write(jsonProjects.toJSONString());
 			file.flush();
 		} catch (IOException e) {
@@ -118,5 +116,9 @@ public class DataWriter {
 		taskDetails.put("taskNotes", task.getTaskNotes());
 		taskDetails.put("taskCompletion", task.getTaskCompletion());
 		return taskDetails;
+	}
+
+	public static void main(String[] args){
+		DataWriter.saveProjects();
 	}
 }

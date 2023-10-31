@@ -40,11 +40,11 @@ public class DataReader {
         return null;
     }
 
-    public ArrayList<Project> getProjects() {
+    public static ArrayList<Project> getProjects() {
         ArrayList<Project> projectList = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader("projects.json");  // Corrected the file path
+            FileReader reader = new FileReader("json/project.json");  // Corrected the file path
             JSONParser parser = new JSONParser();
             JSONArray projectListJSON = (JSONArray) parser.parse(reader);
 
@@ -54,8 +54,9 @@ public class DataReader {
                 // Assuming projectDate is stored as a string, you may need to parse it accordingly
                 String projectDateString = (String) projectJSON.get("projectDate");
                 Date projectDate = parseDate(projectDateString);
+                ArrayList<Column> columns = getColumns((JSONArray)projectJSON.get("columns"));
 
-                projectList.add(new Project(projectName, projectDate));
+                projectList.add(new Project(projectName, projectDate, columns));
             }
             return projectList;
 
@@ -66,62 +67,36 @@ public class DataReader {
         return null;
     }
 
-    public static ArrayList<Task> getTasks() {
+    public static ArrayList<Task> getTasks(JSONArray taskListJSON) {
         ArrayList<Task> taskList = new ArrayList<>();
 
-        try {
-            FileReader reader = new FileReader("json/project.json");  // Corrected the file path
-            JSONParser parser = new JSONParser();
-            JSONArray taskListJSON = (JSONArray) parser.parse(reader);
-
-            for (int i = 0; i < taskListJSON.size(); i++) {
-                JSONObject taskJSON = (JSONObject) taskListJSON.get(i);
-                String taskName = (String) taskJSON.get("firstName");
-                int taskPriority = (int) taskJSON.get(3);
-                Date taskDueDate = (Date) taskJSON.get("taskDueDates");
-                String taskNotes = (String) taskJSON.get("taskNotes");
-                ArrayList<String> taskTags = (ArrayList<String>) taskJSON.get("taskTags");
-               
-
-                taskList.add(new Task());
-            }
-            return taskList;
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (int i = 0; i < taskListJSON.size(); i++) {
+            JSONObject taskJSON = (JSONObject) taskListJSON.get(i);
+            String taskName = (String) taskJSON.get("taskName");
+            int taskPriority = ((Long) taskJSON.get("priority")).intValue();
+            Date taskDueDate = parseDate((String) taskJSON.get("taskDueDates"));
+            String taskNotes = (String) taskJSON.get("taskNotes");
+            taskList.add(new Task(taskName, taskPriority, taskDueDate, taskNotes));
         }
-
-        return null;
+        return taskList;
     }
 
-     public static ArrayList<Column> getColumns() {
+     public static ArrayList<Column> getColumns(JSONArray columnListJSON) {
         ArrayList<Column> columnList = new ArrayList<>();
 
-        try {
-            FileReader reader = new FileReader("json/project.json");  // Corrected the file path
-            JSONParser parser = new JSONParser();
-            JSONArray columnListJSON = (JSONArray) parser.parse(reader);
+        for (int i = 0; i < columnListJSON.size(); i++) {
+            JSONObject columnJSON = (JSONObject) columnListJSON.get(i);
+            String columnName = (String) columnJSON.get("columnName");
+            ArrayList<Task> columnTaskList = getTasks((JSONArray)columnJSON.get("tasks"));
 
-            for (int i = 0; i < columnListJSON.size(); i++) {
-                JSONObject columnJSON = (JSONObject) columnListJSON.get(i);
-                String columnName = (String) columnJSON.get("columnName");
-                int columnPosition = (int) columnJSON.get("columnPosition");
-                ArrayList<Task> columnTaskList = (ArrayList<Task>) columnJSON.get("columnTaskList");
-
-                columnList.add(new Column(columnName, columnPosition, columnTaskList ));
-            }
-            return columnList;
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            columnList.add(new Column(columnName, columnTaskList ));
         }
-
-        return null;
+        return columnList;
     }
 
 
     // Add a method to parse Date from a string
-    private Date parseDate(String dateString) {
+    private static Date parseDate(String dateString) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // format
         try {
             Date parseDate = dateFormat.parse(dateString);
@@ -129,6 +104,14 @@ public class DataReader {
         } catch (ParseException e) {
             e.printStackTrace(); // Handle the parsing exception
             return null;
+        }
+    }
+
+    public static void main(String[] args){
+        ArrayList<Project> projects = getProjects();
+
+        for(Project project : projects){
+            System.out.println(project);
         }
     }
 }

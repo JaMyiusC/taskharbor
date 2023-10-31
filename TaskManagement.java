@@ -59,12 +59,11 @@ public class TaskManagement {
         return false;
     }
 
-    public boolean editTask(String taskName, String newTaskName, int newTaskPriority, ArrayList<String> newTaskTags, Date newTaskDueDate, String newTaskNotes) {
+    public boolean editTask(String taskName, String newTaskName, int newTaskPriority, Date newTaskDueDate, String newTaskNotes) {
         Task task = getTask(taskName);
         if (task != null) {
             task.setTaskName(newTaskName);
             task.setTaskPriority(newTaskPriority);
-            task.setTaskTags(newTaskTags);
             task.setTaskDueDate(newTaskDueDate);
             task.setTaskNotes(newTaskNotes);
             return true;

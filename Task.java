@@ -1,20 +1,18 @@
-import java.util.ArrayList;
+
 import java.util.Date;
 
 public class Task {
     // Attributes
     private String taskName;
     private int taskPriority;
-    private ArrayList<String> taskTags;
     private Date taskDueDate;
     private String taskNotes;
     private boolean taskCompletion;
 
     // Constructor
-    public Task(String taskName, int taskPriority, ArrayList<String> taskTags, Date taskDueDate, String taskNotes) {
+    public Task(String taskName, int taskPriority, Date taskDueDate, String taskNotes) {
         this.taskName = taskName;
         this.taskPriority = taskPriority;
-        this.taskTags = taskTags;
         this.taskDueDate = taskDueDate;
         this.taskNotes = taskNotes;
         this.taskCompletion = false; // Initialize as not completed
@@ -35,14 +33,6 @@ public class Task {
 
     public void setTaskPriority(int taskPriority) {
         this.taskPriority = taskPriority;
-    }
-
-    public ArrayList<String> getTaskTags() {
-        return taskTags;
-    }
-
-    public void setTaskTags(ArrayList<String> taskTags) {
-        this.taskTags = taskTags;
     }
 
     public Date getTaskDueDate() {
@@ -82,7 +72,6 @@ public class Task {
     public String toString() {
         return "Task Name: " + taskName +
                "\nPriority: " + taskPriority +
-               "\nTags: " + taskTags +
                "\nDue Date: " + taskDueDate +
                "\nNotes: " + taskNotes +
                "\nCompletion: " + (taskCompletion ? "Completed" : "Not Completed");

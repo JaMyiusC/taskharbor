@@ -36,12 +36,11 @@ public class UiFacade {
 
     // Task-related methods
 
-    public boolean addTask(String taskName, ArrayList<String> taskTags, String taskNotes) {
+    public boolean addTask(String taskName, String taskNotes) {
         if (user != null) {
             // Create a new task and set its properties
             Task newTask = new Task();
             newTask.setTaskName(taskName);
-            newTask.setTaskTags(taskTags);
             newTask.setTaskNotes(taskNotes);
             
             // Add the task to the task manager (assuming you have a task manager)
@@ -217,63 +216,5 @@ public class UiFacade {
     public ArrayList<String> getColumnComments(String columnName) {
         // Placeholder implementation
         return null;
-    }
-}
-
-class UserManager {
-
-    public static Object getInstance() {
-        return null;
-    }
-    // Placeholder implementation
-}
-
-class ProjectManager {
-    // Placeholder implementation
-}
-
-class Task {
-
-    public Object getTaskName() {
-        return null;
-    }
-
-    public String getTaskPriority() {
-        return null;
-    }
-
-    public void setTaskCompletion(boolean b) {
-    
-    }
-
-    public Object getTaskTags() {
-        return null;
-    }
-
-    public Object getTaskDueDate() {
-        return null;
-    }
-
-    public Object getTaskNotes() {
-        return null;
-    }
-
-    public Object getTaskCompletion() {
-        return null;
-    }
-
-    public void setTaskName(String newTaskName) {
-    }
-
-    public void setTaskPriority(int newTaskPriority) {
-    }
-
-    public void setTaskTags(ArrayList<String> newTaskTags) {
-    }
-
-    public void setTaskNotes(String newTaskNotes) {
-    }
-
-    public void setTaskDueDate(Date newTaskDueDate) {
     }
 }
