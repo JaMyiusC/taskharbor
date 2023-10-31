@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Task {
@@ -7,15 +8,15 @@ public class Task {
     private int taskPriority;
     private Date taskDueDate;
     private String taskNotes;
-    private boolean taskCompletion;
+    private static ArrayList<comments> taskComments;
 
     // Constructor
-    public Task(String taskName, int taskPriority, Date taskDueDate, String taskNotes) {
+    public Task(String taskName, int taskPriority, Date taskDueDate, String taskNotes , ArrayList<comments> taskComments) {
         this.taskName = taskName;
         this.taskPriority = taskPriority;
         this.taskDueDate = taskDueDate;
         this.taskNotes = taskNotes;
-        this.taskCompletion = false; // Initialize as not completed
+        this.taskComments = taskComments; 
     }
 
     // Getters and Setters
@@ -51,6 +52,9 @@ public class Task {
         this.taskNotes = taskNotes;
     }
 
+     public static ArrayList<comments> getComments(){
+        return taskComments;
+    }
  
 
     // Additional Methods
@@ -58,11 +62,19 @@ public class Task {
 
     @Override
     public String toString() {
+        String toReturn = "";
+        for(int i=0; i<taskComments.size();i++)
+        {
+            toReturn += taskComments.get(i).toString();
+        }
+
+
         return "Task Name: " + taskName +
                "\nPriority: " + taskPriority +
                "\nDue Date: " + taskDueDate +
                "\nNotes: " + taskNotes +
-               "\nCompletion: " + (taskCompletion ? "Completed" : "Not Completed");
+               toReturn;
+
     }
 }
 
