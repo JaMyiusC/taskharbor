@@ -229,6 +229,14 @@ class UserManager {
 }
 
 class ProjectManager {
+    public boolean addProject(Project project) {
+        if (projects.containsKey(project.getProjectName())) return false;
+        projects.put(project.getProjectName(), project);
+        return true;
+    }
+        public Project getProject(String projectName) {
+        return projects.get(projectName);
+    }
     // Placeholder implementation
 }
 
