@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Column {
-    private String columnName;
-    private int columnPosition;
+    private static String columnName;
+    private static int columnPosition;
     private ArrayList<Task> columnTaskList;
 
     public Column(String columnName, int columnPosition) {
-        this.columnName = columnName;
-        this.columnPosition = columnPosition;
+        Column.columnName = columnName;
+        Column.columnPosition = columnPosition;
         this.columnTaskList = new ArrayList<>();
     }
 
@@ -16,7 +16,7 @@ public class Column {
     }
 
     public void setColumnName(String columnName) {
-        this.columnName = columnName;
+        Column.columnName = columnName;
     }
 
     public ArrayList<Task> getColumnTaskList() {
@@ -31,11 +31,11 @@ public class Column {
         return columnTaskList.remove(task);
     }
 
-    public int getPosition() {
+    public static int getPosition() {
         return columnPosition;
     }
 
-    public String getName() {
+    public static String getName() {
         return columnName;
     }
 

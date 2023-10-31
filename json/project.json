@@ -3,8 +3,19 @@
         "id": "project1",
         "projectName": "Allison Project",
         "projectDate": "2023-10-06",
-        "comments": [],
-        "columns": [],
+        "columns": 
+        [
+            {
+                "tasks":"Task1, Task2",
+                "comments":
+                [
+                    {
+                        "comment":"Hey!"
+                    }
+                ]
+
+            }
+        ],
         "Users": ["user1", "user2"]
     },
     {

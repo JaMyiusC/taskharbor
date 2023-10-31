@@ -63,15 +63,20 @@ public class Project {
 }
  */
 import java.util.Date;
+import java.util.UUID;
 
 public class Project {
     private String projectName;
     private Date projectDate;
+    private UUID projectId;
+    private boolean completed; // New field to track completion status
 
     // Constructor for the Project class
     public Project(String projectName, Date projectDate) {
         this.projectName = projectName;
         this.projectDate = projectDate;
+        this.projectId = UUID.randomUUID();
+        this.completed = false; // A new project is not completed by default
     }
 
     public Date getProjectDate() {
@@ -82,5 +87,17 @@ public class Project {
         return projectName;
     }
 
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    // Method to mark the project as completed
+    public void markCompleted() {
+        completed = true;
+    }
+
+    public Object getProjectId() {
+        return projectId;
+    }
 }
  

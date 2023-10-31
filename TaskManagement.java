@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class TaskManagement {
     private static TaskManagement taskManager;
-    private HashMap<Boolean, ArrayList<Task>> taskList;
+    private static HashMap<Boolean, ArrayList<Task>> taskList;
 
     public TaskManagement() {
-        this.taskList = new HashMap<>();
+        TaskManagement.taskList = new HashMap<>();
         taskList.put(false, new ArrayList<>()); // Initialize an empty list for tasks not completed
         taskList.put(true, new ArrayList<>());  // Initialize an empty list for completed tasks
     }
@@ -19,13 +19,13 @@ public class TaskManagement {
         return taskManager;
     }
    
-    public boolean addTask(Task task) {
+    public static boolean addTask(Task task) {
         ArrayList<Task> tasks = taskList.get(false);
         tasks.add(task);
         return true;
     }
 
-    public boolean removeTask(Task task) {
+    public static boolean removeTask(Task task) {
         ArrayList<Task> tasks = taskList.get(false);
         boolean removed = tasks.remove(task);
         if (removed) {
@@ -34,7 +34,7 @@ public class TaskManagement {
         return removed;
     }
 
-    public Task getTask(String taskName) {
+    public static Task getTask(String taskName) {
         ArrayList<Task> tasks = taskList.get(false);
         for (Task task : tasks) {
             if (task.getTaskName().equals(taskName)) {
@@ -44,16 +44,7 @@ public class TaskManagement {
         return null;
     }
 
-    public ArrayList<Task> getTaskList() {
-        ArrayList<Task> allTasks = new ArrayList<>();
-
-        allTasks.addAll(taskList.get(false));
-
-        allTasks.addAll(taskList.get(true));
-
-        return allTasks;
-        
-    }
+    
 
     public boolean hasTask(String taskName) {
         return getTask(taskName) != null;
@@ -105,6 +96,10 @@ public class TaskManagement {
             return true;
         }
         return false;
+    }
+
+    public ArrayList<Task> getTaskList() {
+        return null;
     }
 
 }

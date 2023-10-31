@@ -1,9 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.xml.stream.events.Comment;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;;
 
@@ -36,7 +33,7 @@ public class DataWriter {
 			jsonTasks.add(getTaskJSON(tasks.get(i)));
 		}
 
-		try(FileWriter file = new FileWriter("json/users.json")){
+		try(FileWriter file = new FileWriter("json/project.json")){
 
 			file.write(jsonTasks.toJSONString());
 			file.flush();
@@ -45,7 +42,7 @@ public class DataWriter {
 			e.printStackTrace();
 		}
 	}
-	public static void saveColumns() {
+	 public static void saveColumns() {
 		ArrayList<Column> columns = columnManager.getInstance().getColumnList();
 		JSONArray jsonColumns = new JSONArray();
 	
@@ -53,19 +50,44 @@ public class DataWriter {
 			jsonColumns.add(getColumnJSON(column));
 		}
 	
-		try (FileWriter file = new FileWriter("json/columns.json")) {
+		try (FileWriter file = new FileWriter("json/project.json")) {
 			file.write(jsonColumns.toJSONString());
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	} 
+
+	public static void saveProjects() {
+		ArrayList<Project> projects = ProjectManager.getInstance();
+		JSONArray jsonProjects = new JSONArray();
+	
+		for (Project project : projects) {
+			jsonProjects.add(getProjectJSON(project));
+		}
+	
+		try (FileWriter file = new FileWriter("json/projects.json")) {
+			file.write(jsonProjects.toJSONString());
 			file.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	 public static JSONObject getProjectJSON(Project project) {
+		JSONObject projectDetails = new JSONObject();
+		projectDetails.put("id", project.getProjectId());
+		projectDetails.put("name", project.getProjectName());
+		// Add any other properties of the Project class that you want to save here.
+		return projectDetails;
+	}	
+	
+	
 	public static JSONObject getColumnJSON(Column column) {
 		JSONObject columnDetails = new JSONObject();
-		columnDetails.put("id", column.getPosition());
-		columnDetails.put("name", column.getName());
-		// Add any other properties of the Column class that you want to save here.
+		columnDetails.put("id", Column.getPosition());
+		columnDetails.put("name", Column.getName());
+		
 		return columnDetails;
 	}
 
@@ -93,6 +115,4 @@ public class DataWriter {
 		taskDetails.put("taskCompletion", task.getTaskCompletion());
 		return taskDetails;
 	}
-
-    
 }
