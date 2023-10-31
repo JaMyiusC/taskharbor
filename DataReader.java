@@ -3,6 +3,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import javax.xml.stream.events.Comment;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -44,7 +46,7 @@ public class DataReader {
         ArrayList<Project> projectList = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader("json/project.json");  // Corrected the file path
+            FileReader reader = new FileReader("json/projects-test.json");  // Corrected the file path
             JSONParser parser = new JSONParser();
             JSONArray projectListJSON = (JSONArray) parser.parse(reader);
 
@@ -69,20 +71,6 @@ public class DataReader {
         return null;
     }
 
-    public static ArrayList<Task> getTasks(JSONArray taskListJSON) {
-        ArrayList<Task> taskList = new ArrayList<>();
-
-        for (int i = 0; i < taskListJSON.size(); i++) {
-            JSONObject taskJSON = (JSONObject) taskListJSON.get(i);
-            String taskName = (String) taskJSON.get("taskName");
-            int taskPriority = ((Long) taskJSON.get("priority")).intValue();
-            Date taskDueDate = parseDate((String) taskJSON.get("taskDueDates"));
-            String taskNotes = (String) taskJSON.get("taskNotes");
-            taskList.add(new Task(taskName, taskPriority, taskDueDate, taskNotes));
-        }
-        return taskList;
-    }
-
      public static ArrayList<Column> getColumns(JSONArray columnListJSON) {
         ArrayList<Column> columnList = new ArrayList<>();
 
@@ -96,6 +84,34 @@ public class DataReader {
         return columnList;
     }
 
+    public static ArrayList<Task> getTasks(JSONArray taskListJSON) {
+        ArrayList<Task> taskList = new ArrayList<>();
+
+        for (int i = 0; i < taskListJSON.size(); i++) {
+            JSONObject taskJSON = (JSONObject) taskListJSON.get(i);
+            String taskName = (String) taskJSON.get("taskName");
+            int taskPriority = ((Long) taskJSON.get("priority")).intValue();
+            Date taskDueDate = parseDate((String) taskJSON.get("taskDueDates"));
+            String taskNotes = (String) taskJSON.get("taskNotes");
+            ArrayList<comments> taskComments = getComments((JSONArray)taskJSON.get("comments"));
+
+            taskList.add(new Task(taskName, taskPriority, taskDueDate, taskNotes, taskComments));
+        }
+        return taskList;
+    }
+
+    public static ArrayList<comments> getComments(JSONArray commentListJSON){
+        ArrayList<comments> commentList = new ArrayList<>();
+        
+        for(int i = 0; i < commentListJSON.size(); i++){
+            JSONObject commentJSON = (JSONObject) commentListJSON.get(i);
+            String user = (String) commentJSON.get("user");
+            String commentText = (String) commentJSON.get("commentText");
+
+            commentList.add(new comments(user, commentText));
+        }
+        return commentList;
+    }
 
     // Add a method to parse Date from a string
     private static Date parseDate(String dateString) {

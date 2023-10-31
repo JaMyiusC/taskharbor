@@ -77,6 +77,23 @@ public class DataWriter {
 		return columnDetails;
 	}
 
+	public static JSONObject getTaskJSON(Task task){
+		JSONObject taskDetails = new JSONObject();
+		taskDetails.put("taskName", task.getTaskName());
+		taskDetails.put("taskPriority", task.getTaskPriority());
+		taskDetails.put("taskDueDate", toDateString(task.getTaskDueDate()));
+		taskDetails.put("taskNotes", task.getTaskNotes());
+		return taskDetails;
+	}
+
+	public static JSONObject getCommentJSON(comments comment){
+		JSONObject commentDetails = new JSONObject();
+		commentDetails.put("user", comments.getUser());
+		commentDetails.put("comments", comments.getComment());
+
+		return commentDetails;
+	}
+
 	public static JSONObject getUserJSON(User user) {
 		JSONObject personDetails = new JSONObject();
 		personDetails.put("id", user.getId().toString());
@@ -91,14 +108,7 @@ public class DataWriter {
         return personDetails;
 	}
 
-	public static JSONObject getTaskJSON(Task task){
-		JSONObject taskDetails = new JSONObject();
-		taskDetails.put("taskName", task.getTaskName());
-		taskDetails.put("taskPriority", task.getTaskPriority());
-		taskDetails.put("taskDueDate", toDateString(task.getTaskDueDate()));
-		taskDetails.put("taskNotes", task.getTaskNotes());
-		return taskDetails;
-	}
+	
 
 	public static String toDateString(Date date){
 		String pattern = "yyyy-MM-dd";

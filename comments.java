@@ -3,13 +3,15 @@ import java.util.ArrayList;
 // The Comments class is responsible for managing comments related to a user.
 public class comments {
     // The User who owns these comments.
-    private User user;
+    private static String user;
     // An ArrayList to store the comments.
-    private ArrayList<String> comments;
+    private static String commentText;
+    private static ArrayList<String> comments;
 
     // Constructor for the Comments class.
-    public comments(User user) {
+    public comments(String user, String commentText) {
         this.user = user;
+        this.commentText = commentText;
         this.comments = new ArrayList<>();
     }
 
@@ -18,29 +20,28 @@ public class comments {
         return comments.add(comment);
     }
 
+    public String addCommentText(){
+        return commentText;
+    }
+
     // Method to remove a comment. Returns true if the comment was removed successfully.
     public boolean removeComment(String comment) {
         return comments.remove(comment);
     }
 
-    // Method to check if a comment exists. Returns true if the comment exists.
-    public boolean viewComment(String comment) {
-        return comments.contains(comment);
+    public static String getUser(){
+        return user;
     }
 
-    // Method to edit a comment. Replaces 'oldComment' with 'newComment' and returns true if successful.
-    public boolean editComment(String oldComment, String newComment) {
-        int index = comments.indexOf(oldComment);
-        if (index != -1) {
-            comments.set(index, newComment);
-            return true;
-        }
-        return false;
+    public static ArrayList<String> getComment(){
+        return comments;
     }
+    
 
     // Overridden toString method to provide a string representation of the Comments object.
     @Override
     public String toString() {
+
         return "Comments{" +
                 "user=" + user +
                 ", comments=" + comments +
