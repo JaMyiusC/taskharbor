@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -7,16 +7,16 @@ public class Project {
     private columnManager columnManager;
     private HashMap<String, ArrayList<User>> groups;
     private String projectName;
+    private String projectID;
     private Date projectDate;
     private String comment;
 
     public Project() {
         this.taskManager = new TaskManagement();
         this.columnManager = new columnManager();
-        this.groups = new HashMap<>();
+        this.projectID = "";
         this.projectName = "";
         this.projectDate = new Date();
-        this.comment = "";
     }
 
     public boolean createGroup(String groupName) {
@@ -57,7 +57,30 @@ public class Project {
 		return projectName;
 	}
 
-    public Object isCompleted() {
-        return !projectName.isEmpty(); //??????????????????
+    public Object getProjectId() {
+        return projectID;
     }
 }
+ */
+import java.util.Date;
+
+public class Project {
+    private String projectName;
+    private Date projectDate;
+
+    // Constructor for the Project class
+    public Project(String projectName, Date projectDate) {
+        this.projectName = projectName;
+        this.projectDate = projectDate;
+    }
+
+    public Date getProjectDate() {
+        return projectDate;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+}
+ 
