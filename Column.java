@@ -2,13 +2,21 @@ import java.util.ArrayList;
 
 public class Column {
     private static String columnName;
-    private static int columnPosition;
-    private ArrayList<Task> columnTaskList;
+    private static ArrayList<Task> columnTaskList;
 
+<<<<<<< HEAD
     public Column(String columnName, int columnPosition, ArrayList<Task> columnTaskList ) {
         this.columnName = columnName;
         this.columnPosition = columnPosition;
         this.columnTaskList = new ArrayList<>();
+=======
+    public Column(String columnName) {
+        Column.columnName = columnName;
+    }
+    public Column(String columnName, ArrayList<Task> columnTaskList ) {
+        this.columnName = columnName;
+        this.columnTaskList = columnTaskList;
+>>>>>>> 3dd0c55add08005d1ea50d6f602107cf2dd55325
     }
 
     public String getColumnName() {
@@ -19,7 +27,7 @@ public class Column {
         Column.columnName = columnName;
     }
 
-    public ArrayList<Task> getColumnTaskList() {
+    public static ArrayList<Task> getColumnTaskList() {
         return columnTaskList;
     }
 
@@ -31,16 +39,19 @@ public class Column {
         return columnTaskList.remove(task);
     }
 
-    public static int getPosition() {
-        return columnPosition;
-    }
-
     public static String getName() {
         return columnName;
     }
 
     @Override
     public String toString() {
-        return "Column Name: " + columnName + ", Position: " + columnPosition;
+        String toReturn = "";
+        for(int i=0; i<columnTaskList.size();i++)
+        {
+            toReturn += columnTaskList.get(i).toString();
+        }
+
+        return "Column Name: " + columnName + "\n" + toReturn;
     }
 }
+

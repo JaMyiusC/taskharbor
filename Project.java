@@ -62,6 +62,7 @@ public class Project {
     }
 }
  */
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -69,14 +70,14 @@ public class Project {
     private String projectName;
     private Date projectDate;
     private UUID projectId;
-    private boolean completed; // New field to track completion status
+    private ArrayList<Column> columns;
 
     // Constructor for the Project class
-    public Project(String projectName, Date projectDate) {
+    public Project(String projectName, Date projectDate, ArrayList<Column> columns) {
         this.projectName = projectName;
         this.projectDate = projectDate;
+        this.columns = columns;
         this.projectId = UUID.randomUUID();
-        this.completed = false; // A new project is not completed by default
     }
 
     public Date getProjectDate() {
@@ -87,17 +88,23 @@ public class Project {
         return projectName;
     }
 
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    // Method to mark the project as completed
-    public void markCompleted() {
-        completed = true;
-    }
-
     public Object getProjectId() {
         return projectId;
+    }
+
+    public String toString() {
+
+        String toReturn = "";
+        for(int i=0; i<columns.size();i++)
+        {
+            toReturn += columns.get(i).toString();
+        }
+
+        return projectName + " " + projectDate + "\n" + toReturn;
+    }
+
+    public ArrayList<Column> getColumns() {
+        return columns;
     }
 }
  

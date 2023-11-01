@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -5,19 +6,17 @@ public class Task {
     // Attributes
     private String taskName;
     private int taskPriority;
-    private ArrayList<String> taskTags;
     private Date taskDueDate;
     private String taskNotes;
-    private boolean taskCompletion;
+    private static ArrayList<comments> taskComments;
 
     // Constructor
-    public Task(String taskName, int taskPriority, ArrayList<String> taskTags, Date taskDueDate, String taskNotes) {
+    public Task(String taskName, int taskPriority, Date taskDueDate, String taskNotes , ArrayList<comments> taskComments) {
         this.taskName = taskName;
         this.taskPriority = taskPriority;
-        this.taskTags = taskTags;
         this.taskDueDate = taskDueDate;
         this.taskNotes = taskNotes;
-        this.taskCompletion = false; // Initialize as not completed
+        this.taskComments = taskComments; 
     }
 
     // Getters and Setters
@@ -37,14 +36,6 @@ public class Task {
         this.taskPriority = taskPriority;
     }
 
-    public ArrayList<String> getTaskTags() {
-        return taskTags;
-    }
-
-    public void setTaskTags(ArrayList<String> taskTags) {
-        this.taskTags = taskTags;
-    }
-
     public Date getTaskDueDate() {
         return taskDueDate;
     }
@@ -61,31 +52,29 @@ public class Task {
         this.taskNotes = taskNotes;
     }
 
-    public boolean getTaskCompletion() {
-        return taskCompletion;
+     public static ArrayList<comments> getComments(){
+        return taskComments;
     }
-
-    public void setTaskCompletion(boolean taskCompletion) {
-        this.taskCompletion = taskCompletion;
-    }
+ 
 
     // Additional Methods
-    public void markComplete() {
-        taskCompletion = true;
-    }
-
-    public void markWorkingOn() {
-        taskCompletion = false;
-    }
+   
 
     @Override
     public String toString() {
+        String toReturn = "";
+        for(int i=0; i<taskComments.size();i++)
+        {
+            toReturn += taskComments.get(i).toString();
+        }
+
+
         return "Task Name: " + taskName +
                "\nPriority: " + taskPriority +
-               "\nTags: " + taskTags +
                "\nDue Date: " + taskDueDate +
                "\nNotes: " + taskNotes +
-               "\nCompletion: " + (taskCompletion ? "Completed" : "Not Completed");
+               toReturn;
+
     }
 }
 

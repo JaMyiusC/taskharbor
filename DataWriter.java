@@ -1,10 +1,10 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
+import java.util.Date;
 
->>>>>>> 6197dbd093d129af4b832acf8547716a2fa149dc
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;;
 
@@ -29,48 +29,15 @@ public class DataWriter {
         }
 	}
 
-	public static void saveTasks() {
-		ArrayList<Task> tasks = TaskManagement.getInstance().getTaskList();
-		JSONArray jsonTasks = new JSONArray();
-
-		for(int i=0; i<tasks.size();i++) {
-			jsonTasks.add(getTaskJSON(tasks.get(i)));
-		}
-
-		try(FileWriter file = new FileWriter("json/project.json")){
-
-			file.write(jsonTasks.toJSONString());
-			file.flush();
- 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	 public static void saveColumns() {
-		ArrayList<Column> columns = columnManager.getInstance().getColumnList();
-		JSONArray jsonColumns = new JSONArray();
-	
-		for (Column column : columns) {
-			jsonColumns.add(getColumnJSON(column));
-		}
-	
-		try (FileWriter file = new FileWriter("json/project.json")) {
-			file.write(jsonColumns.toJSONString());
-			file.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	} 
-
 	public static void saveProjects() {
-		ArrayList<Project> projects = ProjectManager.getInstance();
+		ArrayList<Project> projects = ProjectManager.getInstance().getAllProjects();
 		JSONArray jsonProjects = new JSONArray();
 	
 		for (Project project : projects) {
 			jsonProjects.add(getProjectJSON(project));
 		}
 	
-		try (FileWriter file = new FileWriter("json/projects.json")) {
+		try (FileWriter file = new FileWriter("json/projects-test.json")) {
 			file.write(jsonProjects.toJSONString());
 			file.flush();
 		} catch (IOException e) {
@@ -80,8 +47,15 @@ public class DataWriter {
 	
 	 public static JSONObject getProjectJSON(Project project) {
 		JSONObject projectDetails = new JSONObject();
-		projectDetails.put("id", project.getProjectId());
+		projectDetails.put("id", project.getProjectId().toString());
 		projectDetails.put("name", project.getProjectName());
+
+		JSONArray columnJSONS = new JSONArray();
+		for(Column column : project.getColumns()){
+			columnJSONS.add(getColumnJSON(column));
+		}
+
+		projectDetails.put("columns", columnJSONS);
 		// Add any other properties of the Project class that you want to save here.
 		return projectDetails;
 	}	
@@ -89,10 +63,35 @@ public class DataWriter {
 	
 	public static JSONObject getColumnJSON(Column column) {
 		JSONObject columnDetails = new JSONObject();
-		columnDetails.put("id", Column.getPosition());
+		columnDetails.put("tasks", Column.getColumnTaskList());
 		columnDetails.put("name", Column.getName());
+
 		
+		JSONArray tasksJSONS = new JSONArray();
+		for(Task task : column.getColumnTaskList()){
+			tasksJSONS.add(getTaskJSON(task));
+		}
+
+		columnDetails.put("tasks", tasksJSONS);
+
 		return columnDetails;
+	}
+
+	public static JSONObject getTaskJSON(Task task){
+		JSONObject taskDetails = new JSONObject();
+		taskDetails.put("taskName", task.getTaskName());
+		taskDetails.put("taskPriority", task.getTaskPriority());
+		taskDetails.put("taskDueDate", toDateString(task.getTaskDueDate()));
+		taskDetails.put("taskNotes", task.getTaskNotes());
+		return taskDetails;
+	}
+
+	public static JSONObject getCommentJSON(comments comment){
+		JSONObject commentDetails = new JSONObject();
+		commentDetails.put("user", comments.getUser());
+		commentDetails.put("comments", comments.getComment());
+
+		return commentDetails;
 	}
 
 	public static JSONObject getUserJSON(User user) {
@@ -109,14 +108,15 @@ public class DataWriter {
         return personDetails;
 	}
 
-	public static JSONObject getTaskJSON(Task task){
-		JSONObject taskDetails = new JSONObject();
-		taskDetails.put("taskName", task.getTaskName());
-		taskDetails.put("taskPriority", task.getTaskPriority());
-		taskDetails.put("taskTags", task.getTaskTags());
-		taskDetails.put("taskDueDate", task.getTaskDueDate());
-		taskDetails.put("taskNotes", task.getTaskNotes());
-		taskDetails.put("taskCompletion", task.getTaskCompletion());
-		return taskDetails;
+	
+
+	public static String toDateString(Date date){
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		return simpleDateFormat.format(date);
+	}
+
+	public static void main(String[] args){
+		DataWriter.saveProjects();
 	}
 }

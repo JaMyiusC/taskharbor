@@ -6,12 +6,10 @@ import java.util.HashMap;
  */
 public class ProjectManager {
     private static ProjectManager projectManager;
-    private HashMap<Boolean, ArrayList<Project>> completionMap;
+    private ArrayList<Project> projects = new ArrayList<Project>();
 
     private ProjectManager() {
-        this.completionMap = new HashMap<>();
-        this.completionMap.put(true, new ArrayList<>());  // Completed projects
-        this.completionMap.put(false, new ArrayList<>()); // Incomplete projects
+        projects = DataReader.getProjects();
     }
 
     /**
@@ -32,7 +30,7 @@ public class ProjectManager {
      * @param project The project to be added.
      */
     public void addProject(Project project) {
-        completionMap.get(project.isCompleted()).add(project);
+        projects.add(project);
     }
 
     /**
@@ -41,16 +39,15 @@ public class ProjectManager {
      * @param project The project to be removed.
      */
     public void removeProject(Project project) {
-        completionMap.get(project.isCompleted()).remove(project);
+        projects.remove(project);
     }
 
-    /**
-     * Retrieves the list of all projects based on their completion status.
-     *
-     * @param isCompleted The completion status of the projects to retrieve.
-     * @return An ArrayList of Project objects representing all projects with the given completion status.
-     */
-    public ArrayList<Project> getProjectsByCompletionStatus(boolean isCompleted) {
-        return completionMap.get(isCompleted);
+
+    public ArrayList<Project> getAllProjects(){
+        return projects;
+    }
+
+    public void saveProjects() {
+        DataWriter.saveProjects();
     }
 }

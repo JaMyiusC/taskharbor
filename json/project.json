@@ -5,60 +5,16 @@
         "projectDate": "2023-10-06",
         "columns": 
         [
-            {
-                "tasks":"Task1, Task2",
-                "comments":
-                [
+            {   "columnName": "Electric Missiles",
+                "tasks":[
                     {
-                        "comment":"Hey!"
+                    "taskName":"Add electricity",
+                    "priority":3,
+                    "taskDueDates":"2023-04-26",
+                    "taskNotes": "We really need to fix this"
                     }
                 ]
-
             }
-        ],
-        "Users": ["user1", "user2"]
-    },
-    {
-        "id": "project2",
-        "projectName": "Emmerson Project",
-        "projectDate": "2023-10-07",
-        "comments": [],
-        "columns": [{
-            "id": "project1",
-            "projectName": "Allison Project",
-            "projectDate": "2023-10-06",
-            "comments": [],
-            "columns": [],
-            "Users": ["user1", "user2"]
-        },
-        {
-            "id": "project2",
-            "projectName": "Emmerson Project",
-            "projectDate": "2023-10-07",
-            "comments": [],
-            "columns": [],
-            "Users": ["user1"]
-        }],
-        "Users": ["user1"],
-        "tasks": [{
-            "id": "task1",
-            "taskName": "Task 1",
-            "taskPriority": 1,
-            "taskTags": ["tag1", "tag2"],
-            "taskDueDate": "2023-12-05",
-            "taskCreationDate": "2023-10-06",
-            "taskCompletion": false,
-            "taskNotes": "Notes…etc"
-        },
-        {
-            "id": "task2",
-            "taskName": "Task 2",
-            "taskPriority": 2,
-            "taskTags": ["tag3"],
-            "taskDueDate": "2023-11-05",
-            "taskCreationDate": "2023-08-06",
-            "taskCompletion": true,
-            "taskNotes": "Notes…etc"
-        }]
+        ]
     }
 ]

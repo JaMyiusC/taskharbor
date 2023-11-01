@@ -63,7 +63,7 @@ public class UserManagement {
         return false;
     }
 
-    public void saveUsers(String fileName) {
+    public void saveUsers() {
         DataWriter.saveUsers();
     }
 
