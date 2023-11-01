@@ -49,19 +49,19 @@ public class UI {
                 existingTask.removeComment("Not cylindrical enough");
                 existingTask.removeComment("What's a cylinder");
                 existingTask.addComment("How about you do it Jeff");
-                //existingTask.assignUser(jeffGoldblum);
-                //doingColumn.addColumnTask(existingTask);
+                existingTask.assignUser(jeffGoldblum);
+                doingColumn.addColumnTask(existingTask);
             }
 
             // Add a new column called "Abandoned"
             Column abandonedColumn = new Column("Abandoned");
             electricMissiles.getProjectName();
 
-            // Move an existing task to "Abandoned"
-            // Task abandonedTask = electricMissiles.getTaskName("Make impossible burger possible");
-            // if (abandonedTask != null) {
-            //     abandonedColumn.addColumnTask(abandonedTask);
-            // }
+            Move an existing task to "Abandoned"
+            Task abandonedTask = electricMissiles.getTaskName("Make impossible burger possible");
+            if (abandonedTask != null) {
+                abandonedColumn.addColumnTask(abandonedTask);
+            }
 
             // Print the scrum board to a txt file
             printScrumBoardToFile(electricMissiles);
@@ -70,11 +70,11 @@ public class UI {
         }
     }
 
-    // Helper method to print the scrum board to a txt file
-    // private void printScrumBoardToFile(Project project) {
-    //     project.printScrumBoardToFile("scrum_board.txt");
-    //     System.out.println("Scrum board printed to scrum_board.txt");
-    // }
+    Helper method to print the scrum board to a txt file
+    private void printScrumBoardToFile(Project project) {
+        project.printScrumBoardToFile("scrum_board.txt");
+        System.out.println("Scrum board printed to scrum_board.txt");
+    }
 
     public static void main(String[] args) {
         UI myTest = new UI();
