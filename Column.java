@@ -5,15 +5,9 @@ public class Column {
     private static int columnPosition;
     private ArrayList<Task> columnTaskList;
 
-<<<<<<< HEAD
-    public Column(String columnName, int columnPosition) {
-        Column.columnName = columnName;
-        Column.columnPosition = columnPosition;
-=======
     public Column(String columnName, int columnPosition, ArrayList<Task> columnTaskList ) {
         this.columnName = columnName;
         this.columnPosition = columnPosition;
->>>>>>> 6197dbd093d129af4b832acf8547716a2fa149dc
         this.columnTaskList = new ArrayList<>();
     }
 
