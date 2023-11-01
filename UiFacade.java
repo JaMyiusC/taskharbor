@@ -5,6 +5,7 @@ public class UiFacade {
     // Add fields for managing tasks, columns, etc.
 
     private User user;
+    private Project currentProject;
     public UiFacade() {
         // Initialize other managers and data structures
     }
@@ -32,66 +33,67 @@ public class UiFacade {
 
     // Task-related methods
 
-    public boolean addTask(String taskName, String taskNotes) {
-        return false;
+    public Project addProject(String name, Date date, ArrayList<Column> columns){
+        currentProject = new Project(name, date, columns);
+        currentProject.saveProjects(currentProject);
+        return currentProject;
     }
 
-    public boolean removeTask(String taskName) {
-        return false;
+    public boolean addTask(String taskName, ArrayList<String> taskTags, String taskNotes) {
+        if (user != null) {
+            Task taskManager = Task.getInstance();
+            Task task = new Task(taskName, taskTags, taskNotes);
+            return taskManager.addTask(task, user);
+        }
+        return false; // User is not logged in
     }
 
     public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, String type) {
-        // Placeholder implementation
-        return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
+        if (user != null) {
+            User newUser = new User(firstName, lastName, userName, password, email, phoneNumber, address); //?????????
+            
+            return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
+        }
+        return false; // User is not logged in or is not an admin
     }
 
     public Object getCurrentUser() {
-        return null;
-    }
-
-    public boolean editUserName(String userName, String newUserName) {
-    // Placeholder implementation
-    return false;
-    }
-
-    public boolean removeUser(String userName) {
-    // Placeholder implementation
-    return false;
-    }
-
-    public boolean addUserToGroup(String group, String userName) {
-    // Placeholder implementation
-    return false;
-    }
-
-    public boolean removeUserFromGroup(String group, String userName) {
-    // Placeholder implementation
-    return false;
+        return user;
     }
    
-    public Boolean addColumn(Column column) {
-        // Placeholder implementation
-        return addColumn(column);
+    public boolean addColumn(String columnName, ArrayList<Task> tasks) {
+        if (user != null) {
+            Column column = Column.getInstance();
+            Column newColumn = new Column(columnName, tasks);
+            return column.addColumn(newColumn, tasks);
+        }
+        return false; // User is not logged in
     }
     
-    public Boolean removeColumn(Column column) {
-        // Placeholder implementation
-        return removeColumn(column);
+    public boolean addTask(String taskName, String taskNotes, int taskPriority, Date date, String taskComments) {
+        if (user != null) {
+            Task task = Task.getInstance();
+
+            // Create a new task using the provided information
+            Task newTask = new Task(taskName, taskNotes, taskPriority, date, taskComments);
+            // Add the task using the TaskManager
+            return task.addTask(newTask, user);
+        }
+        return false; // User is not logged in
     }
 
-    public ArrayList<String> getTaskComments(String taskName) {
-        // Placeholder implementation
-        return null;
+    public boolean addTaskComments(String taskName, String comment) {
+        if (user != null) {
+            Task taskManager = Task.getInstance();
+
+            // Call the addComment method in TaskManager
+            return taskManager.addComment(taskName, comment, user);
+        }
+        return false; // User is not logged in
     }
-    
-    public User getUser(String userName,String password) {
-        // Placeholder implementation
-        return UserManagement.getInstance().getUser(userName, password);
-    }
-    
-    public Boolean getColumn(String columnName) {
-        // Placeholder implementation
-        return null;
+
+    public static void main(String[] args){
+        //?
     }
     
 }
