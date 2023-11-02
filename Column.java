@@ -11,7 +11,7 @@ public class Column {
         this.columnTaskList = new ArrayList<>();
     }
 
-    public Column(String string) {
+    public Column(String string, ArrayList<Task> columnTaskList2) {
     }
 
     public String getColumnName() {

@@ -62,6 +62,7 @@ public class Project {
     }
 }
  */
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -72,7 +73,7 @@ public class Project {
     private boolean completed; // New field to track completion status
 
     // Constructor for the Project class
-    public Project(String projectName, Date projectDate) {
+    public Project(String projectName, Date projectDate, ArrayList<Column> columns) {
         this.projectName = projectName;
         this.projectDate = projectDate;
         this.projectId = UUID.randomUUID();
