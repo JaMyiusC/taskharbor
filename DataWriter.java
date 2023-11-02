@@ -10,8 +10,8 @@ public class DataWriter {
 		JSONArray jsonUsers = new JSONArray();
 		
 		//creating all the json objects
-		for(int i=0; i< users.size(); i++) {
-			jsonUsers.add(getUserJSON(users.get(i)));
+		for(User user: users) {
+			jsonUsers.add(getUserJSON(user));
 		}
 		
 		//Write JSON file
@@ -29,8 +29,8 @@ public class DataWriter {
 		ArrayList<Task> tasks = TaskManagement.getInstance().getTaskList();
 		JSONArray jsonTasks = new JSONArray();
 
-		for(int i=0; i<tasks.size();i++) {
-			jsonTasks.add(getTaskJSON(tasks.get(i)));
+		for(Task task: tasks) {
+			jsonTasks.add(getTaskJSON(task));
 		}
 
 		try(FileWriter file = new FileWriter("json/project.json")){
@@ -42,7 +42,7 @@ public class DataWriter {
 			e.printStackTrace();
 		}
 	}
-	 public static void saveColumns() {
+	 /*public static void saveColumns() {
 		ArrayList<Column> columns = columnManager.getInstance().getColumnList();
 		JSONArray jsonColumns = new JSONArray();
 	
@@ -56,7 +56,7 @@ public class DataWriter {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	} 
+	} */ 
 
 	public static void saveProjects() {
 		ArrayList<Project> projects = ProjectManager.getInstance();
