@@ -44,7 +44,7 @@ public class DataWriter {
 		}
 	}
 	public static void saveColumns() {
-		ArrayList<Column> columns = ProjectManager.getInstance().getAllColumns();
+		ArrayList<Column> columns = columns.getColumns();
 		JSONArray jsonColumns = new JSONArray();
 		
 		try (FileWriter file = new FileWriter("json/project.json")) {
