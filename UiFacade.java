@@ -35,12 +35,12 @@ public class UiFacade {
 	public User getCurrentUser() {
 		return currentUser;
 	}
-    /* 
+    
 	//Returns true if item is found, and false otherwise
-	public boolean findItem(String itemName) {
-		return items.haveItem(itemName);
-	}
-	
+	public ProjectManager getProjectManager() {
+        return ProjectManager.getInstance();
+    }
+	/* 
 	public boolean checkout(String itemName) {
 		if(!findItem(itemName))return false;
 		
