@@ -54,7 +54,7 @@ public class DataReader {
                 // Assuming projectDate is stored as a string, you may need to parse it accordingly
                 String projectDateString = (String) projectJSON.get("projectDate");
                 Date projectDate = parseDate(projectDateString);
-                ArrayList<Column> columns = getColumns((JSONArray)projectJSON.get("columns"));
+                ArrayList<Column> columns = getColumns();
 
                 String columnName = (String) projectJSON.get("columnName"); 
 
@@ -69,8 +69,13 @@ public class DataReader {
         return null;
     }
 
-     public static ArrayList<Column> getColumns(JSONArray columnListJSON) {
+     public static ArrayList<Column> getColumns() {
         ArrayList<Column> columnList = new ArrayList<>();
+
+        try {
+            FileReader reader = new FileReader("json/columns.json");  // Corrected the file path
+            JSONParser parser = new JSONParser();
+            JSONArray columnListJSON = (JSONArray) parser.parse(reader);
 
         for (int i = 0; i < columnListJSON.size(); i++) {
             JSONObject columnJSON = (JSONObject) columnListJSON.get(i);
@@ -78,6 +83,9 @@ public class DataReader {
             ArrayList<Task> columnTaskList = getTasks((JSONArray)columnJSON.get("tasks"));
 
             columnList.add(new Column(columnName, columnTaskList));
+        }
+        }   catch (Exception e) {
+            e.printStackTrace();
         }
         return columnList;
     }

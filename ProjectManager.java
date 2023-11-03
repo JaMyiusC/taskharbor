@@ -7,9 +7,11 @@ import java.util.HashMap;
 public class ProjectManager {
     private static ProjectManager projectManager;
     private ArrayList<Project> projects = new ArrayList<Project>();
+    private ArrayList<Column> columnsList = new ArrayList<Column>();
 
     private ProjectManager() {
         projects = DataReader.getProjects();
+        columnsList = DataReader.getColumns();
     }
 
     /**
@@ -48,11 +50,7 @@ public class ProjectManager {
     }
 
     public ArrayList<Column> getAllColumns(){
-        ArrayList<Column> columns = new ArrayList<>();
-        for(Project project : projects){
-            columns.add(project.getColumn());
-        }
-        return columns;
+        return columnsList;
     }
 
     public void saveProjects() {
