@@ -8,7 +8,7 @@ public class Task {
     private int taskPriority;
     private Date taskDueDate;
     private String taskNotes;
-    private static ArrayList<comments> taskComments;
+    private ArrayList<comments> taskComments;
 
     // Constructor
     public Task(String taskName, int taskPriority, Date taskDueDate, String taskNotes , ArrayList<comments> taskComments) {
@@ -16,10 +16,7 @@ public class Task {
         this.taskPriority = taskPriority;
         this.taskDueDate = taskDueDate;
         this.taskNotes = taskNotes;
-        Task.taskComments = taskComments; 
-    }
-
-    public Task(String taskName2, int taskPriority2, String string, Object object) {
+        this.taskComments = taskComments; 
     }
 
     // Getters and Setters
@@ -55,7 +52,7 @@ public class Task {
         this.taskNotes = taskNotes;
     }
 
-     public static ArrayList<comments> getComments(){
+     public ArrayList<comments> getComments(){
         return taskComments;
     }
  
@@ -65,19 +62,16 @@ public class Task {
 
     @Override
     public String toString() {
-        String toReturn = "";
-        for(int i=0; i<taskComments.size();i++)
-        {
-            toReturn += taskComments.get(i).toString();
+        StringBuilder commentsString = new StringBuilder();
+        for (comments comment : taskComments) {
+            commentsString.append(comment.toString()).append("\n");
         }
-
 
         return "Task Name: " + taskName +
                "\nPriority: " + taskPriority +
                "\nDue Date: " + taskDueDate +
                "\nNotes: " + taskNotes +
-               toReturn;
-
+               "\nComments:\n" + commentsString;
     }
 
     public Object getTaskCompletion() {

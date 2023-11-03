@@ -7,7 +7,7 @@ public class Column {
 
     public Column(String columnName, int columnPosition, ArrayList<Task> columnTaskList) {
         this.columnName = columnName;
-        this.columnPosition = 1;
+        this.columnPosition = 0;
         this.columnTaskList = new ArrayList<>();
     }
 
@@ -16,7 +16,7 @@ public class Column {
     }
 
     public void setColumnName(String columnName) {
-        Column.columnName = columnName;
+        this.columnName = columnName;
     }
 
     public ArrayList<Task> getColumnTaskList() {
@@ -50,7 +50,6 @@ public class Column {
     }
 
     public static int getPosition() {
-        columnPosition++;
         return columnPosition;
     }
 }

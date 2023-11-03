@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class UI {
 	private static final String WELCOME_MESSAGE = "Welcome to our Library";
-	private String[] mainMenuOptions = {"Create Account", "Login", "Projects","Logout"};
+	private String[] mainMenuOptions = {"Create Account", "Login", "Projects", "Columns", "Tasks", "Logout"};
 	private Scanner scanner;
     private UiFacade UiFacade;
 	
@@ -47,6 +47,20 @@ public class UI {
                         getProjectManager();
                         break;
                     }
+				case(3):
+					if(UiFacade.getCurrentUser() == null) {
+						System.out.println("You must be logged in to view columns");
+					} else {
+						getProjectManager();
+						break;
+					}
+				case(4):
+					if(UiFacade.getCurrentUser() == null) {
+						System.out.println("You must be logged in to view tasks");
+					} else {
+						getProjectManager();
+						break;
+					}
 			}
 		}
 		
@@ -114,7 +128,7 @@ public class UI {
         }
 
         for (Project project : projects) {
-            System.out.println(project.getProjectName() + " " + project.getProjectDate() + " " + project.getColumns());
+            System.out.println(project.getProjectName() + "\n" + project.getProjectDate() + "\n" + project.getColumns());
         }
 
         return ProjectManager.getInstance();

@@ -6,8 +6,8 @@ public class TaskManagement {
     private static TaskManagement taskManager;
     private static HashMap<Boolean, ArrayList<Task>> taskList;
 
-    public TaskManagement() {
-        TaskManagement.taskList = new HashMap<>();
+    private TaskManagement() {
+        taskList = new HashMap<>();
         taskList.put(false, new ArrayList<>()); // Initialize an empty list for tasks not completed
         taskList.put(true, new ArrayList<>());  // Initialize an empty list for completed tasks
     }

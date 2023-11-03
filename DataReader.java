@@ -67,44 +67,54 @@ public class DataReader {
         return null;
     }
 
-     public static ArrayList<Column> getColumns() {
+    public static ArrayList<Column> getColumns() {
         ArrayList<Column> columnList = new ArrayList<>();
-
+    
         try {
-            FileReader reader = new FileReader("json/project.json");  // Corrected the file path
+            FileReader reader = new FileReader("json/project.json");
             JSONParser parser = new JSONParser();
-            JSONArray columnListJSON = (JSONArray) parser.parse(reader);
-
-        for (int i = 0; i < columnListJSON.size(); i++) {
-            JSONObject columnJSON = (JSONObject) columnListJSON.get(i);
-            String columnName = (String) columnJSON.get("columnName");
-            ArrayList<Task> columnTaskList = DataReader.getTasks((JSONArray) columnJSON.get("tasks"));
-            
-            columnList.add(new Column(columnName, i, columnTaskList));
-        }
-        }   catch (Exception e) {
+            JSONArray projectListJSON = (JSONArray) parser.parse(reader);
+    
+            for (int i = 0; i < projectListJSON.size(); i++) {
+                JSONObject projectJSON = (JSONObject) projectListJSON.get(i);
+                JSONArray columnsJSON = (JSONArray) projectJSON.get("columns");
+    
+                for (int j = 0; j < columnsJSON.size(); j++) {
+                    JSONObject columnJSON = (JSONObject) columnsJSON.get(j);
+                    String columnName = (String) columnJSON.get("columnName");
+                    ArrayList<Task> columnTaskList = DataReader.getTasks((JSONArray) columnJSON.get("tasks"));
+    
+                    columnList.add(new Column(columnName, j, columnTaskList));
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    
         return columnList;
     }
+    
 
     public static ArrayList<Task> getTasks(JSONArray taskListJSON) {
         ArrayList<Task> taskList = new ArrayList<>();
-        if(taskListJSON == null || taskListJSON.size() == 0)
-            return taskList;
-
+    
+        if(taskListJSON != null){
         for (int i = 0; i < taskListJSON.size(); i++) {
             JSONObject taskJSON = (JSONObject) taskListJSON.get(i);
             String taskName = (String) taskJSON.get("taskName");
             int taskPriority = ((Long) taskJSON.get("priority")).intValue();
             Date taskDueDate = parseDate((String) taskJSON.get("taskDueDates"));
             String taskNotes = (String) taskJSON.get("taskNotes");
-            ArrayList<comments> taskComments = getComments((JSONArray)taskJSON.get("comments"));
-
-            taskList.add(new Task(taskNotes, taskPriority, taskDueDate, taskNotes, taskComments));
+    
+            // Create Task objects and add them to the taskList
+            Task task = new Task(taskName, taskPriority, taskDueDate, taskNotes, taskListJSON);
+            taskList.add(task);
         }
+    }
+    
         return taskList;
     }
+    
 
     public static ArrayList<comments> getComments(JSONArray commentListJSON){
         ArrayList<comments> commentList = new ArrayList<>();
