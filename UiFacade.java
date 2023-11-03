@@ -40,6 +40,52 @@ System.out.println("No user currently logged in.");
 }
 }
 
+public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, String type) {
+// Placeholder implementation
+return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
+}
+
+
+
+
+public Object getCurrentUser() {
+return currentUser;
+}
+
+
+public boolean editUserName(String userName, String newUserName) {
+// Placeholder implementation
+return false;
+}
+
+
+public boolean checkUserPassword(String userName, String password) {
+// Placeholder implementation
+return false;
+}
+
+
+public boolean removeUser(String userName) {
+// Placeholder implementation
+return false;
+}
+
+
+public boolean addUserToGroup(String group, String userName) {
+// Placeholder implementation
+return false;
+}
+
+
+public boolean removeUserFromGroup(String group, String userName) {
+// Placeholder implementation
+return false;
+}
+
+public User getUser(String userName,String password) {
+// Placeholder implementation
+return UserManagement.getInstance().getUser(userName, password);
+}
 
 // Task-related methods
 
@@ -95,47 +141,7 @@ return false;
 // User-related methods
 
 
-public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, String type) {
-// Placeholder implementation
-return UserManagement.getInstance().addUser(firstName, lastName, userName, password, email, phoneNumber, address);
-}
 
-
-
-
-public Object getCurrentUser() {
-return currentUser;
-}
-
-
-public boolean editUserName(String userName, String newUserName) {
-// Placeholder implementation
-return false;
-}
-
-
-public boolean checkUserPassword(String userName, String password) {
-// Placeholder implementation
-return false;
-}
-
-
-public boolean removeUser(String userName) {
-// Placeholder implementation
-return false;
-}
-
-
-public boolean addUserToGroup(String group, String userName) {
-// Placeholder implementation
-return false;
-}
-
-
-public boolean removeUserFromGroup(String group, String userName) {
-// Placeholder implementation
-return false;
-}
 // Project-related methods
 
 
@@ -214,10 +220,7 @@ public ArrayList<String> getTaskComments(String taskName) {
 // Placeholder implementation
 return null;
 }
-public User getUser(String userName,String password) {
-// Placeholder implementation
-return UserManagement.getInstance().getUser(userName, password);
-}
+
 public Boolean getColumn(String columnName) {
 // Placeholder implementation
 return null;
@@ -235,14 +238,7 @@ return null;
 }
 
 
-class UserManager {
 
-
-public static Object getInstance() {
-return null;
-}
-// Placeholder implementation
-}
 
 
 class ProjectManager {
@@ -311,6 +307,15 @@ public void setTaskNotes(String newTaskNotes) {
 public void setTaskDueDate(Date newTaskDueDate) {
 }
 */
+class UserManager {
+
+
+public static Object getInstance() {
+return null;
+}
+// Placeholder implementation
+}
+
 public void assignUser(User jeffGoldblum) {
 }
 }
