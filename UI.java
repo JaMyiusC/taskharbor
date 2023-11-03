@@ -86,14 +86,14 @@ public class UI {
 import java.util.Scanner;
 
 public class UI {
-	private static final String WELCOME_MESSAGE = "Welcome to our Library";
+	private static final String WELCOME_MESSAGE = "Welcome to taskharbor !";
 	private String[] mainMenuOptions = {"Create Account", "Login", "Find Item","Checkout Item","Rate an Item","Pay a Fine","Logout"};
 	private Scanner scanner;
-	private Library library;
+	private UiFacade scenario;
 	
-	LibraryUI(){
+	UI(){
 		scanner = new Scanner(System.in);
-		library = new Library();
+		scenario = new UiFacade();
 	}
 	
 	public void run() {
@@ -112,7 +112,7 @@ public class UI {
 			
 			//if they picked the last option then log them out
 			if(userCommand == mainMenuOptions.length -1) {
-				library.logout();
+				scenario.logout();
 				break;
 			}
 		
@@ -169,7 +169,7 @@ public class UI {
 		int age = Integer.parseInt(getField("Age"));
 		String phoneNumber = getField("Phone Number");
 		
-		if(library.createAccount(userName, firstName, lastName, age, phoneNumber)) {
+		if(scenario.createAccount(userName, firstName, lastName, age, phoneNumber)) {
 			System.out.println("You have successfully created an account");
 		} else {
 			System.out.println("Sorry an account with that username already exists");
@@ -179,8 +179,8 @@ public class UI {
 	private void login() {
 		String userName = getField("Username");
 		
-		if(library.login(userName)) {
-			User currentUser = library.getCurrentUser();
+		if(scenario.login(userName)) {
+			User currentUser = scenario.getCurrentUser();
 			System.out.println("Welcome " + currentUser.getFirstName() + " " + currentUser.getLastName() + "!");
 		} else {
 			System.out.println("Sorry, invalid username ");
@@ -198,7 +198,7 @@ public class UI {
 		
 		if(item == null)return;
 		
-		if(!library.findItem(item)) {
+		if(!scenario.findItem(item)) {
 			System.out.println("Sorry we couldn't find your item\n");
 			return;
 		}
@@ -212,7 +212,7 @@ public class UI {
 		
 		if(item == null)return;
 		
-		if(!library.checkout(item)) {
+		if(!scenario.checkout(item)) {
 			System.out.println("Sorry we couldn't checkout your item\n");
 			return;
 		}
@@ -234,7 +234,7 @@ public class UI {
 			return;
 		}
 		
-		if(!library.rateItem(item, rating)) {
+		if(!scenario.rateItem(item, rating)) {
 			System.out.println("Sorry we couldn't rate your item\n");
 			return;
 		}
@@ -254,7 +254,7 @@ public class UI {
 			return;
 		}
 		
-		if(!library.payFine(amount)) {
+		if(!scenario.payFine(amount)) {
 			System.out.println("Sorry, you were not able to pay this fine.\n");
 			return;
 		}
@@ -279,8 +279,8 @@ public class UI {
 	
 	
 	public static void main(String[] args) {
-		LibraryUI libraryInterface = new LibraryUI();
-		libraryInterface.run();
+		UiFacade scenarioInterface = new UiFacade();
+		scenarioInterface.run();
 
 	}
 
