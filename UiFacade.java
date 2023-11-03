@@ -307,7 +307,7 @@ public void setTaskNotes(String newTaskNotes) {
 public void setTaskDueDate(Date newTaskDueDate) {
 }
 */
-class UserManager {
+static class UserManager {
 
 
 public static Object getInstance() {

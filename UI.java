@@ -93,6 +93,7 @@ public class UI {
     private UiFacade scenario;
     private ProjectManager projectManager;
     private TaskManagement taskManagement;
+    ArrayList<comments> commentsList = new ArrayList<>();
     
     UI(){
         scanner = new Scanner(System.in);
@@ -194,8 +195,8 @@ public class UI {
 
         System.out.print("Enter task priority: ");
         int taskPriority = Integer.parseInt(scanner.nextLine());
-
-        Task task = new Task(taskName, taskPriority, "", new ArrayList<>());
+ArrayList<comments> commentsList = new ArrayList<>();
+        Task task = new Task("Task Name", 1, null, "Task Notes", commentsList);
         taskManagement.addTask(task);
         System.out.println("Task added successfully!");
     }
