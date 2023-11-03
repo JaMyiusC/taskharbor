@@ -40,7 +40,7 @@ System.out.println("No user currently logged in.");
 }
 }
 
-public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, String type) {
+public boolean addUser(String firstName, String lastName, String userName, String password, String type) {
 // Placeholder implementation
 return UserManagement.getInstance().addUser(firstName, lastName, userName, password);
 }
