@@ -97,9 +97,6 @@ public class DataWriter {
 		personDetails.put("lastName", user.getLastName());
         personDetails.put("userName", user.getUserName());
 		personDetails.put("password", user.getPassword());
-		personDetails.put("email", user.getEmail());
-		personDetails.put("phoneNumber", user.getPhoneNumber());
-		personDetails.put("address", user.getAddress());
 		personDetails.put("userRole", user.getUserRole().toString());
         return personDetails;
 	}

@@ -15,8 +15,8 @@ public class UserManagement {
         return userManager;
     }
 
-    public boolean addUser(String firstName, String lastName, String userName, String password, String email, String phoneNumber,String address) {
-        User user = new User( firstName, lastName, userName, password, email, phoneNumber,address);
+    public boolean addUser(String firstName, String lastName, String userName, String password) {
+        User user = new User( firstName, lastName, userName, password);
         usersList.add(user);
         return true;
     }

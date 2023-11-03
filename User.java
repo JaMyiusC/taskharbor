@@ -10,34 +10,26 @@ public class User {
     private String lastName;
     private String userName;
     private String password;
-    private String email;
-    private String phoneNumber;
-    private String address;
+
     private Role userRole;
 
     // Constructor for creating a new user with a random UUID
-    public User(String firstName, String lastName, String userName, String password, String email, String phoneNumber,String address) {
+    public User(String firstName, String lastName, String userName, String password) {
         this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
         this.userRole = Role.Contributor; // Default role
     }
 
     // Constructor for creating a user from JSON data with a predefined UUID
-    public User(UUID id, String firstName, String lastName, String userName, String password, String email, String phoneNumber, String address, Role role) {
+    public User(UUID id, String firstName, String lastName, String userName, String password, Role role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
         this.userRole = role;
     }
 
@@ -55,7 +47,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User ID: " + id + "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nUsername: " + userName + "\nEmail: " + email + "\nPhone Number: " + phoneNumber + "\nAddress: " + address + "\nUser Role: " + userRole;
+        return "User ID: " + id + "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nUsername: " + userName  + "\nUser Role: " + userRole;
     }
 
     public boolean confirmUser(String userName, String password) {
@@ -86,9 +78,6 @@ public class User {
         writer.write("        \"lastName\": \"" + lastName + "\",\n");
         writer.write("        \"userName\": \"" + userName + "\",\n");
         writer.write("        \"password\": \"" + password + "\",\n");
-        writer.write("        \"email\": \"" + email + "\",\n");
-        writer.write("        \"phoneNumber\": \"" + phoneNumber + "\",\n");
-        writer.write("        \"address\": \"" + address + "\",\n");
         writer.write("        \"userRole\": \"" + userRole + "\",\n"); 
         // Add any other fields you want to include
         writer.write("    },\n");
@@ -116,19 +105,7 @@ public class User {
     public String getPassword(){
         return password;
     }
-
-    public String getEmail(){
-        return email;
-    }
-
-    public  String getPhoneNumber(){
-        return phoneNumber;
-    }
-
-    public String getAddress(){
-        return address;
-    }
-
+    
     public Role getUserRole(){
         return userRole;
     }

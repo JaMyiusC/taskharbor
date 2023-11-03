@@ -29,7 +29,7 @@ public class DataReader {
                 String address = (String) userJSON.get("address");
                 Role userRole = Role.valueOf((String) userJSON.get("userRole"));  // Assuming Role is an enum
 
-                userList.add(new User(id, firstName, lastName, userName, password, email, phoneNumber, address, userRole));
+                userList.add(new User(id, firstName, lastName, userName, password, userRole));
             }
             return userList;
 
