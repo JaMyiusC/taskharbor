@@ -73,7 +73,7 @@ public class DataReader {
         ArrayList<Column> columnList = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader("json/columns.json");  // Corrected the file path
+            FileReader reader = new FileReader("json/project.json");  // Corrected the file path
             JSONParser parser = new JSONParser();
             JSONArray columnListJSON = (JSONArray) parser.parse(reader);
 
@@ -92,6 +92,8 @@ public class DataReader {
 
     public static ArrayList<Task> getTasks(JSONArray taskListJSON) {
         ArrayList<Task> taskList = new ArrayList<>();
+        if(taskListJSON == null || taskListJSON.size() == 0)
+            return taskList;
 
         for (int i = 0; i < taskListJSON.size(); i++) {
             JSONObject taskJSON = (JSONObject) taskListJSON.get(i);
@@ -121,6 +123,8 @@ public class DataReader {
 
     // Add a method to parse Date from a string
     private static Date parseDate(String dateString) {
+        if(dateString == null)
+            return null;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // format
         try {
             Date parseDate = dateFormat.parse(dateString);
