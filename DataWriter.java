@@ -31,6 +31,7 @@ public class DataWriter {
 
 		for(Task task: tasks) {
 			jsonTasks.add(getTaskJSON(task));
+
 		}
 
 		try(FileWriter file = new FileWriter("json/project.json")){
@@ -42,21 +43,17 @@ public class DataWriter {
 			e.printStackTrace();
 		}
 	}
-	 /*public static void saveColumns() {
-		ArrayList<Column> columns = columnManager.getInstance().getColumnList();
+	public static void saveColumns() {
+		ArrayList<Column> columns = ProjectManager.getInstance().getAllColumns();
 		JSONArray jsonColumns = new JSONArray();
-	
-		for (Column column : columns) {
-			jsonColumns.add(getColumnJSON(column));
-		}
-	
+		
 		try (FileWriter file = new FileWriter("json/project.json")) {
-			file.write(jsonColumns.toJSONString());
+			file.write(columns.toString());
 			file.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	} */ 
+	} 
 
 	public static void saveProjects() {
 		ArrayList<Project> projects = ProjectManager.getInstance();

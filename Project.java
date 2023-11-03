@@ -67,6 +67,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Project {
+    public Column Columns;
     private String projectName;
     private Date projectDate;
     private UUID projectId;
@@ -104,5 +105,10 @@ public class Project {
     public comments getTaskByName(String string) {
         return null;
     }
+
+    public Column getColumn() {
+        return Column.getInstance();
+    }
+
 }
  

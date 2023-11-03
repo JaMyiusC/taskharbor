@@ -11,9 +11,6 @@ public class Column {
         this.columnTaskList = new ArrayList<>();
     }
 
-    public Column(String string, ArrayList<Task> columnTaskList2) {
-    }
-
     public String getColumnName() {
         return columnName;
     }
@@ -48,5 +45,9 @@ public class Column {
     }
 
     public void addColumnTask(comments existingTask) {
+    }
+
+    public static Column getInstance() {
+        return Column.getInstance();
     }
 }

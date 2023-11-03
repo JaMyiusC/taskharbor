@@ -47,7 +47,19 @@ public class ProjectManager {
         return projects;
     }
 
+    public ArrayList<Column> getAllColumns(){
+        ArrayList<Column> columns = new ArrayList<>();
+        for(Project project : projects){
+            columns.add(project.getColumn());
+        }
+        return columns;
+    }
+
     public void saveProjects() {
         DataWriter.saveProjects();
+    }
+
+    public void saveColumns() {
+        DataWriter.saveColumns();
     }
 }
