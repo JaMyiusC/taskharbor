@@ -44,7 +44,7 @@ public class DataReader {
         ArrayList<Project> projectList = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader("json/projects-test.json");  // Corrected the file path
+            FileReader reader = new FileReader("json/project.json");  // Corrected the file path
             JSONParser parser = new JSONParser();
             JSONArray projectListJSON = (JSONArray) parser.parse(reader);
 
@@ -55,8 +55,6 @@ public class DataReader {
                 String projectDateString = (String) projectJSON.get("projectDate");
                 Date projectDate = parseDate(projectDateString);
                 ArrayList<Column> columns = getColumns();
-
-                String columnName = (String) projectJSON.get("columnName"); 
 
                 projectList.add(new Project(projectName, projectDate, columns));
             }
@@ -80,9 +78,8 @@ public class DataReader {
         for (int i = 0; i < columnListJSON.size(); i++) {
             JSONObject columnJSON = (JSONObject) columnListJSON.get(i);
             String columnName = (String) columnJSON.get("columnName");
-            JSONArray taskListJSON = (JSONArray) columnJSON.get("tasks");
-            ArrayList<Task> columnTaskList = getTasks(taskListJSON);
-
+            ArrayList<Task> columnTaskList = DataReader.getTasks((JSONArray) columnJSON.get("tasks"));
+            
             columnList.add(new Column(columnName, i, columnTaskList));
         }
         }   catch (Exception e) {
