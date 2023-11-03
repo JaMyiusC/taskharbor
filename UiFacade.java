@@ -1,4 +1,75 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+public class UiFacade {
+	//private TaskManagement taskManager;
+    //private ProjectManager projectManager;
+    private UserManagement userManager;
+	private User currentUser;
+	
+	public UiFacade() {
+       // taskManager = TaskManagement.getInstance();
+       //projectManager = ProjectManager.getInstance();
+        userManager = UserManagement.getInstance();
+    }
+	
+	
+	//creates a new user account
+	public boolean createAccount(String userName, String firstName, String lastName, String password)
+	{
+		return userManager.addUser(userName,  firstName,  lastName, password);
+
+	}
+	
+	public boolean login(String userName, String password) {
+        if(userManager.hasUser(userName, password)) {
+            currentUser = userManager.getUser(userName, password);
+            return true;
+        }
+        return false;
+	}
+	
+	public User getCurrentUser() {
+		return currentUser;
+	}
+    /* 
+	//Returns true if item is found, and false otherwise
+	public boolean findItem(String itemName) {
+		return items.haveItem(itemName);
+	}
+	
+	public boolean checkout(String itemName) {
+		if(!findItem(itemName))return false;
+		
+		//checkout the item
+		//need a user then have them checkout an item
+		return true;
+	}
+	
+	public boolean rateItem(String itemName, int rating) {
+		if(!findItem(itemName))return false;
+		
+		if(rating < 0 || rating > 5) return false;
+		
+		return true;
+	}
+	
+	public boolean payFine(int amount) {
+		if(amount < 0) return false;
+		
+		return true; 	//successfully paid fine
+	}
+    */
+	
+	public void logout() {
+		userManager.saveUsers();
+	}
+}
+/* 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -85,8 +156,9 @@ public User getUser(String userName,String password) {
 // Placeholder implementation
 return UserManagement.getInstance().getUser(userName, password);
 }
+ */
 
-// Task-related methods
+//Task-related methods
 
 
 /* public boolean addTask(String taskName, ArrayList<String> taskTags, String taskNotes) {
@@ -305,7 +377,7 @@ public void setTaskNotes(String newTaskNotes) {
 
 public void setTaskDueDate(Date newTaskDueDate) {
 }
-*/
+
 class UserManager {
 
 
@@ -322,4 +394,4 @@ public void assignUser(User jeffGoldblum) {
 public void run() {
 }
 }
-
+*/

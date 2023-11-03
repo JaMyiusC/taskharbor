@@ -69,10 +69,9 @@ public class UI {
 		String userName = getField("Username");
 		String firstName = getField("First Name");
 		String lastName = getField("Last Name");
-		int age = Integer.parseInt(getField("Age"));
-		String phoneNumber = getField("Phone Number");
+		String password = getField("password");
 		
-		if(UserManagement.getUser(userName, password)) {
+		if(UiFacade.createAccount(firstName, lastName, userName, password)) {
 			System.out.println("You have successfully created an account");
 		} else {
 			System.out.println("Sorry an account with that username already exists");
@@ -81,9 +80,10 @@ public class UI {
 	
 	private void login() {
 		String userName = getField("Username");
+        String password = getField("password");
 		
-		if(library.login(userName)) {
-			User currentUser = library.getCurrentUser();
+		if(UiFacade.login(userName, password)) {
+			User currentUser = UiFacade.getCurrentUser();
 			System.out.println("Welcome " + currentUser.getFirstName() + " " + currentUser.getLastName() + "!");
 		} else {
 			System.out.println("Sorry, invalid username ");
@@ -94,7 +94,7 @@ public class UI {
 		System.out.print(prompt + ": ");
 		return scanner.nextLine();
 	}
-	
+	/* 
 	private void findItem() {
 		System.out.println("\n-----Searching the Library-----");
 		String item = getUserItem();
@@ -179,12 +179,10 @@ public class UI {
 			if(command == "n") return null;
 		}
 	}
-	
-	
+	*/
 	public static void main(String[] args) {
-		LibraryUI libraryInterface = new LibraryUI();
-		libraryInterface.run();
-
+		UI ProjectUI= new UI();
+		ProjectUI.run();
 	}
 
 }

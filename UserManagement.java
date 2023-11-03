@@ -45,9 +45,9 @@ public class UserManagement {
         return usersList;
     }
 
-    public boolean hasUser(String userName) {
+    public boolean hasUser(String userName, String password) {
         for (User user : usersList){
-            if(user.getUserName().equals(userName)){
+            if(user.getUserName().equals(userName) && user.getPassword().equals(password)){
                 return true;
             }
         }
