@@ -66,6 +66,7 @@ public class UiFacade {
 	
 	public void logout() {
 		userManager.saveUsers();
+        currentUser = null;
 	}
 }
 /* 

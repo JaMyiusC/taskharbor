@@ -8,7 +8,7 @@ public class UI {
 	
 	UI(){
 		scanner = new Scanner(System.in);
-        UiFacade UiFacade = new UiFacade();
+        UiFacade =  new UiFacade();
 	}
 	
 	public void run() {
@@ -28,6 +28,7 @@ public class UI {
 			//if they picked the last option then log them out
 			if(userCommand == mainMenuOptions.length -1) {
 				UiFacade.logout();
+                System.out.println("You have successfully logged out");
 				break;
 			}
 		
