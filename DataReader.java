@@ -101,7 +101,7 @@ public class DataReader {
             String taskNotes = (String) taskJSON.get("taskNotes");
             ArrayList<comments> taskComments = getComments((JSONArray)taskJSON.get("comments"));
 
-            taskList.add(new Task());
+            taskList.add(new Task(taskNotes, taskPriority, taskDueDate, taskNotes, taskComments));
         }
         return taskList;
     }

@@ -5,7 +5,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;;
 
 public class DataWriter {
-    public static void saveUsers() {
+    private static final Project[] project = null;
+
+	public static void saveUsers() {
 		ArrayList<User> users = UserManagement.getInstance().getUserList();
 		JSONArray jsonUsers = new JSONArray();
 		
@@ -56,10 +58,10 @@ public class DataWriter {
 	} 
 
 	public static void saveProjects() {
-		ArrayList<Project> projects = ProjectManager.getInstance();
+		ProjectManager projects = ProjectManager.getInstance();
 		JSONArray jsonProjects = new JSONArray();
 	
-		for (Project project : projects) {
+		for (Project project : project) {
 			jsonProjects.add(getProjectJSON(project));
 		}
 	

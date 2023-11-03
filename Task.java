@@ -19,6 +19,9 @@ public class Task {
         this.taskComments = taskComments; 
     }
 
+    public Task(String taskName2, int taskPriority2, String string, Object object) {
+    }
+
     // Getters and Setters
     public String getTaskName() {
         return taskName;
@@ -75,6 +78,17 @@ public class Task {
                "\nNotes: " + taskNotes +
                toReturn;
 
+    }
+
+    public Object getTaskCompletion() {
+        return null;
+    }
+
+    public Object getTaskTags() {
+        return null;
+    }
+
+    public void setTaskTags(ArrayList<String> newTaskTags) {
     }
 }
 
