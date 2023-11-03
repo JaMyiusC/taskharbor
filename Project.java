@@ -71,12 +71,14 @@ public class Project {
     private String projectName;
     private Date projectDate;
     private UUID projectId;
+    private ArrayList<Column> columns;
     private boolean completed; // New field to track completion status
 
     // Constructor for the Project class
     public Project(String projectName, Date projectDate, ArrayList<Column> columns) {
         this.projectName = projectName;
         this.projectDate = projectDate;
+        this.columns = new ArrayList<>();
         this.projectId = UUID.randomUUID();
         this.completed = false; // A new project is not completed by default
     }
@@ -102,13 +104,30 @@ public class Project {
         return projectId;
     }
 
+    public ArrayList<Column> getColumns() {
+        return columns;
+    }
+
+    public void addColumn(Column column) {
+        columns.add(column);
+    }
+
+    public void displayProjectDetails() {
+        System.out.println("Project Name: " + projectName);
+        System.out.println("Columns:");
+        for (Column column : columns) {
+            displayColumnDetails(column);
+        }
+    }
+
+    private String displayColumnDetails(Column column) {
+        return column.toString();
+    }
+
     public comments getTaskByName(String string) {
         return null;
     }
 
-    public Column getColumn() {
-        return Column.getInstance();
-    }
 
 }
  

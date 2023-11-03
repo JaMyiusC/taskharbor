@@ -5,13 +5,13 @@ public class Column {
     private static int columnPosition;
     private ArrayList<Task> columnTaskList;
 
-    public Column(String columnName, ArrayList<Task> columnTaskList ) {
+    public Column(String columnName, int columnPosition, ArrayList<Task> columnTaskList) {
         this.columnName = columnName;
-        this.columnPosition = columnPosition;
+        this.columnPosition = 1;
         this.columnTaskList = new ArrayList<>();
     }
 
-    public String getColumnName() {
+    public static String getColumnName() {
         return columnName;
     }
 
@@ -31,17 +31,11 @@ public class Column {
         return columnTaskList.remove(task);
     }
 
-    public static String getName() {
-        return columnName;
-    }
-
     @Override
     public String toString() {
-        return "Column Name: " + columnName + ", Position: " + columnPosition;
-    }
-
-    public void addColumnTask(comments existingTask) {
-        //missing logic ?
+        return "Column Name: " + columnName + "\n" +
+                "Column Position: " + columnPosition + "\n" +
+                "Column Task List: " + columnTaskList + "\n";
     }
 
     public static Column getInstance() {
@@ -55,7 +49,8 @@ public class Column {
 
     }
 
-    public static Object getPosition() {
+    public static int getPosition() {
+        columnPosition++;
         return columnPosition;
     }
 }

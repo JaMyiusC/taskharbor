@@ -80,9 +80,10 @@ public class DataReader {
         for (int i = 0; i < columnListJSON.size(); i++) {
             JSONObject columnJSON = (JSONObject) columnListJSON.get(i);
             String columnName = (String) columnJSON.get("columnName");
-            ArrayList<Task> columnTaskList = getTasks((JSONArray)columnJSON.get("tasks"));
+            JSONArray taskListJSON = (JSONArray) columnJSON.get("tasks");
+            ArrayList<Task> columnTaskList = getTasks(taskListJSON);
 
-            columnList.add(new Column(columnName, columnTaskList));
+            columnList.add(new Column(columnName, i, columnTaskList));
         }
         }   catch (Exception e) {
             e.printStackTrace();

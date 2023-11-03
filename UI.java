@@ -5,7 +5,7 @@ public class UI {
 	private static final String WELCOME_MESSAGE = "Welcome to our Library";
 	private String[] mainMenuOptions = {"Create Account", "Login", "Projects","Checkout Item","Rate an Item","Pay a Fine","Logout"};
 	private Scanner scanner;
-    private UiFacade UiFacade;;
+    private UiFacade UiFacade;
 	
 	UI(){
 		scanner = new Scanner(System.in);
@@ -106,7 +106,7 @@ public class UI {
 	
     private ProjectManager getProjectManager() {
         System.out.println("-----Projects-----");
-        ArrayList<Project> projects = new ArrayList<Project>();
+        ArrayList<Project> projects = UiFacade.getProjectManager().getAllProjects();
 
         if(projects.isEmpty()) {
             System.out.println("No projects found");
@@ -114,7 +114,7 @@ public class UI {
         }
 
         for (Project project : projects) {
-            System.out.println(project.getProjectName());
+            System.out.println(project.getProjectName() + " " + project.getProjectDate() + " " + project.getColumns());
         }
 
         return ProjectManager.getInstance();

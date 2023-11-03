@@ -16,7 +16,7 @@ public class Task {
         this.taskPriority = taskPriority;
         this.taskDueDate = taskDueDate;
         this.taskNotes = taskNotes;
-        this.taskComments = taskComments; 
+        Task.taskComments = taskComments; 
     }
 
     public Task(String taskName2, int taskPriority2, String string, Object object) {
