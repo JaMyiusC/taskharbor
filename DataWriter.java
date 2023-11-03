@@ -48,6 +48,11 @@ public class DataWriter {
 	public static void saveColumns() {
 		ArrayList<Column> columns = ProjectManager.getInstance().getAllColumns();
 		JSONArray jsonColumns = new JSONArray();
+
+		for (Column column : columns) {
+			jsonColumns.add(getColumnJSON(column));
+		}
+	
 		
 		try (FileWriter file = new FileWriter("json/project.json")) {
 			file.write(columns.toString());
@@ -58,10 +63,11 @@ public class DataWriter {
 	} 
 
 	public static void saveProjects() {
-		ProjectManager projects = ProjectManager.getInstance();
+		ProjectManager projectManager = ProjectManager.getInstance();
+		ArrayList<Project> projects = projectManager.getAllProjects();
 		JSONArray jsonProjects = new JSONArray();
-	
-		for (Project project : project) {
+		
+		for (Project project : projects) {
 			jsonProjects.add(getProjectJSON(project));
 		}
 	
@@ -72,6 +78,7 @@ public class DataWriter {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	 public static JSONObject getProjectJSON(Project project) {
 		JSONObject projectDetails = new JSONObject();
@@ -84,8 +91,9 @@ public class DataWriter {
 	
 	public static JSONObject getColumnJSON(Column column) {
 		JSONObject columnDetails = new JSONObject();
-		columnDetails.put("id", Column.getPosition());
-		columnDetails.put("columnName", Column.getColumnName());
+		Column columnInstance = new Column();
+		columnDetails.put("id", columnInstance.getPosition());
+		columnDetails.put("columnName", columnInstance.getColumnName());
 		
 		return columnDetails;
 	}

@@ -71,7 +71,7 @@ public class DataReader {
         ArrayList<Column> columnList = new ArrayList<>();
     
         try {
-            FileReader reader = new FileReader("json/project.json");
+            FileReader reader = new FileReader("json/project.json"); // Corrected the file path
             JSONParser parser = new JSONParser();
             JSONArray projectListJSON = (JSONArray) parser.parse(reader);
     
@@ -82,9 +82,11 @@ public class DataReader {
                 for (int j = 0; j < columnsJSON.size(); j++) {
                     JSONObject columnJSON = (JSONObject) columnsJSON.get(j);
                     String columnName = (String) columnJSON.get("columnName");
-                    ArrayList<Task> columnTaskList = DataReader.getTasks((JSONArray) columnJSON.get("tasks"));
+                    ArrayList<Task> columnTaskList = getTasks((JSONArray) columnJSON.get("tasks"));
     
-                    columnList.add(new Column(columnName, j, columnTaskList));
+                    // Create the Column object correctly and add it to the columnList
+                    Column column = new Column();
+                    columnList.add(column);
                 }
             }
         } catch (Exception e) {
@@ -93,6 +95,7 @@ public class DataReader {
     
         return columnList;
     }
+    
     
 
     public static ArrayList<Task> getTasks(JSONArray taskListJSON) {

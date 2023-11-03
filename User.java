@@ -10,6 +10,7 @@ public class User {
     private String lastName;
     private String userName;
     private String password;
+    private ProjectManager projectManager;
 
     private Role userRole;
 
@@ -21,6 +22,7 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.userRole = Role.Contributor; // Default role
+        this.projectManager = new ProjectManager();
     }
 
     // Constructor for creating a user from JSON data with a predefined UUID
@@ -31,6 +33,10 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.userRole = role;
+    }
+
+    public ProjectManager getProjectManager() {
+        return projectManager;
     }
 
     // commented out for testing remove after the class is working

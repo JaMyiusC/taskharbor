@@ -9,7 +9,7 @@ public class ProjectManager {
     private ArrayList<Project> projects = new ArrayList<Project>();
     private ArrayList<Column> columnsList = new ArrayList<Column>();
 
-    private ProjectManager() {
+    ProjectManager() {
         projects = DataReader.getProjects();
         columnsList = DataReader.getColumns();
     }
@@ -52,6 +52,29 @@ public class ProjectManager {
     public ArrayList<Column> getAllColumns(){
         return columnsList;
     }
+
+    public boolean addTask(int projectIndex, int columnIndex, String taskName, String taskDescription) {
+        if (projectIndex >= 0 && projectIndex < projects.size()) {
+            Project project = projects.get(projectIndex);
+    
+            if (columnIndex >= 0 && columnIndex < project.getColumns().size()) {
+                Column column = project.getColumns().get(columnIndex);
+                Task task = new Task(taskName, columnIndex, null, taskDescription, null);
+                column.addColumnTask(task);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Project getProject(int index) {
+        if (index >= 0 && index < projects.size()) {
+            return projects.get(index);
+        }
+        return null; // or handle the case when the index is out of bounds
+    }
+    
+    
 
     public void saveProjects() {
         DataWriter.saveProjects();

@@ -1,398 +1,164 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.Date;
 
 public class UiFacade {
-	//private TaskManagement taskManager;
-    //private ProjectManager projectManager;
-    private UserManagement userManager;
-	private User currentUser;
-	
-	public UiFacade() {
-       // taskManager = TaskManagement.getInstance();
-       //projectManager = ProjectManager.getInstance();
-        userManager = UserManagement.getInstance();
-    }
-	
-	
-	//creates a new user account
-	public boolean createAccount(String userName, String firstName, String lastName, String password)
-	{
-		return userManager.addUser(userName,  firstName,  lastName, password);
+    private User currentUser;
 
-	}
-	
-	public boolean login(String userName, String password) {
-        if(userManager.hasUser(userName, password)) {
-            currentUser = userManager.getUser(userName, password);
+    public boolean createAccount(String firstName, String lastName, String userName, String password) {
+        // Check if the username already exists
+        UserManagement userManagement = UserManagement.getInstance();
+        if (userManagement.hasUser(userName, password)) {
+            return false;
+        }
+
+        // Create a new user and add it to the user list
+        userManagement.addUser(firstName, lastName, userName, password);
+        return true;
+    }
+
+    public boolean login(String userName, String password) {
+        // Check if a user with the given username and password exists
+        UserManagement userManagement = UserManagement.getInstance();
+        if (userManagement.hasUser(userName, password)) {
+            currentUser = userManagement.getUser(userName, password);
             return true;
         }
         return false;
-	}
-	
-	public User getCurrentUser() {
-		return currentUser;
-	}
-    
-	//Returns true if item is found, and false otherwise
-	public ProjectManager getProjectManager() {
-        return ProjectManager.getInstance();
     }
-	/* 
-	public boolean checkout(String itemName) {
-		if(!findItem(itemName))return false;
-		
-		//checkout the item
-		//need a user then have them checkout an item
-		return true;
-	}
-	
-	public boolean rateItem(String itemName, int rating) {
-		if(!findItem(itemName))return false;
-		
-		if(rating < 0 || rating > 5) return false;
-		
-		return true;
-	}
-	
-	public boolean payFine(int amount) {
-		if(amount < 0) return false;
-		
-		return true; 	//successfully paid fine
-	}
-    */
-	
-	public void logout() {
-		userManager.saveUsers();
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void logout() {
         currentUser = null;
-	}
+    }
+
+    public boolean addProject(String projectName, Date projectDate, ArrayList<Column> columns) {
+        if (currentUser != null) {
+            ProjectManager projectManager = currentUser.getProjectManager();
+            Project project = new Project(projectName, projectDate, columns);
+            projectManager.addProject(project);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeProject(int projectIndex) {
+        if (currentUser != null) {
+            ProjectManager projectManager = currentUser.getProjectManager();
+            ArrayList<Project> projects = projectManager.getAllProjects();
+            if (projectIndex >= 0 && projectIndex < projects.size()) {
+                projects.remove(projectIndex);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean addColumn(int projectIndex, String columnName) {
+        if (currentUser != null) {
+            ProjectManager projectManager = currentUser.getProjectManager();
+            ArrayList<Project> projects = projectManager.getAllProjects();
+            if (projectIndex >= 0 && projectIndex < projects.size()) {
+                Project project = projects.get(projectIndex);
+                project.addColumn(new Column());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeColumn(int projectIndex, int columnIndex) {
+        if (currentUser != null) {
+            ProjectManager projectManager = currentUser.getProjectManager();
+            ArrayList<Project> projects = projectManager.getAllProjects();
+            if (projectIndex >= 0 && projectIndex < projects.size()) {
+                Project project = projects.get(projectIndex);
+                ArrayList<Column> columns = project.getColumns();
+                if (columnIndex >= 0 && columnIndex < columns.size()) {
+                    columns.remove(columnIndex);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean addTask(int projectIndex, int columnIndex, String taskName, String taskDescription) {
+        if (currentUser != null) {
+            ProjectManager projectManager = currentUser.getProjectManager();
+            ArrayList<Project> projects = projectManager.getAllProjects();
+            if (projectIndex >= 0 && projectIndex < projects.size()) {
+                Project project = projects.get(projectIndex);
+                ArrayList<Column> columns = project.getColumns();
+                if (columnIndex >= 0 && columnIndex < columns.size()) {
+                    Column column = columns.get(columnIndex);
+                    Task task = new Task(taskName, columnIndex, null, taskDescription, null);
+                    column.addColumnTask(task);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean removeTask(int projectIndex, int columnIndex, int taskIndex) {
+        if (currentUser != null) {
+            ProjectManager projectManager = currentUser.getProjectManager();
+            ArrayList<Project> projects = projectManager.getAllProjects();
+            if (projectIndex >= 0 && projectIndex < projects.size()) {
+                Project project = projects.get(projectIndex);
+                ArrayList<Column> columns = project.getColumns();
+                if (columnIndex >= 0 && columnIndex < columns.size()) {
+                    Column column = columns.get(columnIndex);
+                    ArrayList<Task> tasks = column.getColumnTaskList();
+                    if (taskIndex >= 0 && taskIndex < tasks.size()) {
+                        tasks.remove(taskIndex);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean editColumn(int projectIndex, int columnIndex, String newColumnName) {
+        if (currentUser != null) {
+            ProjectManager projectManager = currentUser.getProjectManager();
+            ArrayList<Project> projects = projectManager.getAllProjects();
+            if (projectIndex >= 0 && projectIndex < projects.size()) {
+                Project project = projects.get(projectIndex);
+                ArrayList<Column> columns = project.getColumns();
+                if (columnIndex >= 0 && columnIndex < columns.size()) {
+                    Column column = columns.get(columnIndex);
+                    column.setColumnName(newColumnName);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean editTask(int projectIndex, int columnIndex, int taskIndex, String newTaskName, String newTaskDescription) {
+        if (currentUser != null) {
+            ProjectManager projectManager = currentUser.getProjectManager();
+            ArrayList<Project> projects = projectManager.getAllProjects();
+            if (projectIndex >= 0 && projectIndex < projects.size()) {
+                Project project = projects.get(projectIndex);
+                ArrayList<Column> columns = project.getColumns();
+                if (columnIndex >= 0 && columnIndex < columns.size()) {
+                    Column column = columns.get(columnIndex);
+                    ArrayList<Task> tasks = column.getColumnTaskList();
+                    if (taskIndex >= 0 && taskIndex < tasks.size()) {
+                        Task task = tasks.get(taskIndex);
+                        task.setTaskName(newTaskName);
+                        task.setTaskNotes(newTaskDescription);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
-/* 
-import java.util.ArrayList;
-import java.util.Date;
-
-
-public class UiFacade {
-// Add fields for managing tasks, columns, etc.
-private TaskManagement taskManager = new TaskManagement();
-// private ProjectManager projectManager = new ProjectManager();
-// private UserManager userManager = new UserManager();
-private User currentUser;
-private User user;
-public UiFacade() {
-// Initialize other managers and data structures
-}
-
-
-//add a login method, and a signup method, each is one line and just calls the appropriate method on the usermanager
-
-
-public boolean userLogin(String userName, String userPassword) {
-user = UserManagement.getInstance().getUser(userName, userPassword);
-return user != null;
-}
-
-
-public void login(String userName, String userPassword) {
-if (userLogin(userName, userPassword)) {
-System.out.println("Login successful.");
-} else {
-System.out.println("Login failed. Please check your credentials.");
-}
-}
-public void logout() {
-if (user != null) {
-System.out.println("Logging out user: " + user.getUserName());
-UserManagement.getInstance().saveUsers();
-user = null; // Reset the current user after logout
-} else {
-System.out.println("No user currently logged in.");
-}
-}
-
-public boolean addUser(String firstName, String lastName, String userName, String password, String type) {
-// Placeholder implementation
-return UserManagement.getInstance().addUser(firstName, lastName, userName, password);
-}
-
-
-
-public Object getCurrentUser() {
-return currentUser;
-}
-
-
-public boolean editUserName(String userName, String newUserName) {
-// Placeholder implementation
-return false;
-}
-
-
-public boolean checkUserPassword(String userName, String password) {
-// Placeholder implementation
-return false;
-}
-
-
-public boolean removeUser(String userName) {
-// Placeholder implementation
-return false;
-}
-
-
-public boolean addUserToGroup(String group, String userName) {
-// Placeholder implementation
-return false;
-}
-
-
-public boolean removeUserFromGroup(String group, String userName) {
-// Placeholder implementation
-return false;
-}
-
-public User getUser(String userName,String password) {
-// Placeholder implementation
-return UserManagement.getInstance().getUser(userName, password);
-}
- */
-
-//Task-related methods
-
-
-/* public boolean addTask(String taskName, ArrayList<String> taskTags, String taskNotes) {
-if (user != null) {
-// Create a new task and set its properties
-Task newTask = new Task();
-newTask.setTaskName(taskName);
-newTask.setTaskTags(taskTags);
-newTask.setTaskNotes(taskNotes);
-// Add the task to the task manager (assuming you have a task manager)
-if (TaskManagement.addTask(newTask)) {
-System.out.println("Task added successfully.");
-return true;
-} else {
-System.out.println("Failed to add the task.");
-}
-} else {
-System.out.println("No user currently logged in. Please log in first.");
-}
-
-
-return false;
-}
-
-
-public boolean removeTask(String taskName) {
-if (user != null) {
-// Check if the task with the given name exists and remove it if found
-if (TaskManagement.getInstance().hasTask(taskName)) {
-if (TaskManagement.getInstance().removeTask(taskName)) {
-System.out.println("Task '" + taskName + "' removed successfully.");
-return true;
-} else {
-System.out.println("Failed to remove the task '" + taskName + "'.");
-}
-} else {
-System.out.println("Task '" + taskName + "' not found.");
-}
-} else {
-System.out.println("No user currently logged in. Please log in first.");
-}
-
-
-return false;
-}
-
-
-// Other task-related methods
-
-
-// User-related methods
-
-
-
-// Project-related methods
-
-
-// Other project-related methods
-
-
-// Column-related methods
-// public Column addColumn(Column column) {
-// // Placeholder implementation
-// return columnManager.getInstance().addColumn(column);
-// }
-// public Boolean removeColumn(Column column) {
-// // Placeholder implementation
-// return columnManager.getInstance().removeColumn(column);
-// }
-// public Boolean hasColumn(String columnName) {
-// // Placeholder implementation
-// return columnManager.getInstance().hasColumn(columnName);
-// }
-// public Boolean editColumnName(String columnName, String newColumnName) {
-// // Placeholder implementation
-// return columnManager.getInstance().editColumnName(newColumnName, newColumnName);
-// }
-// public Column getColummn(String columnName) {
-// // Placeholder implementation
-// return columnManager.getInstance().getColumn(columnName);
-// }
-public Boolean markTaskComplete(String taskName) {
-// Placeholder implementation
-return TaskManagement.getInstance().markTaskComplete(taskName);
-}
-public ArrayList<Column> seeCompletedColumns() { //do we need?
-// Placeholder implementation
-return null;
-}
-public ArrayList<Column> seeWorkingOnColumns() { //do we need?
-// Placeholder implementation
-return null;
-}
-//creat get project by name
-
-
-
-
-//??
-public Boolean editColumnComments(String columnLocation, String columnComment) {
-// Placeholder implementation
-return false;
-}
-
-
-//??
-public Boolean addColumnComments(String columnComment) {
-// Placeholder implementation
-return false;
-}
-
-
-//??
-public Boolean removeColumnComments(String columnComment) {
-// Placeholder implementation
-return false;
-}
-// Other column-related methods
-
-
-// Other methods
-
-
-// Getters, setters, and other utility methods
-public ArrayList<String> getTaskHistory(String taskName) {
-// Placeholder implementation
-return null;
-}
-public ArrayList<String> getTaskComments(String taskName) {
-// Placeholder implementation
-return null;
-}
-
-public Boolean getColumn(String columnName) {
-// Placeholder implementation
-return null;
-}
-//?
-public ArrayList<String> getColumnHistory(String columnName) {
-// Placeholder implementation
-return null;
-}
-//?
-public ArrayList<String> getColumnComments(String columnName) {
-// Placeholder implementation
-return null;
-}
-}
-
-
-
-
-
-class ProjectManager {
-
-
-public static ArrayList<Project> getInstance() {
-return null;
-}
-// Placeholder implementation
-}
-
-
-class Task {
-
-
-public Object getTaskName() {
-return null;
-}
-
-
-public String getTaskPriority() {
-return null;
-}
-
-
-public void setTaskCompletion(boolean b) {
-}
-
-
-public Object getTaskTags() {
-return null;
-}
-
-
-public Object getTaskDueDate() {
-return null;
-}
-
-
-public Object getTaskNotes() {
-return null;
-}
-
-
-public Object getTaskCompletion() {
-return null;
-}
-
-
-public void setTaskName(String newTaskName) {
-}
-
-
-public void setTaskPriority(int newTaskPriority) {
-}
-
-
-public void setTaskTags(ArrayList<String> newTaskTags) {
-}
-
-
-public void setTaskNotes(String newTaskNotes) {
-}
-
-
-public void setTaskDueDate(Date newTaskDueDate) {
-}
-
-class UserManager {
-
-
-public static Object getInstance() {
-return null;
-}
-// Placeholder implementation
-}
-
-public void assignUser(User jeffGoldblum) {
-}
-
-
-public void run() {
-}
-}
-*/
