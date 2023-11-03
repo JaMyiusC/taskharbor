@@ -16,15 +16,22 @@ public class UiFacade {
         return true;
     }
 
-    public boolean login(String userName, String password) {
-        // Check if a user with the given username and password exists
-        UserManagement userManagement = UserManagement.getInstance();
-        if (userManagement.hasUser(userName, password)) {
-            currentUser = userManagement.getUser(userName, password);
-            return true;
-        }
-        return false;
-    }
+	public boolean login(String userName, String password) {
+		UserManagement userManagement = UserManagement.getInstance();
+	
+		if (userManagement.hasUser(userName, password)) {
+			currentUser = userManagement.getUser(userName, password);
+	
+			// Assuming you have a ProjectManager associated with each user
+			// Set the user's ProjectManager instance
+			currentUser.setProjectManager(ProjectManager.getInstance());
+	
+			return true;
+		}
+	
+		return false;
+	}
+	
 
     public User getCurrentUser() {
         return currentUser;

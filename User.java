@@ -39,8 +39,9 @@ public class User {
         return projectManager;
     }
 
-    // commented out for testing remove after the class is working
-    // overload the constructor
+    public void setProjectManager(ProjectManager projectManager) {
+        this.projectManager = projectManager;
+    }
 
 	public boolean checkPassword(String password) {
         return this.password.equals(password);
