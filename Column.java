@@ -5,7 +5,7 @@ public class Column {
     private static int columnPosition;
     private ArrayList<Task> columnTaskList;
 
-    public Column(String columnName, int columnPosition, ArrayList<Task> columnTaskList ) {
+    public Column(String columnName, ArrayList<Task> columnTaskList ) {
         this.columnName = columnName;
         this.columnPosition = columnPosition;
         this.columnTaskList = new ArrayList<>();
@@ -29,10 +29,6 @@ public class Column {
 
     public boolean removeColumnTask(Task task) {
         return columnTaskList.remove(task);
-    }
-
-    public static int getPosition() {
-        return columnPosition;
     }
 
     public static String getName() {
