@@ -16,8 +16,8 @@ public class comments {
     }
 
     // Method to add a comment. Returns true if the comment was added successfully.
-    public boolean addComment(String comment) {
-        return comments.add(comment);
+    public void addComment(String comment) {
+        return;
     }
 
     public String addCommentText(){

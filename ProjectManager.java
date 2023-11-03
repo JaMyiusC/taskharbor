@@ -8,6 +8,7 @@ public class ProjectManager {
     private static ProjectManager projectManager;
     private ArrayList<Project> projects = new ArrayList<Project>();
     private ArrayList<Column> columnsList = new ArrayList<Column>();
+    private String user;
 
     ProjectManager() {
         projects = DataReader.getProjects();
@@ -82,5 +83,18 @@ public class ProjectManager {
 
     public void saveColumns() {
         DataWriter.saveColumns();
+    }
+    public boolean addCommet(int projectIndex, int columIndex, String commentText) {
+    if (projectIndex >= 0 && projectIndex < projects.size()){
+            Project project = projects.get(projectIndex);
+            
+            if (columIndex >= 0 && columIndex < project.getColumns().size()){
+                Column column = project.getColumns().get(columIndex);
+                comments comment = new comments(user, commentText);
+                comment.addComment(comment);
+                return true;
+            }
+        }
+        return false;
     }
 }
