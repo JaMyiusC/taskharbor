@@ -41,9 +41,21 @@ public class Column {
     }
 
     public void addColumnTask(comments existingTask) {
+        //missing logic ?
     }
 
     public static Column getInstance() {
         return Column.getInstance();
+    }
+
+    public static ArrayList<Column> getAllColumns() {
+        ArrayList<Column> columns = new ArrayList<>();
+
+        return columns;
+
+    }
+
+    public static Object getPosition() {
+        return columnPosition;
     }
 }
