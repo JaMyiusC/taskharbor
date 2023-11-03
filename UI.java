@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class UI {
 	private static final String WELCOME_MESSAGE = "Welcome to our Library";
-	private String[] mainMenuOptions = {"Create Account", "Login", "Projects","Checkout Item","Rate an Item","Pay a Fine","Logout"};
+	private String[] mainMenuOptions = {"Create Account", "Login", "Projects","Logout"};
 	private Scanner scanner;
     private UiFacade UiFacade;
 	
