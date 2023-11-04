@@ -7,20 +7,11 @@ public class Column {
     private ArrayList<Task> columnTaskList;
     private ArrayList<Comments> commentsList;
 
-    private static Column instance = null;
-
     public Column(){
         this.columnName = "Default Column Name";
         this.columnPosition = 0;
         this.columnTaskList = new ArrayList<>();
         this.commentsList = new ArrayList<>();
-    }
-
-    public static Column getInstance() {
-        if (instance == null) {
-            instance = new Column();
-        }
-        return instance;
     }
 
     public String getColumnName() {

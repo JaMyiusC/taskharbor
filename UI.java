@@ -150,7 +150,7 @@ public class UI {
         }
     }
 
-    private void viewProjects() {
+	private void viewProjects() {
 		System.out.println("-----Projects-----");
 		User currentUser = uiFacade.getCurrentUser();
 		if (currentUser == null) {
@@ -179,28 +179,33 @@ public class UI {
 			if (columns.isEmpty()) {
 				System.out.println("   No columns in this project.");
 			} else {
-				System.out.println("   Columns:");
+				System.out.println("\t   Columns:");
 	
+				// Set the fixed width for columns
+				int columnWidth = 30;
+	
+				// Print column names
 				for (Column column : columns) {
-					System.out.print("     - " + column.getColumnName() + "\t\t");
+					System.out.printf("\t%-" + columnWidth + "s", "- " + column.getColumnName());
 				}
 				System.out.println();
 	
+				// Print tasks under each column
 				int maxTasks = 0;
 				for (Column column : columns) {
 					int numTasks = column.getColumnTaskList().size();
 					maxTasks = Math.max(maxTasks, numTasks);
 				}
-	
+									System.out.print("\t   Tasks:\n");
 				for (int j = 0; j < maxTasks; j++) {
-					System.out.print("   Tasks:\n     ");
 					for (Column column : columns) {
 						ArrayList<Task> tasks = column.getColumnTaskList();
 						if (j < tasks.size()) {
 							Task task = tasks.get(j);
-							System.out.print("- " + task.getTaskName() + ": " + task.getTaskNotes() + "\t\t     ");
+							String taskString = "- " + task.getTaskName() + ": " + task.getTaskNotes();
+							System.out.printf("\t%-" + columnWidth + "s", taskString);
 						} else {
-							System.out.print("\t\t\t\t\t\t\t"); // Empty space if no task
+							System.out.printf("\t%-" + columnWidth + "s", "");
 						}
 					}
 					System.out.println();
@@ -208,11 +213,7 @@ public class UI {
 			}
 		}
 	}
-	
-	
 
-	
-	
 
 	private void addColumn() {
 		User currentUser = uiFacade.getCurrentUser();
@@ -230,13 +231,14 @@ public class UI {
 	
 		if (projectIndex >= 0) {
 			String columnName = getField("Column Name");
-			Column column = Column.getInstance();  // Get a Column instance
+			Column column = new Column();  // Create a new Column instance
 			column.setColumnName(columnName);
 			Project project = projectManager.getAllProjects().get(projectIndex);
 			project.addColumn(column);
 			System.out.println("Column added to the project.");
 		}
 	}
+	
 	
 
     private void removeColumn() {
