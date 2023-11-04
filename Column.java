@@ -3,7 +3,9 @@ import java.util.ArrayList;
 public class Column {
     private String columnName;
     private int columnPosition;
+    private comments Comments;
     private ArrayList<Task> columnTaskList;
+    private ArrayList<comments> commentsList;
 
     private static Column instance = null;
 
@@ -11,6 +13,7 @@ public class Column {
         this.columnName = "Default Column Name";
         this.columnPosition = 0;
         this.columnTaskList = new ArrayList<>();
+        this.commentsList = new ArrayList<>();
     }
 
     public static Column getInstance() {
@@ -38,6 +41,10 @@ public class Column {
 
     public boolean removeColumnTask(Task task) {
         return columnTaskList.remove(task);
+    }
+
+    public void addComment(comments newComment) {
+        commentsList.add(newComment);
     }
 
     public int getPosition() {

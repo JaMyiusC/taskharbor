@@ -17,11 +17,7 @@ public class comments {
 
     // Method to add a comment. Returns true if the comment was added successfully.
     public void addComment(String comment) {
-        return;
-    }
-
-    public String addCommentText(){
-        return commentText;
+        comments.add(comment);
     }
 
     // Method to remove a comment. Returns true if the comment was removed successfully.
