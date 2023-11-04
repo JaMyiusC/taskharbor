@@ -3,10 +3,10 @@ import java.util.ArrayList;
 // The Comments class is responsible for managing comments related to a user.
 public class Comments {
     // The User who owns these comments.
-    private static String user;
+    private String user;
     // An ArrayList to store the comments.
-    private static String commentText;
-    private static ArrayList<String> comments;
+    private String commentText;
+    private ArrayList<String> comments;
 
     // Constructor for the Comments class.
     public Comments(String user, String commentText) {
@@ -25,12 +25,16 @@ public class Comments {
         return comments.remove(comment);
     }
 
-    public static String getUser(){
+    public String getUser(){
         return user;
     }
 
-    public static ArrayList<String> getComment(){
+    public ArrayList<String> getComment(){
         return comments;
+    }
+
+    public String getCommentText(){
+        return commentText;
     }
     
 

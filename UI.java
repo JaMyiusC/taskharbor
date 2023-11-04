@@ -179,7 +179,7 @@ public class UI {
 			if (columns.isEmpty()) {
 				System.out.println("   No columns in this project.");
 			} else {
-				System.out.println("\t   Columns:");
+				System.out.println("   Columns:");
 	
 				// Set the fixed width for columns
 				int columnWidth = 30;
@@ -196,7 +196,7 @@ public class UI {
 					int numTasks = column.getColumnTaskList().size();
 					maxTasks = Math.max(maxTasks, numTasks);
 				}
-									System.out.print("\t   Tasks:\n");
+									System.out.print("   Tasks:\n");
 				for (int j = 0; j < maxTasks; j++) {
 					for (Column column : columns) {
 						ArrayList<Task> tasks = column.getColumnTaskList();
@@ -469,6 +469,8 @@ public class UI {
 		task.setTaskNotes(newTaskDescription);
 		System.out.println("Task edited successfully.");
 	}
+	
+	
 	
 	
 	

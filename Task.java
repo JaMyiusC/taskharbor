@@ -55,6 +55,17 @@ public class Task {
      public ArrayList<Comments> getComments(){
         return taskComments;
     }
+
+    public void addComment(Comments comment) {
+        if (comment != null) {
+            taskComments.add(comment);
+        }
+    }
+
+    public boolean removeComment(Comments comment) {
+        return taskComments.remove(comment);
+    }
+    
  
 
     // Additional Methods
