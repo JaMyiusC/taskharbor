@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 // The Comments class is responsible for managing comments related to a user.
-public class comments {
+public class Comments {
     // The User who owns these comments.
     private static String user;
     // An ArrayList to store the comments.
@@ -9,7 +9,7 @@ public class comments {
     private static ArrayList<String> comments;
 
     // Constructor for the Comments class.
-    public comments(String user, String commentText) {
+    public Comments(String user, String commentText) {
         this.user = user;
         this.commentText = commentText;
         this.comments = new ArrayList<>();

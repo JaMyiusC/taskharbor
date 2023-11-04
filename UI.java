@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class UI {
@@ -171,9 +172,46 @@ public class UI {
 		}
 	
 		for (int i = 0; i < projects.size(); i++) {
-			System.out.println((i + 1) + ". " + projects.get(i).getProjectName());
+			Project project = projects.get(i);
+			System.out.println((i + 1) + ". " + project.getProjectName());
+	
+			ArrayList<Column> columns = project.getColumns();
+			if (columns.isEmpty()) {
+				System.out.println("   No columns in this project.");
+			} else {
+				System.out.println("   Columns:");
+	
+				for (Column column : columns) {
+					System.out.print("     - " + column.getColumnName() + "\t\t");
+				}
+				System.out.println();
+	
+				int maxTasks = 0;
+				for (Column column : columns) {
+					int numTasks = column.getColumnTaskList().size();
+					maxTasks = Math.max(maxTasks, numTasks);
+				}
+	
+				for (int j = 0; j < maxTasks; j++) {
+					System.out.print("   Tasks:\n     ");
+					for (Column column : columns) {
+						ArrayList<Task> tasks = column.getColumnTaskList();
+						if (j < tasks.size()) {
+							Task task = tasks.get(j);
+							System.out.print("- " + task.getTaskName() + ": " + task.getTaskNotes() + "\t\t     ");
+						} else {
+							System.out.print("\t\t\t\t\t\t\t"); // Empty space if no task
+						}
+					}
+					System.out.println();
+				}
+			}
 		}
 	}
+	
+	
+
+	
 	
 
 	private void addColumn() {

@@ -120,11 +120,12 @@ public class Project {
         }
     }
 
-    private String displayColumnDetails(Column column) {
-        return column.toString();
+    private void displayColumnDetails(Column column) {
+        System.out.println(column.toString());
+
     }
 
-    public comments getTaskByName(String string) {
+    public Comments getTaskByName(String string) {
         return null;
     }
     
