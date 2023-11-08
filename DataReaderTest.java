@@ -1,53 +1,51 @@
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.IOException;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DataReaderTest {
 
-    @Before
-    public void setup() {
-        // Set up any necessary data or configurations before each test
+    @Test
+    void testGetUsers() {
+        ArrayList<User> userList = DataReader.getUsers();
+        assertNotNull(userList);
+        assertFalse(userList.isEmpty());
     }
 
-    @After
-    public void tearDown() {
-        // Clean up after each test
+    @Test
+    void testGetProjects() {
+        ArrayList<Project> projectList = DataReader.getProjects();
+        assertNotNull(projectList);
+        assertFalse(projectList.isEmpty());
     }
 
-    @org.junit.Test
-    public void testReadUsers() {
-        // Implement test for reading users from a file
-        // Ensure that the read data matches the expected data
-        // Use assertions to check the correctness of the data
+    @Test
+    void testGetColumns() {
+        ArrayList<Column> columnList = DataReader.getColumns();
+        assertNotNull(columnList);
+        assertFalse(columnList.isEmpty());
     }
 
-    @org.junit.Test
-    public void testReadTasks() {
-        // Implement test for reading tasks from a file
-        // Ensure that the read data matches the expected data
-        // Use assertions to check the correctness of the data
+    @Test
+    void testGetTasks() {
+        // adding a JSON array for testing
+        JSONArray taskListJSON = new JSONArray();
+        // Add some mock tasks to the JSON array
+        // ...
+
+        ArrayList<Task> taskList = DataReader.getTasks(taskListJSON);
+        assertNotNull(taskList);
+        
     }
 
-    @org.junit.Test
-    public void testReadColumns() {
-        // Implement test for reading columns from a file
-        // Ensure that the read data matches the expected data
-        // Use assertions to check the correctness of the data
+    @Test
+    void testGetComments() {
+        // Mocking a JSON array for testing
+        JSONArray commentListJSON = new JSONArray();
+        // Add some mock comments to the JSON array
+        // ...
+
+        ArrayList<Comments> commentList = DataReader.getComments(commentListJSON);
+        assertNotNull(commentList);
+        
     }
-
-    @org.junit.Test
-    public void testReadProjects() {
-        // Implement test for reading projects from a file
-        // Ensure that the read data matches the expected data
-        // Use assertions to check the correctness of the data
-    }
-
-    // Add more test cases as needed for different scenarios
-
 }
