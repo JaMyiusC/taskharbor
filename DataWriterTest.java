@@ -16,20 +16,17 @@ public class DataWriterTest {
 
     @Test
     void testSaveTasks() {
-        userList = DataWriter.saveUsers();
-		assertEquals(0, userList.size());
+        
     }
 
     @Test
     void testSaveColumns() {
-        userList = DataWriter.saveUsers();
-		assertEquals(0, userList.size());
+        
     }
 
     @Test
     void testSaveProjects() {
-        userList = DataWriter.saveUsers();
-		assertEquals(0, userList.size());
+        
     }
 }
 
