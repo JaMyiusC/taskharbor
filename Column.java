@@ -51,4 +51,8 @@ public class Column {
                 "Column Position: " + columnPosition + "\n" +
                 "Column Task List: " + columnTaskList + "\n";
     }
+
+    public String getcommentsList() {
+        return null;
+    }
 }
