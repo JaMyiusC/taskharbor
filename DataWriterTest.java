@@ -1,9 +1,11 @@
 import static org.junit.Assert.*;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.json.simple.JSONArray;
 import org.junit.Test;
 public class DataWriterTest {
-    private User user = User.getInstance();
+    private User user = UserManagement.getInstance();
 	private ArrayList<User> userList = user.getUser();
 
     @Test

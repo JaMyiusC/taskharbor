@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.ArrayList;
 
@@ -6,12 +9,12 @@ public class ColumnTest {
 
     private Column column;
 
-    @BeforeEach
+    @BeforeClass
     public void setup() {
         column = new Column();
     }
 
-    @AfterEach
+    @AfterClass
     public void tearDown() {
         column = null;
     }

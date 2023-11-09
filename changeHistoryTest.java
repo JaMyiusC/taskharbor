@@ -1,5 +1,8 @@
 import static org.junit.Assert.*;
 import java.util.ArrayList;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import java.io.FileReader;
 import java.text.ParseException;
@@ -14,7 +17,7 @@ class ChangeHistoryTest {
 
     private ChangeHistoryTest changeHistory;
 
-    @BeforeEach
+    @BeforeClass
     public void setup() {
         changeHistory = ChangeHistoryTest.getInstance();
     }
@@ -23,7 +26,7 @@ class ChangeHistoryTest {
         return null;
     }
 
-    @AfterEach
+    @AfterClass
     public void tearDown() {
         changeHistory = null;
     }
