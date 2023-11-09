@@ -1,17 +1,21 @@
 import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
 import java.util.ArrayList;
 
-public class CommentsTest {
+public class commentsTest {
 
-    private Comments comments;
+    private comments comments;
 
-    @BeforeEach
+    @Before
     public void setup() {
-        comments = new Comments("John", "User Comments");
+        comments = new comments("John", "User Comments");
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         comments = null;
     }
