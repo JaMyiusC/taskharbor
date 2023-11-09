@@ -43,7 +43,7 @@ public class ColumnTest {
 
     @Test
     void testAddComment() {
-        Comments comment = new Comments("Test Comment");
+        comments comment = new Comments("Test Comment");
         column.addComment(comment);
         assertTrue(column.getCommentsList().contains(comment));
     }
