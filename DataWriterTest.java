@@ -1,15 +1,10 @@
 import static org.junit.Assert.*;
+import java.util.ArrayList;
+import org.json.simple.JSONArray;
 import org.junit.Test;
-
 public class DataWriterTest {
     private User user = User.getInstance();
 	private ArrayList<User> userList = user.getUser();
-	
-
-    @Test
-    public void setup() {
-        // Initialize any necessary data or objects before each test if needed.
-    }
 
     @Test
     void testSaveUsers() {

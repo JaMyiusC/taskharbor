@@ -1,13 +1,17 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class ChangeHistoryTest {
+class ChangeHistoryTest {
 
-    private ChangeHistory changeHistory;
+    private ChangeHistoryTest changeHistory;
 
     @Test
     public void setup() {
-        changeHistory = ChangeHistory.getInstance();
+        changeHistory = ChangeHistoryTest.getInstance();
+    }
+
+    private static ChangeHistoryTest getInstance() {
+        return null;
     }
 
     @Test
