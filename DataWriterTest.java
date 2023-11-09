@@ -8,26 +8,28 @@ public class DataWriterTest {
 
     @Test
     void testSaveUsers() {
-        // Add test cases to validate the saveUsers method of DataWriter.
-        // You may need to mock or set up data as required for the test.
+        ArrayList<User> users = new ArrayList<>();
+        users.add(new User("Meet", "Patel", "mpatel", "meet2002..."));
+
+        DataWriter.saveUsers();
     }
 
     @Test
     void testSaveTasks() {
-        // Add test cases to validate the saveTasks method of DataWriter.
-        // You may need to mock or set up data as required for the test.
+        userList = DataWriter.saveUsers();
+		assertEquals(0, userList.size());
     }
 
     @Test
     void testSaveColumns() {
-        // Add test cases to validate the saveColumns method of DataWriter.
-        // You may need to mock or set up data as required for the test.
+        userList = DataWriter.saveUsers();
+		assertEquals(0, userList.size());
     }
 
     @Test
     void testSaveProjects() {
-        // Add test cases to validate the saveProjects method of DataWriter.
-        // You may need to mock or set up data as required for the test.
+        userList = DataWriter.saveUsers();
+		assertEquals(0, userList.size());
     }
 }
 
