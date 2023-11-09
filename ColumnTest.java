@@ -47,9 +47,9 @@ public class ColumnTest {
 
     @Test
     void testAddComment() {
-        comments comment = new Comments("Test Comment");
+        comments comment = new comments("Test Comment");
         column.addComment(comment);
-        assertTrue(column.getCommentsList().contains(comment));
+        assertTrue(column.getcommentsList().contains(comment));
     }
 
     @Test

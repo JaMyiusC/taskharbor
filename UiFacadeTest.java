@@ -17,7 +17,6 @@ public class UiFacadeTest {
         uiFacade = new UiFacade();
 
         testUser = new User("TestFirstName", "TestLastName", "TestUser", "TestPassword");
-        UserManagement.getInstance().addUser(testUser);
 
         UserManagement.getInstance();
         UserManagement.getInstance().addUser("TestFirstName", "TestLastName", "TestUser", "TestPassword");
