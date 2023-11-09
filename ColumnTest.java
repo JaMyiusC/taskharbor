@@ -32,14 +32,14 @@ public class ColumnTest {
 
     @Test
     void testAddColumnTask() {
-        Task task = new Task("Task 1");
+        Task task = new task("Task 1");
         assertTrue(column.addColumnTask(task));
         assertTrue(column.getColumnTaskList().contains(task));
     }
 
     @Test
     void testRemoveColumnTask() {
-        Task task = new Task("Task 1");
+        Task task = new task("Task 1");
         column.addColumnTask(task);
         assertTrue(column.removeColumnTask(task));
         assertFalse(column.getColumnTaskList().contains(task));

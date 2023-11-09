@@ -17,16 +17,22 @@ public class DataWriterTest {
 
     @Test
     void testSaveTasks() {
-                
+        ArrayList<Task> tasks = new ArrayList<>();
+        assertNotNull(tasks);
+        assertFalse(tasks.isEmpty());
     }
 
     @Test
     void testSaveColumns() {
-        
+        ArrayList<Task> columns = new ArrayList<>();
+        assertNotNull(columns);
+        assertFalse(columns.isEmpty());
     }
 
     @Test
     void testSaveProjects() {
-        
+        ArrayList<Task> projects = new ArrayList<>();
+        assertNotNull(projects);
+        assertFalse(projects.isEmpty());
     }
 }
