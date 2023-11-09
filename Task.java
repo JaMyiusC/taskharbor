@@ -8,10 +8,10 @@ public class Task {
     private int taskPriority;
     private Date taskDueDate;
     private String taskNotes;
-    private ArrayList<Comments> taskComments;
+    private ArrayList<comments> taskComments;
 
     // Constructor
-    public Task(String taskName, int taskPriority, Date taskDueDate, String taskNotes , ArrayList<Comments> taskComments) {
+    public Task(String taskName, int taskPriority, Date taskDueDate, String taskNotes , ArrayList<comments> taskComments) {
         this.taskName = taskName;
         this.taskPriority = taskPriority;
         this.taskDueDate = taskDueDate;
@@ -52,17 +52,17 @@ public class Task {
         this.taskNotes = taskNotes;
     }
 
-     public ArrayList<Comments> getComments(){
+     public ArrayList<comments> getComments(){
         return taskComments;
     }
 
-    public void addComment(Comments comment) {
+    public void addComment(comments comment) {
         if (comment != null) {
             taskComments.add(comment);
         }
     }
 
-    public boolean removeComment(Comments comment) {
+    public boolean removeComment(comments comment) {
         return taskComments.remove(comment);
     }
     
@@ -74,7 +74,7 @@ public class Task {
     @Override
     public String toString() {
         StringBuilder commentsString = new StringBuilder();
-        for (Comments comment : taskComments) {
+        for (comments comment : taskComments) {
             commentsString.append(comment.toString()).append("\n");
         }
 

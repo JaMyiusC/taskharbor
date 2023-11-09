@@ -9,7 +9,7 @@ public class ProjectManager {
     private ArrayList<Project> projects = new ArrayList<Project>();
     private ArrayList<Column> columnsList = new ArrayList<Column>();
     private String user;
-    private Comments Comments;
+    private comments Comments;
 
     ProjectManager() {
         projects = DataReader.getProjects();
@@ -91,7 +91,7 @@ public class ProjectManager {
             
             if (columIndex >= 0 && columIndex < project.getColumns().size()){
                 Column column = project.getColumns().get(columIndex);
-                Comments comment = new Comments(user, commentText);
+                comments comment = new comments(user, commentText);
                 column.addComment(comment);
                 return true;
             }

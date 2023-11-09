@@ -11,11 +11,17 @@ public class UiFacadeTest {
     private UiFacade uiFacade;
     private User testUser;
 
+
     @Before
     public void setUp() {
         uiFacade = new UiFacade();
+
         testUser = new User("TestFirstName", "TestLastName", "TestUser", "TestPassword");
         UserManagement.getInstance().addUser(testUser);
+
+        UserManagement.getInstance();
+        UserManagement.getInstance().addUser("TestFirstName", "TestLastName", "TestUser", "TestPassword");
+
         uiFacade.login("TestUser", "TestPassword");
     }
 

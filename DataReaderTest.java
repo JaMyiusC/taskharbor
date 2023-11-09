@@ -47,7 +47,7 @@ class DataReaderTest {
         // Add some mock comments to the JSON array
         // ...
 
-        ArrayList<Comments> commentList = DataReader.getComments(commentListJSON);
+        ArrayList<comments> commentList = DataReader.getComments(commentListJSON);
         assertNotNull(commentList);
         
     }

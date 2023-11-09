@@ -119,15 +119,15 @@ public class DataReader {
     }
     
 
-    public static ArrayList<Comments> getComments(JSONArray commentListJSON){
-        ArrayList<Comments> commentList = new ArrayList<>();
+    public static ArrayList<comments> getComments(JSONArray commentListJSON){
+        ArrayList<comments> commentList = new ArrayList<>();
         
         for(int i = 0; i < commentListJSON.size(); i++){
             JSONObject commentJSON = (JSONObject) commentListJSON.get(i);
             String user = (String) commentJSON.get("user");
             String commentText = (String) commentJSON.get("commentText");
 
-            commentList.add(new Comments(user, commentText));
+            commentList.add(new comments(user, commentText));
         }
         return commentList;
     }

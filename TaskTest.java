@@ -6,13 +6,13 @@ import java.util.Date;
 
 public class TaskTest {
     private Task task;
-    private ArrayList<Comments> commentsList;
+    private ArrayList<comments> commentsList;
 
     @Before
     public void setUp() {
         commentsList = new ArrayList<>();
-        commentsList.add(new Comments("AttiucsM", "Comment 1"));
-        commentsList.add(new Comments("DwayneW", "Comment 2"));
+        commentsList.add(new comments("AttiucsM", "Comment 1"));
+        commentsList.add(new comments("DwayneW", "Comment 2"));
         task = new Task("Task 1", 2, new Date(), "Task notes", commentsList);
     }
 
@@ -61,14 +61,14 @@ public class TaskTest {
 
     @Test
     public void testAddComment() {
-        Comments newComment = new Comments("JaMyiusC", "New Comment");
+        comments newComment = new comments("JaMyiusC", "New Comment");
         task.addComment(newComment);
         assertTrue(task.getComments().contains(newComment));
     }
 
     @Test
     public void testRemoveComment() {
-        Comments commentToRemove = commentsList.get(0);
+        comments commentToRemove = commentsList.get(0);
         assertTrue(task.removeComment(commentToRemove));
         assertFalse(task.getComments().contains(commentToRemove));
     }
