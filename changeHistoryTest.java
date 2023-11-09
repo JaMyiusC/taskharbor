@@ -1,16 +1,22 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+import java.io.FileReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class ChangeHistoryTest {
 
     private ChangeHistory changeHistory;
 
-    @Test
+    @BeforeEach
     public void setup() {
         changeHistory = ChangeHistory.getInstance();
     }
 
-    @Test
+    @AfterEach
     public void tearDown() {
         changeHistory = null;
     }

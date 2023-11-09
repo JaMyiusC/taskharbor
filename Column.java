@@ -14,6 +14,9 @@ public class Column {
         this.commentsList = new ArrayList<>();
     }
 
+    public Column(String string, ArrayList arrayList) {
+    }
+
     public String getColumnName() {
         return columnName;
     }
