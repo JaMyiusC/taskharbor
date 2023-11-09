@@ -15,9 +15,6 @@ public class comments {
         this.comments = new ArrayList<>();
     }
 
-    public comments(String string) {
-    }
-
     // Method to add a comment. Returns true if the comment was added successfully.
     public void addComment(String comment) {
         comments.add(comment);

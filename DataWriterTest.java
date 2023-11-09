@@ -5,7 +5,7 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.junit.Test;
 public class DataWriterTest {
-    private User user = UserManagement.getInstance();
+    private User user = UserManagement.getInstance().getUser(null, null);
 	private ArrayList<User> userList = user.getUser();
 
     @Test
