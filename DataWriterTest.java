@@ -6,7 +6,7 @@ import org.json.simple.JSONArray;
 import org.junit.Test;
 public class DataWriterTest {
     private User user = UserManagement.getInstance().getUser(null, null);
-	private ArrayList<User> userList = user.getUser();
+	private ArrayList<User> usersList = user.getUser();
 
     @Test
     void testSaveUsers() {

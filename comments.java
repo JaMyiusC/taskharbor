@@ -47,8 +47,4 @@ public class comments {
                 ", comments=" + comments +
                 '}';
     }
-
-    public void add(comments newComment) {
-        //add arraylist to this
-    }
 }

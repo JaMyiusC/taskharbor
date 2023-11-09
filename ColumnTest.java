@@ -32,14 +32,14 @@ public class ColumnTest {
 
     @Test
     void testAddColumnTask() {
-        Task task = new task("Task 1");
+        Task task = new Task(String);
         assertTrue(column.addColumnTask(task));
         assertTrue(column.getColumnTaskList().contains(task));
     }
 
     @Test
     void testRemoveColumnTask() {
-        Task task = new task("Task 1");
+        Task task = new Task(null, 0, null, null, null);
         column.addColumnTask(task);
         assertTrue(column.removeColumnTask(task));
         assertFalse(column.getColumnTaskList().contains(task));
@@ -47,7 +47,7 @@ public class ColumnTest {
 
     @Test
     void testAddComment() {
-        comments comment = new comments("Test Comment");
+        comments comment = new comments(null, null);
         column.addComment(comment);
         assertTrue(column.getcommentsList().contains(comment));
     }
