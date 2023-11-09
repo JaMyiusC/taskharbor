@@ -22,8 +22,7 @@ public class UiFacade {
 		if (userManagement.hasUser(userName, password)) {
 			currentUser = userManagement.getUser(userName, password);
 	
-			// Assuming you have a ProjectManager associated with each user
-			// Set the user's ProjectManager instance
+
 			currentUser.setProjectManager(ProjectManager.getInstance());
 	
 			return true;

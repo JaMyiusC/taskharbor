@@ -21,7 +21,7 @@ public class commentsTest {
     }
 
     @Test
-    void testAddComment() {
+    public void testAddComment() {
         comments.addComment("Comment 1");
         comments.addComment("Comment 2");
 
@@ -33,7 +33,7 @@ public class commentsTest {
     }
 
     @Test
-    void testRemoveComment() {
+    public void testRemoveComment() {
         comments.addComment("Comment 1");
         comments.addComment("Comment 2");
 
@@ -48,17 +48,17 @@ public class commentsTest {
     }
 
     @Test
-    void testGetUser() {
+    public void testGetUser() {
         assertEquals("John", comments.getUser());
     }
 
     @Test
-    void testGetCommentText() {
+    public void testGetCommentText() {
         assertEquals("User Comments", comments.getCommentText());
     }
 
     @Test
-    void testToString() {
+    public void testToString() {
         String expectedString = "Comments{user=John, comments=[]}";
         assertEquals(expectedString, comments.toString());
     }
