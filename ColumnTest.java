@@ -5,12 +5,12 @@ public class ColumnTest {
 
     private Column column;
 
-    @BeforeEach
+    @Test
     public void setup() {
         column = new Column();
     }
 
-    @AfterEach
+    @Test
     public void tearDown() {
         column = null;
     }

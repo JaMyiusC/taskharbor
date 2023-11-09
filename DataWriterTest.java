@@ -6,7 +6,7 @@ public class DataWriterTest {
 	private ArrayList<User> userList = user.getUser();
 	
 
-    @BeforeEach
+    @Test
     public void setup() {
         // Initialize any necessary data or objects before each test if needed.
     }

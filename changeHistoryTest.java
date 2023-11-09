@@ -5,12 +5,12 @@ public class ChangeHistoryTest {
 
     private ChangeHistory changeHistory;
 
-    @BeforeEach
+    @Test
     public void setup() {
         changeHistory = ChangeHistory.getInstance();
     }
 
-    @AfterEach
+    @Test
     public void tearDown() {
         changeHistory = null;
     }
