@@ -19,11 +19,7 @@ class ChangeHistoryTest {
 
     @BeforeClass
     public void setup() {
-        changeHistory = ChangeHistoryTest.getInstance();
-    }
-
-    private static ChangeHistoryTest getInstance() {
-        return null;
+        changeHistory = changeHistory.getInstance();
     }
 
     @AfterClass
