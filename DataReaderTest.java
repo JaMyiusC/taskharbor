@@ -1,4 +1,8 @@
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.json.simple.JSONArray;
 import org.junit.Test;
 
 class DataReaderTest {
