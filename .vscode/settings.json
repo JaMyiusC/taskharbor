@@ -3,5 +3,6 @@
         "lib/**/*.jar",
         "c:\\Users\\jamyi\\OneDrive\\Desktop\\json-simple-1.1.1.jar",
         "/home/ricogt/Desktop/junit-4.13.2-javadoc.jar"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

@@ -1,16 +1,17 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.ArrayList;
 
 public class ColumnTest {
 
     private Column column;
 
-    @Test
+    @BeforeEach
     public void setup() {
         column = new Column();
     }
 
-    @Test
+    @AfterEach
     public void tearDown() {
         column = null;
     }

@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
+=======
+import java.io.FileReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+>>>>>>> 65e9bd50c9978d2004582aeeac2f78f4e4f7928c
 
 class ChangeHistoryTest {
 
     private ChangeHistoryTest changeHistory;
 
-    @Test
+    @BeforeEach
     public void setup() {
         changeHistory = ChangeHistoryTest.getInstance();
     }
@@ -17,7 +28,7 @@ class ChangeHistoryTest {
         return null;
     }
 
-    @Test
+    @AfterEach
     public void tearDown() {
         changeHistory = null;
     }
