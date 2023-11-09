@@ -34,7 +34,7 @@ class ProjectManagerTest {
         ProjectManager projectManager = ProjectManager.getInstance();
         Project project = new Project("Test Project", null, new ArrayList<>());
         projectManager.addProject(project);
-        Column column = new Column("Test Column", new ArrayList<>());
+        Column column = new Column();
         project.getColumns().add(column);
 
         assertTrue(projectManager.addTask(0, 0, "Test Task", "Task Description"));
@@ -55,7 +55,7 @@ class ProjectManagerTest {
         ProjectManager projectManager = ProjectManager.getInstance();
         Project project = new Project("Test Project", null, new ArrayList<>());
         projectManager.addProject(project);
-        Column column = new Column("Test Column", new ArrayList<>());
+        Column column = new Column();
         project.getColumns().add(column);
 
         assertTrue(projectManager.addCommet(0, 0, "Test Comment"));
