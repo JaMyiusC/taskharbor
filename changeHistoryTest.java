@@ -13,12 +13,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-class ChangeHistoryTest {
+class changeHistoryTest {
 
-    private ChangeHistoryTest changeHistory;
+    private static changeHistory changeHistory;
 
     @BeforeClass
-    public void setup() {
+    public static void setup() {
         changeHistory = changeHistory.getInstance();
     }
 
